@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Mad Zombie Bacon Attack!</title>
+    <link rel="stylesheet" href="ZombieBacon_Kongregate.css">
+    <script type="text/javascript" src="http://www.kongregate.com/javascripts/kongregate_api.js"></script>
+  </head>
+  <body style="background-color: #111921;">
+    <script type="text/javascript">
+      // Called when the API is finished loading
+      function onLoadCompleted(){
+        // Get a global reference to the kongregate API
+        kongregate = kongregateAPI.getAPI();
+      }
+      // Begin the process of loading the Kongregate API:
+      kongregateAPI.loadAPI(onLoadCompleted);
+    </script>  
+    <div id="canvas_div" style="top:0px; left:0px; width:800px; height:600px; borders:none;"><canvas id="drawCanvas" width="800" height="600"></canvas></div>
+    <script type="application/dart" src="ZombieBacon.dart"></script>
+    <script src="packages/browser/dart.js"></script>
+  </body>    
+</html>

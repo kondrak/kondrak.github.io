@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-us">
+<head>
+  <title>
+    My experiences going Rust from C&#43;&#43; // Krzysztof Kondrak&#39;s website
+  </title>
+
+  <link href="http://gmpg.org/xfn/11" rel="profile">
+<meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+
+<meta name="description" content="">
+<meta name="keywords" content="">
+<meta name="author" content="kondrak">
+<meta name="generator" content="Hugo 0.55.1" />
+
+  <meta property="og:title" content="My experiences going Rust from C&#43;&#43;" />
+<meta property="og:description" content="" />
+<meta property="og:type" content="website" />
+<meta property="og:locale" content="en_US" />
+<meta property="og:url" content="https://kondrak.github.io/posts/2016-03-19-my-experiences-going-rust-from-c/" />
+
+
+  
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/pure/0.5.0/base-min.css">
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/pure/0.5.0/pure-min.css">
+  
+  
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/pure/0.5.0/grids-responsive-min.css">
+  
+  
+
+  <link rel="stylesheet" href="https://kondrak.github.io//css/redlounge.css">
+  <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet">
+  <link href='//fonts.googleapis.com/css?family=Raleway:400,200,100,700,300,500,600,800' rel='stylesheet' type='text/css'>
+  <link href='//fonts.googleapis.com/css?family=Libre+Baskerville:400,700,400italic' rel='stylesheet' type='text/css'>
+
+  
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/touch-icon-144-precomposed.png">
+  <link rel="shortcut icon" type="image/x-icon" href="/img/favicon.png">
+
+  
+  <link href="" rel="alternate" type="application/rss+xml" title="Krzysztof Kondrak&#39;s website" />
+
+    
+  
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.7/styles/tomorrow-night-bright.min.css">
+  
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.7/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
+
+
+  
+
+  
+
+  
+
+  
+</head>
+
+<body>
+	
+
+	<div id="layout" class="pure-g">
+    <div class="sidebar pure-u-1 pure-u-md-1-4">
+  <div class="header">
+    
+
+	
+
+    <h1 class="brand-title">Krzysztof Kondrak</h1>
+    <h2 class="brand-tagline">game tech programmer</h2>
+
+    <nav class="nav">
+      <ul class="nav-list">
+        <li class="nav-item"><span class="nav-item-separator">//</span><a href="https://kondrak.github.io/">Home</a></li>
+        
+          <li class="nav-item"><span class="nav-item-separator">//</span><a href="/about">About me</a></li>
+        
+          <li class="nav-item"><span class="nav-item-separator">//</span><a href="/projects">Projects</a></li>
+        
+      </ul>
+    </nav>
+
+    
+    <div class="social-buttons">
+      
+        
+          
+          
+             <a href="https://github.com/kondrak"  target="_blank"> <i class='fa fa-github fa-lg'></i></a>
+          
+        
+      
+        
+          
+          
+             <a href="http://www.linkedin.com/in/kondrak"  target="_blank"> <i class='fa fa-linkedin fa-lg'></i></a>
+          
+        
+      
+        
+          
+          
+             <a href="https://www.shadertoy.com/user/k_kondrak"  target="_blank"> <i class='fa fa-cube fa-lg'></i></a>
+          
+        
+      
+        
+          
+          
+             <a href="http://www.twitter.com/k_kondrak"  target="_blank"> <i class='fa fa-twitter fa-lg'></i></a>
+          
+        
+      
+        
+          
+          
+             <a href="https://www.youtube.com/channel/UC6gj_jbYQG1oVdqQv4EV0pw"  target="_blank"> <i class='fa fa-youtube-play fa-lg'></i></a>
+          
+        
+      
+        
+          
+          
+             <a href="/links" > <i class='fa fa-link fa-lg'></i></a>
+          
+        
+      
+      
+    </div>
+    
+
+  </div>
+</div>
+
+	
+	
+
+    <div class="content pure-u-1 pure-u-md-3-4">
+		<a name="top"></a>
+		
+
+		
+			
+	    
+  		<section class="post">
+            <h1 class="post-title">
+              <a href="/posts/2016-03-19-my-experiences-going-rust-from-c/">My experiences going Rust from C&#43;&#43;</a>
+            </h1>
+            <h3 class="post-subtitle">
+            	
+            </h3>
+            
+            	<span class="post-date">
+                	<span class="post-date-day"><sup>19</sup></span><span class="post-date-separator">/</span><span class="post-date-month">Mar</span> <span class="post-date-year">2016</span>
+            	</span>
+            	
+            
+            	
+            		<span class="post-author-single">By <a class="post-author"  target="">kondrak</a></span>
+            		
+
+
+
+
+            	
+            
+
+			
+			
+				<div class="post-categories">
+				
+					<a class="post-category post-category-c&#43;&#43;" href="https://kondrak.github.io//categories/c&#43;&#43;">C&#43;&#43;</a>
+				
+					<a class="post-category post-category-c64" href="https://kondrak.github.io//categories/c64">C64</a>
+				
+					<a class="post-category post-category-programming" href="https://kondrak.github.io//categories/programming">Programming</a>
+				
+					<a class="post-category post-category-rust" href="https://kondrak.github.io//categories/rust">Rust</a>
+				
+				</div>
+			
+
+			
+
+			
+
+            <p style="text-align: justify;">
+  I&#8217;ve been experimenting with <a href="https://www.rust-lang.org/">Rust</a> for over 6 months now. Most of that time I spent playing around with a <a href="https://github.com/kondrak/rust64">C64 emulator</a> I wrote as a first project and initially I thought about creating a series on that topic. However, since there&#8217;s so much reading material on the Internet about it already, I figured maybe it would be a good idea to write an intro for C/C++ programmers on Rust. But then I found <a href="http://science.raphael.poss.name/rust-for-functional-programmers.html">this article</a>, so I decided to take a completely different route.
+</p>
+
+<p style="text-align: justify;">
+  In this post I wanted to outline the problems/quirks I ran into when transitioning from C++ to Rust. This by no means indicates that the language is poorly constructed &#8211; it&#8217;s just a matter of putting yourself in a completely different mindset, since Rust is really more than it seems at first glance and it has traps of its own if you try to code in it &#8220;C-style&#8221;. At the time of writing this, the latest stable version of the compiler is 1.7.0, so some things might get outdated with time. If you&#8217;ve been programming for a while and are considering trying out Rust, here are some things worth being wary of as you start:
+</p>
+
+<p><strong>1. Data <a href="https://doc.rust-lang.org/book/ownership.html">ownership</a> model</strong></p>
+
+<p style="text-align: justify;">
+  The first thing I had to learn is how variables in Rust are not variables at all but rather bindings to specific data. As such, the language introduces the concept of ownership in a sense that data can be bound to one and only one &#8220;variable&#8221; at a time. There are good examples in the link above of how that works, so I won&#8217;t be going into details here. The reason this caused me so much problem is that referring to other struct members and recurring function calls have to be thought through very carefuly when writing a program in Rust. Gone is the idea of throwing pointers everywhere and reusing it when you see it fit &#8211; once data in Rust is borrowed you have to finish doing with it what you want in order to reclaim it somewhere else in the code. It&#8217;s an interesting concept, one that surely provides some extra safety measures which other languages lack, nevertheless it takes a while to get accustomed to it.
+</p>
+
+<p><strong>2. No inheritance</strong></p>
+
+<p style="text-align: justify;">
+  The lack of a basic inheritance model in Rust forced me to duplicate some parts of the code. To give an example, the C64 has two timer chips which are essentialy the same thing &#8211; for emulation purposes differing in only one function. A natural instinct here is to create a single struct and just overload that particular function but Rust has no mechanism for it. The closest thing that met my needs was a <a href="https://doc.rust-lang.org/book/traits.html">trait</a> but what I really needed was &#8220;a trait with properties&#8221;. If your design relies heavily on OOP you should either rethink it or choose a different language.
+</p>
+
+<p><strong>3. No cyclic references</strong></p>
+
+<p style="text-align: justify;">
+  Having started to code my emulator &#8220;C-style&#8221;, I decided to go for a clear structure that would define the entire computer:
+</p>
+
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-rust" data-lang="rust"><span style="color:#069;font-weight:bold">struct</span> <span style="color:#0a8;font-weight:bold">C64</span><span style="color:#bbb">
+</span><span style="color:#bbb"></span>{<span style="color:#bbb">
+</span><span style="color:#bbb">   </span>sid_chip: <span style="color:#0a8;font-weight:bold">SID</span>,<span style="color:#bbb">  </span><span style="color:#09f;font-style:italic">// audio   
+</span><span style="color:#09f;font-style:italic"></span><span style="color:#bbb">   </span>vic_chip: <span style="color:#0a8;font-weight:bold">VIC</span>,<span style="color:#bbb">  </span><span style="color:#09f;font-style:italic">// graphics
+</span><span style="color:#09f;font-style:italic"></span><span style="color:#bbb">   </span>cpu_chip: <span style="color:#0a8;font-weight:bold">CPU</span>,<span style="color:#bbb">  </span><span style="color:#09f;font-style:italic">// processor
+</span><span style="color:#09f;font-style:italic"></span><span style="color:#bbb">   </span>cia1_chip: <span style="color:#0a8;font-weight:bold">CIA</span>,<span style="color:#bbb"> </span><span style="color:#09f;font-style:italic">// timer 1
+</span><span style="color:#09f;font-style:italic"></span><span style="color:#bbb">   </span>(...)<span style="color:#bbb">
+</span><span style="color:#bbb"></span>}<span style="color:#bbb">
+</span></code></pre></div>
+
+<p style="text-align: justify;">
+  Each member variable is a simple struct type. The design was clean and satisfying, so I happily started hacking at the code implementing each chip in turn.
+</p>
+
+<p style="text-align: justify;">
+  Halfway in my work I realized I made a terrible mistake.
+</p>
+
+<p style="text-align: justify;">
+  It turned out that all components of the C64 struct will have to communicate with each other directly in certain situations, so I needed some sort of a &#8220;bus&#8221; component. I really wanted to avoid creating an artificial structure for that purpose which eventually would introduce annoyances of its own. Global variables spread over all modules was not an option I wanted to use either.
+</p>
+
+<p style="text-align: justify;">
+  It was a problem I couldn&#8217;t initially solve for a couple of reasons: Rust doesn&#8217;t provide any mechanism for struct field objects to communicate with the parent and you can&#8217;t just pass a reference to parent since that breaks the Rust ownership rules. Eventually I found a solution by embedding each chip structure into an <a href="https://doc.rust-lang.org/std/rc/struct.Rc.html">Rc</a> nested <a href="https://doc.rust-lang.org/std/cell/struct.RefCell.html">RefCell</a></code>. With this I was able to use cloned instances as separate references which I would then pass during each chip&#8217;s construction. In simplest term, this solution provides a behavior similar to smart pointers, so even though a clone of the first instance is being referenced it still deals with the same data as the original copy. Once all instances are destroyed (or dropped using Rust terminology) the memory is freed completely, so it&#8217;s safe from memory leaks.
+</p>
+
+<p><strong>4. No explicit NULL value</strong></p>
+
+<p style="text-align: justify;">
+  Being a language set on safety, Rust disallows creating an object without initializing each of its member variables. This means no NULL pointers which you can set at a later time, so I was stuck with a new problem after introducing <code>RefCells</code>:
+</p>
+
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-rust" data-lang="rust"><span style="color:#069;font-weight:bold">struct</span> <span style="color:#0a8;font-weight:bold">VIC</span><span style="color:#bbb">
+</span><span style="color:#bbb"></span>{<span style="color:#bbb">
+</span><span style="color:#bbb">   </span>cpu_ref: <span style="color:#0a8;font-weight:bold">Rc</span><span style="color:#555">&lt;</span>RefCell<span style="color:#555">&lt;</span>CPU<span style="color:#555">&gt;&gt;</span>,<span style="color:#bbb">  </span><span style="color:#09f;font-style:italic">// reference to the CPU object   
+</span><span style="color:#09f;font-style:italic"></span><span style="color:#bbb">   </span>(...)<span style="color:#bbb">
+</span><span style="color:#bbb"></span>}<span style="color:#bbb">
+</span><span style="color:#bbb">
+</span><span style="color:#bbb"></span><span style="color:#069;font-weight:bold">impl</span><span style="color:#bbb"> </span>VIC<span style="color:#bbb">
+</span><span style="color:#bbb"></span>{<span style="color:#bbb">
+</span><span style="color:#bbb">    </span><span style="color:#09f;font-style:italic">// construction of VIC
+</span><span style="color:#09f;font-style:italic"></span><span style="color:#bbb">    </span><span style="color:#069;font-weight:bold">pub</span><span style="color:#bbb"> </span><span style="color:#069;font-weight:bold">fn</span> <span style="color:#c0f">new_shared</span>()<span style="color:#bbb"> </span>-&gt; <span style="color:#0a8;font-weight:bold">Rc</span><span style="color:#555">&lt;</span>RefCell<span style="color:#555">&lt;</span>VIC<span style="color:#555">&gt;&gt;</span><span style="color:#bbb"> </span>{<span style="color:#bbb">
+</span><span style="color:#bbb">            </span>Rc::new(RefCell::new(VIC<span style="color:#bbb"> </span>{<span style="color:#bbb">
+</span><span style="color:#bbb">                </span>cpu_ref: <span style="color:#0a8;font-weight:bold">CPU</span>::new_shared(),<span style="color:#bbb"> </span><span style="color:#09f;font-style:italic">// creating a shared instance of CPU - because we have to
+</span><span style="color:#09f;font-style:italic"></span><span style="color:#bbb">                </span>(...)<span style="color:#bbb">
+</span><span style="color:#bbb">                </span>}))<span style="color:#bbb">
+</span><span style="color:#bbb">    </span>}<span style="color:#bbb">
+</span><span style="color:#bbb"></span>}<span style="color:#bbb">
+</span><span style="color:#bbb">
+</span><span style="color:#bbb"></span><span style="color:#069;font-weight:bold">struct</span> <span style="color:#0a8;font-weight:bold">CPU</span><span style="color:#bbb">
+</span><span style="color:#bbb"></span>{<span style="color:#bbb">
+</span><span style="color:#bbb">   </span>vic_ref: <span style="color:#0a8;font-weight:bold">Rc</span><span style="color:#555">&lt;</span>RefCell<span style="color:#555">&lt;</span>VIC<span style="color:#555">&gt;&gt;</span>,<span style="color:#bbb">  </span><span style="color:#09f;font-style:italic">// reference to the VIC chip object   
+</span><span style="color:#09f;font-style:italic"></span><span style="color:#bbb">   </span>(...)<span style="color:#bbb">
+</span><span style="color:#bbb"></span>}<span style="color:#bbb">
+</span><span style="color:#bbb">
+</span><span style="color:#bbb"></span><span style="color:#069;font-weight:bold">impl</span><span style="color:#bbb"> </span>CPU<span style="color:#bbb">
+</span><span style="color:#bbb"></span>{<span style="color:#bbb">
+</span><span style="color:#bbb">    </span><span style="color:#09f;font-style:italic">// construction of CPU
+</span><span style="color:#09f;font-style:italic"></span><span style="color:#bbb">    </span><span style="color:#069;font-weight:bold">pub</span><span style="color:#bbb"> </span><span style="color:#069;font-weight:bold">fn</span> <span style="color:#c0f">new_shared</span>()<span style="color:#bbb"> </span>-&gt; <span style="color:#0a8;font-weight:bold">Rc</span><span style="color:#555">&lt;</span>RefCell<span style="color:#555">&lt;</span>CPU<span style="color:#555">&gt;&gt;</span><span style="color:#bbb"> </span>{<span style="color:#bbb">
+</span><span style="color:#bbb">            </span>Rc::new(RefCell::new(CPU<span style="color:#bbb"> </span>{<span style="color:#bbb">
+</span><span style="color:#bbb">                </span>vic_ref: <span style="color:#0a8;font-weight:bold">VIC</span>::new_shared(),<span style="color:#bbb">  </span><span style="color:#09f;font-style:italic">// this causes a problem!
+</span><span style="color:#09f;font-style:italic"></span><span style="color:#bbb">                </span>(...)<span style="color:#bbb">
+</span><span style="color:#bbb">                </span>}))<span style="color:#bbb">
+</span><span style="color:#bbb">    </span>}<span style="color:#bbb">
+</span><span style="color:#bbb"></span>}<span style="color:#bbb">
+</span></code></pre></div>
+
+<p style="text-align: justify;">
+  What&#8217;s happening above is once the CPU is constructed it will force the creation of VIC which will in turn create another CPU and so on, resulting in infinite recurrence. This is where <a href="https://doc.rust-lang.org/std/option/">std::option</a> comes into play, being the closest thing to a NULL value in Rust:
+</p>
+
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cxx" data-lang="cxx"><span style="color:#069;font-weight:bold">struct</span> VIC
+{
+   <span style="color:#99f">cpu_ref</span>: Option(Rc<span style="color:#555">&lt;</span>RefCell<span style="color:#555">&lt;</span>CPU<span style="color:#555">&gt;&gt;</span>),  <span style="color:#09f;font-style:italic">// now it&#39;s optional
+</span><span style="color:#09f;font-style:italic"></span>   (...)
+}
+
+impl VIC
+{
+    <span style="color:#09f;font-style:italic">// construction of VIC
+</span><span style="color:#09f;font-style:italic"></span>    pub fn new_shared() <span style="color:#555">-&gt;</span> Rc<span style="color:#555">&lt;</span>RefCell<span style="color:#555">&lt;</span>VIC<span style="color:#555">&gt;&gt;</span> {
+            Rc<span style="color:#555">::</span><span style="color:#069;font-weight:bold">new</span>(RefCell<span style="color:#555">::</span><span style="color:#069;font-weight:bold">new</span>(VIC {
+                <span style="color:#99f">cpu_ref</span>: None,  <span style="color:#09f;font-style:italic">// no infinite recurrence - will set the reference later on
+</span><span style="color:#09f;font-style:italic"></span>                (...)
+                }))
+    }
+}
+</code></pre></div>
+
+<p style="text-align: justify;">
+  My only gripe with this approach was that I had to specifically create a <code>set_references()</code> function for each type and since each struct had different references it couldn&#8217;t be neatly solved with a more generic trait.
+</p>
+
+<p><strong>5. Rust macros are not what you think at first!</strong></p>
+
+<p style="text-align: justify;">
+  The natural way of thinking about macros when coming from a C background is &#8220;replace this expression with elaborately syntaxed code&#8221;. Not suprisingly, Rust takes a completely different approach, deeming (quite rightfully) plain text substitution as unsafe and error prone. After switching to shared <code>RefCell</code> instances I faced the problem of obfuscated syntax when trying to access the actual underlying data:
+</p>
+
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-rust" data-lang="rust"><span style="color:#09f;font-style:italic">// attempting to get inside the Rc&lt;RefCell&lt;CPU&gt;&gt; from within VIC struct.
+</span><span style="color:#09f;font-style:italic">// imagine typing that every single time when you need it!
+</span><span style="color:#09f;font-style:italic"></span>self.cpu_ref.as_ref().unwrap().borrow_mut().set_vic_irq(<span style="color:#069;font-weight:bold">true</span>);<span style="color:#bbb">
+</span></code></pre></div>
+
+<p style="text-align: justify;">
+  Unlike C, a macro in Rust is treated as a syntactic structure and as such has limitations of its own. You can&#8217;t access properties of an object nor can you use the <code>self</code> keyword to simplify your code further:
+</p>
+
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-rust" data-lang="rust">macro_rules<span style="color:#555">!</span><span style="color:#bbb"> </span>as_ref<span style="color:#bbb"> </span>{<span style="color:#bbb">
+</span><span style="color:#bbb">    </span>(<span style="color:#099">$x</span>:<span style="color:#0a8;font-weight:bold">expr</span>)<span style="color:#bbb"> </span><span style="color:#555">=&gt;</span><span style="color:#bbb"> </span>(<span style="color:#099">$x</span>.as_ref().unwrap().borrow_mut())<span style="color:#bbb">
+</span><span style="color:#bbb"></span>}<span style="color:#bbb">
+</span><span style="color:#bbb">
+</span><span style="color:#bbb"></span>(...)<span style="color:#bbb">
+</span><span style="color:#bbb">
+</span><span style="color:#bbb"></span><span style="color:#09f;font-style:italic">// same code using a Rust macro - as short as it could get
+</span><span style="color:#09f;font-style:italic"></span>as_ref<span style="color:#555">!</span>(self.cpu_ref).set_vic_irq(<span style="color:#069;font-weight:bold">true</span>);<span style="color:#bbb">
+</span><span style="color:#bbb">
+</span><span style="color:#bbb"></span>(...)<span style="color:#bbb">
+</span></code></pre></div>
+
+<p style="text-align: justify;">
+  While I understand the reasoning behind making a macro the way it is, I still find it a bit dissapointing not being able to use the less safe C-style variant.
+</p>
+
+<p><strong>6. Type wrapping is technically undefined</strong></p>
+
+<p style="text-align: justify;">
+  This is a language trait I&#8217;m a bit on the fence with. In C, once you go over beyond the data type scope you automatically wrap &#8211; a feature that&#8217;s been extensively used in 8-bit computers as well. At the time of writing this, data wrapping in Rust is undefined and will cause a <code>panic!</code> in debug builds. Wrapping data is possible but requires additional boilerplate:
+</p>
+
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-rust" data-lang="rust">(...)<span style="color:#bbb">
+</span><span style="color:#bbb">
+</span><span style="color:#bbb"></span>self.some_8bit_variable.wrapping_add(<span style="color:#f60">1</span>);<span style="color:#bbb"> </span><span style="color:#09f;font-style:italic">// safely wraps 255 -&gt; 0 when addition overflows
+</span><span style="color:#09f;font-style:italic"></span><span style="color:#bbb">
+</span><span style="color:#bbb"></span>(...)<span style="color:#bbb">
+</span></code></pre></div>
+
+<p style="text-align: justify;">
+  While it&#8217;s fine that Rust explicitly tells us where data wrapping is meant to happen, I&#8217;d still want to be able to manually turn that feature off for the sake of more compact code.
+</p>
+
+<p><strong>7. Type explicitness everywhere</strong></p>
+
+<p style="text-align: justify;">
+  Depending on the point of view, one of the biggest flaws/merits of C and C++ is implicit type conversion when assigning variables to each other, so you can &#8220;safely&#8221; assign a <code>char</code> to an <code>int</code> and pretty much expect the code to work, as long as you know what you&#8217;re doing. Also, let&#8217;s disregard for a second that we&#8217;re pragmatic progammers who adhere to compiler warnings &#8211; my practice shows that when it comes to data precision they&#8217;re mostly ignored (or completely turned off!).
+</p>
+
+<p style="text-align: justify;">
+  So the thing is, Rust disallows assigning different types of variables to each other unless you specifically cast one type to another. The syntax of such a cast, however, I found to be slightly cumbersome to use especially if I had to perform several casts during one operation (adding bytes, casting them to words to perform a shift, then going back to byte again etc.). This is something one has to get used to, but in my early code this was the major cause of bugs:
+</p>
+
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-rust" data-lang="rust"><span style="color:#09f;font-style:italic">// EXAMPLE 1
+</span><span style="color:#09f;font-style:italic">// relative memory addressing mode in C64 code excerpt: fetching operand
+</span><span style="color:#09f;font-style:italic">// bugged code: wrong relative offset calculated
+</span><span style="color:#09f;font-style:italic"></span><span style="color:#069;font-weight:bold">fn</span> <span style="color:#c0f">get_operand_rel</span>()<span style="color:#bbb"> </span>-&gt; <span style="color:#078;font-weight:bold">u8</span>
+{<span style="color:#bbb">
+</span><span style="color:#bbb">    </span><span style="color:#069;font-weight:bold">let</span><span style="color:#bbb"> </span>offset<span style="color:#bbb"> </span><span style="color:#555">=</span><span style="color:#bbb"> </span>mem.next_byte()<span style="color:#bbb"> </span><span style="color:#069;font-weight:bold">as</span><span style="color:#bbb"> </span><span style="color:#078;font-weight:bold">i8</span>;<span style="color:#bbb">  </span><span style="color:#09f;font-style:italic">// memory offset should be treated as a signed char
+</span><span style="color:#09f;font-style:italic"></span><span style="color:#bbb">    </span><span style="color:#069;font-weight:bold">let</span><span style="color:#bbb"> </span>addr: <span style="color:#078;font-weight:bold">i16</span> <span style="color:#555">=</span><span style="color:#bbb"> </span>cpu.prog_counter<span style="color:#bbb"> </span><span style="color:#555">+</span><span style="color:#bbb"> </span>offset<span style="color:#bbb"> </span><span style="color:#069;font-weight:bold">as</span><span style="color:#bbb"> </span><span style="color:#078;font-weight:bold">u16</span>;<span style="color:#bbb"> </span><span style="color:#09f;font-style:italic">// BUG!
+</span><span style="color:#09f;font-style:italic"></span><span style="color:#bbb">    </span>mem.read_byte(addr<span style="color:#bbb"> </span><span style="color:#069;font-weight:bold">as</span><span style="color:#bbb"> </span><span style="color:#078;font-weight:bold">u16</span>)<span style="color:#bbb"> </span><span style="color:#09f;font-style:italic">// address in mem is stored as u16, so have to cast it *again*
+</span><span style="color:#09f;font-style:italic"></span>}<span style="color:#bbb">
+</span><span style="color:#bbb">
+</span><span style="color:#bbb"></span><span style="color:#09f;font-style:italic">// correct code: (took quite a while to track the bug down!)
+</span><span style="color:#09f;font-style:italic"></span><span style="color:#069;font-weight:bold">fn</span> <span style="color:#c0f">get_operand_rel</span>()<span style="color:#bbb"> </span>-&gt; <span style="color:#078;font-weight:bold">u8</span>
+{<span style="color:#bbb">
+</span><span style="color:#bbb">    </span><span style="color:#069;font-weight:bold">let</span><span style="color:#bbb"> </span>offset<span style="color:#bbb"> </span><span style="color:#555">=</span><span style="color:#bbb"> </span>mem.next_byte()<span style="color:#bbb"> </span><span style="color:#069;font-weight:bold">as</span><span style="color:#bbb"> </span><span style="color:#078;font-weight:bold">i8</span>;<span style="color:#bbb">
+</span><span style="color:#bbb">    </span><span style="color:#069;font-weight:bold">let</span><span style="color:#bbb"> </span>addr: <span style="color:#078;font-weight:bold">i16</span> <span style="color:#555">=</span><span style="color:#bbb"> </span>cpu.prog_counter<span style="color:#bbb"> </span><span style="color:#069;font-weight:bold">as</span><span style="color:#bbb"> </span><span style="color:#078;font-weight:bold">i16</span><span style="color:#bbb"> </span><span style="color:#555">+</span><span style="color:#bbb"> </span>offset<span style="color:#bbb"> </span><span style="color:#069;font-weight:bold">as</span><span style="color:#bbb"> </span><span style="color:#078;font-weight:bold">i16</span>;<span style="color:#bbb"> </span><span style="color:#09f;font-style:italic">// Correct! Casting both to i16
+</span><span style="color:#09f;font-style:italic"></span><span style="color:#bbb">    </span>mem.read_byte(addr<span style="color:#bbb"> </span><span style="color:#069;font-weight:bold">as</span><span style="color:#bbb"> </span><span style="color:#078;font-weight:bold">u16</span>)<span style="color:#bbb">
+</span><span style="color:#bbb"></span>}<span style="color:#bbb">
+</span><span style="color:#bbb">
+</span><span style="color:#bbb"></span><span style="color:#09f;font-style:italic">// EXAMPLE 2
+</span><span style="color:#09f;font-style:italic"></span><span style="color:#069;font-weight:bold">fn</span> <span style="color:#c0f">foo</span>()<span style="color:#bbb">
+</span><span style="color:#bbb"></span>{<span style="color:#bbb">
+</span><span style="color:#bbb">    </span><span style="color:#069;font-weight:bold">let</span><span style="color:#bbb"> </span>var<span style="color:#bbb"> </span><span style="color:#555">=</span><span style="color:#bbb"> </span>mem.next_byte()<span style="color:#bbb"> </span><span style="color:#069;font-weight:bold">as</span><span style="color:#bbb"> </span><span style="color:#078;font-weight:bold">u8</span>;<span style="color:#bbb">
+</span><span style="color:#bbb">    </span><span style="color:#069;font-weight:bold">let</span><span style="color:#bbb"> </span>var_word: <span style="color:#078;font-weight:bold">u16</span> <span style="color:#555">=</span><span style="color:#bbb"> </span>(var<span style="color:#bbb"> </span><span style="color:#069;font-weight:bold">as</span><span style="color:#bbb"> </span><span style="color:#078;font-weight:bold">u16</span>)<span style="color:#bbb"> </span><span style="color:#555">&lt;&lt;</span><span style="color:#bbb"> </span><span style="color:#f60">8</span>;<span style="color:#bbb"> </span><span style="color:#09f;font-style:italic">// would probably look neater as (u16)var &lt;&lt; 8
+</span><span style="color:#09f;font-style:italic"></span><span style="color:#bbb">    </span>(...)<span style="color:#bbb">
+</span><span style="color:#bbb">    
+</span><span style="color:#bbb">    </span><span style="color:#09f;font-style:italic">// this is legal Rust code!
+</span><span style="color:#09f;font-style:italic"></span><span style="color:#bbb">    </span><span style="color:#069;font-weight:bold">let</span><span style="color:#bbb"> </span>var2<span style="color:#bbb"> </span><span style="color:#555">=</span><span style="color:#bbb"> </span><span style="color:#f60">10</span><span style="color:#bbb"> </span><span style="color:#069;font-weight:bold">as</span><span style="color:#bbb"> </span><span style="color:#078;font-weight:bold">usize</span><span style="color:#bbb"> </span><span style="color:#069;font-weight:bold">as</span><span style="color:#bbb"> </span><span style="color:#078;font-weight:bold">u16</span><span style="color:#bbb"> </span><span style="color:#069;font-weight:bold">as</span><span style="color:#bbb"> </span><span style="color:#078;font-weight:bold">u8</span><span style="color:#bbb"> </span><span style="color:#069;font-weight:bold">as</span><span style="color:#bbb"> </span><span style="color:#078;font-weight:bold">u32</span><span style="color:#bbb"> </span><span style="color:#069;font-weight:bold">as</span><span style="color:#bbb"> </span><span style="color:#078;font-weight:bold">f64</span>;<span style="color:#bbb">
+</span><span style="color:#bbb"></span>}<span style="color:#bbb">
+</span></code></pre></div>
+
+<p style="text-align: justify;">
+  I admit &#8211; a lot of this is me being subjective with my own preferences but the point is that if you&#8217;re used to extensive casting you may run into trouble with understanding your code. On the other hand, this may encourage programmers into breaking more complicated operations into steps for the sake of clarity. Seeing how mixed current Rust codebases are, I&#8217;m not so sure this will soon happen, though.
+</p>
+
+<p><strong>8. Forget OOP &#8211; go functional</strong></p>
+
+<p style="text-align: justify;">
+  Disregarding OOP as the silver bullet of programming is not uncommon today as people realize how many problems that model creates once you go deeper. Cache hits and misses, convoluted relationships between different classes and sometimes over-the-top patterns would be on top of the list. As I got more experienced with Rust it became clear that functional programming is its main focus. If you decide to write an application, you may have to forget quite a few things you know from C++. Use functions. Use modules. Use structs but don&#8217;t rely heavily on OOP patterns to assure communication between objects. In the end it will only make you happy as the code becomes a lot more readable and easier to navigate &#8211; and this comes from a person who made his first Rust application entirely in Emacs!
+</p>
+
+<p style="text-align: justify;">
+  Try Rust. You will enjoy it! 🙂
+</p>
+	
+			
+
+			
+
+			
+				<div class="paging">
+					<span class="paging-label">More Reading</span>
+					
+					<div class="paging-newer">
+						<span class="dark-red">Newer</span><span class="decorative-marker">//</span>
+						<a class="paging-link" href="/posts/2016-05-08-linkedin-tech-recruiters/">Dealing with LinkedIn tech recruiters - 3 simple steps</a>
+		            </div>
+		            
+
+					
+                    
+					<div class="paging-older">
+						<span class="dark-red">Older</span><span class="decorative-marker">//</span>
+			            <a class="paging-link" href="/posts/2015-07-14-the-many-faces-of-perspective-projection-matrix/">The many faces of perspective projection matrix</a>
+		            </div>
+                    
+		            
+	            </div>
+            
+          </section>
+          
+          	
+          
+        
+      <div class="footer">
+	<hr class="thin" />
+	<div class="pure-menu pure-menu-horizontal pure-menu-open">
+		<ul class="footer-menu">
+		
+		</ul>
+	</div>
+
+	<p>&copy; 2020. All rights reserved.</p>
+</div>
+    </div>
+  </div>
+	
+
+	
+
+  
+</body>
+</html>

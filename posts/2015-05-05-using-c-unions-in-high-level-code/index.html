@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-us">
+<head>
+  <title>
+    Using C unions in high level code // Krzysztof Kondrak&#39;s website
+  </title>
+
+  <link href="http://gmpg.org/xfn/11" rel="profile">
+<meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+
+<meta name="description" content="">
+<meta name="keywords" content="">
+<meta name="author" content="kondrak">
+<meta name="generator" content="Hugo 0.55.1" />
+
+  <meta property="og:title" content="Using C unions in high level code" />
+<meta property="og:description" content="" />
+<meta property="og:type" content="website" />
+<meta property="og:locale" content="en_US" />
+<meta property="og:url" content="https://kondrak.github.io/posts/2015-05-05-using-c-unions-in-high-level-code/" />
+
+
+  
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/pure/0.5.0/base-min.css">
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/pure/0.5.0/pure-min.css">
+  
+  
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/pure/0.5.0/grids-responsive-min.css">
+  
+  
+
+  <link rel="stylesheet" href="https://kondrak.github.io//css/redlounge.css">
+  <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet">
+  <link href='//fonts.googleapis.com/css?family=Raleway:400,200,100,700,300,500,600,800' rel='stylesheet' type='text/css'>
+  <link href='//fonts.googleapis.com/css?family=Libre+Baskerville:400,700,400italic' rel='stylesheet' type='text/css'>
+
+  
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/touch-icon-144-precomposed.png">
+  <link rel="shortcut icon" type="image/x-icon" href="/img/favicon.png">
+
+  
+  <link href="" rel="alternate" type="application/rss+xml" title="Krzysztof Kondrak&#39;s website" />
+
+    
+  
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.7/styles/tomorrow-night-bright.min.css">
+  
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.7/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
+
+
+  
+
+  
+
+  
+
+  
+</head>
+
+<body>
+	
+
+	<div id="layout" class="pure-g">
+    <div class="sidebar pure-u-1 pure-u-md-1-4">
+  <div class="header">
+    
+
+	
+
+    <h1 class="brand-title">Krzysztof Kondrak</h1>
+    <h2 class="brand-tagline">game tech programmer</h2>
+
+    <nav class="nav">
+      <ul class="nav-list">
+        <li class="nav-item"><span class="nav-item-separator">//</span><a href="https://kondrak.github.io/">Home</a></li>
+        
+          <li class="nav-item"><span class="nav-item-separator">//</span><a href="/about">About me</a></li>
+        
+          <li class="nav-item"><span class="nav-item-separator">//</span><a href="/projects">Projects</a></li>
+        
+      </ul>
+    </nav>
+
+    
+    <div class="social-buttons">
+      
+        
+          
+          
+             <a href="https://github.com/kondrak"  target="_blank"> <i class='fa fa-github fa-lg'></i></a>
+          
+        
+      
+        
+          
+          
+             <a href="http://www.linkedin.com/in/kondrak"  target="_blank"> <i class='fa fa-linkedin fa-lg'></i></a>
+          
+        
+      
+        
+          
+          
+             <a href="https://www.shadertoy.com/user/k_kondrak"  target="_blank"> <i class='fa fa-cube fa-lg'></i></a>
+          
+        
+      
+        
+          
+          
+             <a href="http://www.twitter.com/k_kondrak"  target="_blank"> <i class='fa fa-twitter fa-lg'></i></a>
+          
+        
+      
+        
+          
+          
+             <a href="https://www.youtube.com/channel/UC6gj_jbYQG1oVdqQv4EV0pw"  target="_blank"> <i class='fa fa-youtube-play fa-lg'></i></a>
+          
+        
+      
+        
+          
+          
+             <a href="/links" > <i class='fa fa-link fa-lg'></i></a>
+          
+        
+      
+      
+    </div>
+    
+
+  </div>
+</div>
+
+	
+	
+
+    <div class="content pure-u-1 pure-u-md-3-4">
+		<a name="top"></a>
+		
+
+		
+			
+	    
+  		<section class="post">
+            <h1 class="post-title">
+              <a href="/posts/2015-05-05-using-c-unions-in-high-level-code/">Using C unions in high level code</a>
+            </h1>
+            <h3 class="post-subtitle">
+            	
+            </h3>
+            
+            	<span class="post-date">
+                	<span class="post-date-day"><sup>5</sup></span><span class="post-date-separator">/</span><span class="post-date-month">May</span> <span class="post-date-year">2015</span>
+            	</span>
+            	
+            
+            	
+            		<span class="post-author-single">By <a class="post-author"  target="">kondrak</a></span>
+            		
+
+
+
+
+            	
+            
+
+			
+			
+				<div class="post-categories">
+				
+					<a class="post-category post-category-c&#43;&#43;" href="https://kondrak.github.io//categories/c&#43;&#43;">C&#43;&#43;</a>
+				
+					<a class="post-category post-category-programming" href="https://kondrak.github.io//categories/programming">Programming</a>
+				
+				</div>
+			
+
+			
+
+			
+
+            <p style="text-align: justify;">
+  I always considered the C <code>union</code> to be highly underappreciated ugly-child that nobody cares about in high level programming. Not really meant for persistent storage (specific cases excluded), it&#8217;s difficult to see any good use for such constructs, especially for beginner programmers. Unless you deal with compilers or close to the metal development, chances are you have barely used or spotted a <code>union</code> in an application&#8217;s runtime code. But unions can come in handy, sometimes in quite unexpected ways. I often forget about their applications, so hopefully this post will help me remember in the future.
+</p>
+
+<p style="text-align: justify;">
+  So what can we do with them? Consider a situation, where we would like to pack one data type into another. Specifically, assume that we want to pack low precision <code>uint8_t</code> 4D vector coordinates into a single <code>uint32_t</code> variable. What most people think of doing first is taking each respective coordinate and OR it with the target using bit shifting operations. This would work fine but thanks to unions we can provide a nice, cleaner code for this purpose:
+</p>
+
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cxx" data-lang="cxx">uint32_t <span style="color:#c0f">packVector</span>(uint8_t x, uint8_t y, uint8_t z, uint8_t w)
+    {
+        <span style="color:#069;font-weight:bold">union</span>
+        {
+            uint32_t m_packed;
+            uint8_t  m_unpacked[<span style="color:#f60">4</span>];
+        } u; <span style="color:#09f;font-style:italic">// 4 bytes 
+</span><span style="color:#09f;font-style:italic"></span>
+        u.m_unpacked[<span style="color:#f60">0</span>] <span style="color:#555">=</span> x;
+        u.m_unpacked[<span style="color:#f60">1</span>] <span style="color:#555">=</span> y;
+        u.m_unpacked[<span style="color:#f60">2</span>] <span style="color:#555">=</span> z;
+        u.m_unpacked[<span style="color:#f60">3</span>] <span style="color:#555">=</span> w;
+
+        <span style="color:#069;font-weight:bold">return</span> u.m_packed;
+    }
+</code></pre></div>
+
+<p style="text-align: justify;">
+  A completely different problem that a <code>union</code> can easily solve is floating point endian swapping. You&#8217;d usually run into this when dealing with different CPU architectures and binary data stored in a file. Depending on the supported platforms you may need to juggle between little and big endian and in case of floats this might incur some performance issues if you decide to use integer endian swapping with &#8220;classic&#8221; type casting. But all those problems dissapear if instead of casting you use an <code>union</code>:
+</p>
+
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cxx" data-lang="cxx"><span style="color:#09f;font-style:italic">// assuming that float is 32 bit for simplicity
+</span><span style="color:#09f;font-style:italic"></span>    <span style="color:#078;font-weight:bold">float</span> <span style="color:#c0f">swapFloat</span>(<span style="color:#078;font-weight:bold">float</span> value)
+    {
+        <span style="color:#069;font-weight:bold">union</span>
+        {
+            uint32_t m_int;
+            <span style="color:#078;font-weight:bold">float</span>    m_float;
+        } u;
+
+        u.m_float   <span style="color:#555">=</span> value;
+        u.m_integer <span style="color:#555">=</span> integerEndianSwap(u.m_integer); <span style="color:#09f;font-style:italic">// no penalty
+</span><span style="color:#09f;font-style:italic"></span>
+        <span style="color:#069;font-weight:bold">return</span> u.m_float;
+    }
+</code></pre></div>
+
+<p>See <a href="http://cocoawithlove.com/2008/04/using-pointers-to-recast-in-c-is-bad.html">this article</a> for a detailed explanation on why this is generally a better approach.</p>
+	
+			
+
+			
+
+			
+				<div class="paging">
+					<span class="paging-label">More Reading</span>
+					
+					<div class="paging-newer">
+						<span class="dark-red">Newer</span><span class="decorative-marker">//</span>
+						<a class="paging-link" href="/posts/2015-05-05-templates-and-c-style-array-size/">Templates and C-style array size</a>
+		            </div>
+		            
+
+					
+                    
+					<div class="paging-older">
+						<span class="dark-red">Older</span><span class="decorative-marker">//</span>
+			            <a class="paging-link" href="/posts/2015-05-04-finding-an-alternative-to-stdbitset/">Finding an alternative to std::bitset</a>
+		            </div>
+                    
+		            
+	            </div>
+            
+          </section>
+          
+          	
+          
+        
+      <div class="footer">
+	<hr class="thin" />
+	<div class="pure-menu pure-menu-horizontal pure-menu-open">
+		<ul class="footer-menu">
+		
+		</ul>
+	</div>
+
+	<p>&copy; 2020. All rights reserved.</p>
+</div>
+    </div>
+  </div>
+	
+
+	
+
+  
+</body>
+</html>

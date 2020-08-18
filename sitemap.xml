@@ -1,0 +1,201 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+  xmlns:xhtml="http://www.w3.org/1999/xhtml">
+  
+  <url>
+    <loc>https://kondrak.github.io/categories/</loc>
+    <lastmod>2016-12-11T18:41:28+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://kondrak.github.io/posts/2016-12-11-coincidence-luck-and-getting-my-first-job-in-gamedev/</loc>
+    <lastmod>2016-12-11T18:41:28+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://kondrak.github.io/categories/gamedev/</loc>
+    <lastmod>2016-12-11T18:41:28+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://kondrak.github.io/</loc>
+    <lastmod>2016-12-11T18:41:28+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://kondrak.github.io/categories/other/</loc>
+    <lastmod>2016-12-11T18:41:28+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://kondrak.github.io/posts/</loc>
+    <lastmod>2016-12-11T18:41:28+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://kondrak.github.io/posts/2016-11-24-teaching-is-hard/</loc>
+    <lastmod>2016-11-24T23:04:01+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://kondrak.github.io/posts/2016-10-31-introverts-survival-guide-to-attending-industry-events/</loc>
+    <lastmod>2016-10-31T21:33:26+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://kondrak.github.io/categories/programming/</loc>
+    <lastmod>2016-10-31T21:33:26+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://kondrak.github.io/categories/c&#43;&#43;/</loc>
+    <lastmod>2016-08-22T22:40:24+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://kondrak.github.io/posts/2016-08-22-stdvector-or-c-style-array/</loc>
+    <lastmod>2016-08-22T22:40:24+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://kondrak.github.io/posts/2016-08-12-writing-a-raytracer-in-dos/</loc>
+    <lastmod>2016-08-12T22:19:46+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://kondrak.github.io/posts/2016-06-14-so-you-want-to-be-a-programmer/</loc>
+    <lastmod>2016-06-14T21:10:30+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://kondrak.github.io/posts/2016-05-21-rendering-in-vr-using-opengl-instancing/</loc>
+    <lastmod>2016-05-21T15:01:38+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://kondrak.github.io/categories/vr/</loc>
+    <lastmod>2016-05-21T15:01:38+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://kondrak.github.io/posts/2016-05-14-why-i-think-oculus-wins-over-vive-for-now/</loc>
+    <lastmod>2016-05-14T00:42:06+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://kondrak.github.io/posts/2016-05-08-linkedin-tech-recruiters/</loc>
+    <lastmod>2016-05-08T22:32:35+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://kondrak.github.io/categories/c64/</loc>
+    <lastmod>2016-03-19T15:36:17+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://kondrak.github.io/posts/2016-03-19-my-experiences-going-rust-from-c/</loc>
+    <lastmod>2016-03-19T15:36:17+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://kondrak.github.io/categories/rust/</loc>
+    <lastmod>2016-03-19T15:36:17+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://kondrak.github.io/posts/2015-07-14-the-many-faces-of-perspective-projection-matrix/</loc>
+    <lastmod>2015-07-14T23:27:24+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://kondrak.github.io/posts/2015-07-10-oculus-rift-dk2-sdk-0-6-0-1-and-opengl-es-2-0/</loc>
+    <lastmod>2015-07-10T23:39:31+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://kondrak.github.io/posts/2015-05-19-sparse-matrices-and-projection-calculations/</loc>
+    <lastmod>2015-05-19T14:43:55+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://kondrak.github.io/categories/books/</loc>
+    <lastmod>2015-05-15T22:45:11+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://kondrak.github.io/posts/2015-05-15-game-engine-architecture-by-jason-gregory/</loc>
+    <lastmod>2015-05-15T22:45:11+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://kondrak.github.io/posts/2015-05-09-hazumi-a-game-that-came-to-be-against-all-odds/</loc>
+    <lastmod>2015-05-09T20:32:45+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://kondrak.github.io/posts/2015-05-05-templates-and-c-style-array-size/</loc>
+    <lastmod>2015-05-05T14:47:40+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://kondrak.github.io/posts/2015-05-05-using-c-unions-in-high-level-code/</loc>
+    <lastmod>2015-05-05T12:08:59+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://kondrak.github.io/posts/2015-05-04-finding-an-alternative-to-stdbitset/</loc>
+    <lastmod>2015-05-04T23:25:44+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://kondrak.github.io/posts/2015-05-04-effective-modern-c-by-scott-meyers/</loc>
+    <lastmod>2015-05-04T11:32:29+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://kondrak.github.io/links/</loc>
+    <lastmod>2013-04-17T23:17:25+02:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://kondrak.github.io/talon/</loc>
+    <lastmod>2013-04-15T23:21:40+02:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://kondrak.github.io/pong/</loc>
+    <lastmod>2013-04-15T23:20:45+02:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://kondrak.github.io/moc/</loc>
+    <lastmod>2013-04-15T23:19:45+02:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://kondrak.github.io/projects/</loc>
+    <lastmod>2013-04-15T23:18:30+02:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://kondrak.github.io/about/</loc>
+    <lastmod>2013-04-15T23:17:25+02:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://kondrak.github.io/tags/</loc>
+    <priority>0</priority>
+  </url>
+  
+</urlset>

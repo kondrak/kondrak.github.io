@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-us">
+<head>
+  <title>
+    Finding an alternative to std::bitset // Krzysztof Kondrak&#39;s website
+  </title>
+
+  <link href="http://gmpg.org/xfn/11" rel="profile">
+<meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+
+<meta name="description" content="">
+<meta name="keywords" content="">
+<meta name="author" content="kondrak">
+<meta name="generator" content="Hugo 0.55.1" />
+
+  <meta property="og:title" content="Finding an alternative to std::bitset" />
+<meta property="og:description" content="" />
+<meta property="og:type" content="website" />
+<meta property="og:locale" content="en_US" />
+<meta property="og:url" content="https://kondrak.github.io/posts/2015-05-04-finding-an-alternative-to-stdbitset/" />
+
+
+  
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/pure/0.5.0/base-min.css">
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/pure/0.5.0/pure-min.css">
+  
+  
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/pure/0.5.0/grids-responsive-min.css">
+  
+  
+
+  <link rel="stylesheet" href="https://kondrak.github.io//css/redlounge.css">
+  <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet">
+  <link href='//fonts.googleapis.com/css?family=Raleway:400,200,100,700,300,500,600,800' rel='stylesheet' type='text/css'>
+  <link href='//fonts.googleapis.com/css?family=Libre+Baskerville:400,700,400italic' rel='stylesheet' type='text/css'>
+
+  
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/touch-icon-144-precomposed.png">
+  <link rel="shortcut icon" type="image/x-icon" href="/img/favicon.png">
+
+  
+  <link href="" rel="alternate" type="application/rss+xml" title="Krzysztof Kondrak&#39;s website" />
+
+    
+  
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.7/styles/tomorrow-night-bright.min.css">
+  
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.7/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
+
+
+  
+
+  
+
+  
+
+  
+</head>
+
+<body>
+	
+
+	<div id="layout" class="pure-g">
+    <div class="sidebar pure-u-1 pure-u-md-1-4">
+  <div class="header">
+    
+
+	
+
+    <h1 class="brand-title">Krzysztof Kondrak</h1>
+    <h2 class="brand-tagline">game tech programmer</h2>
+
+    <nav class="nav">
+      <ul class="nav-list">
+        <li class="nav-item"><span class="nav-item-separator">//</span><a href="https://kondrak.github.io/">Home</a></li>
+        
+          <li class="nav-item"><span class="nav-item-separator">//</span><a href="/about">About me</a></li>
+        
+          <li class="nav-item"><span class="nav-item-separator">//</span><a href="/projects">Projects</a></li>
+        
+      </ul>
+    </nav>
+
+    
+    <div class="social-buttons">
+      
+        
+          
+          
+             <a href="https://github.com/kondrak"  target="_blank"> <i class='fa fa-github fa-lg'></i></a>
+          
+        
+      
+        
+          
+          
+             <a href="http://www.linkedin.com/in/kondrak"  target="_blank"> <i class='fa fa-linkedin fa-lg'></i></a>
+          
+        
+      
+        
+          
+          
+             <a href="https://www.shadertoy.com/user/k_kondrak"  target="_blank"> <i class='fa fa-cube fa-lg'></i></a>
+          
+        
+      
+        
+          
+          
+             <a href="http://www.twitter.com/k_kondrak"  target="_blank"> <i class='fa fa-twitter fa-lg'></i></a>
+          
+        
+      
+        
+          
+          
+             <a href="https://www.youtube.com/channel/UC6gj_jbYQG1oVdqQv4EV0pw"  target="_blank"> <i class='fa fa-youtube-play fa-lg'></i></a>
+          
+        
+      
+        
+          
+          
+             <a href="/links" > <i class='fa fa-link fa-lg'></i></a>
+          
+        
+      
+      
+    </div>
+    
+
+  </div>
+</div>
+
+	
+	
+
+    <div class="content pure-u-1 pure-u-md-3-4">
+		<a name="top"></a>
+		
+
+		
+			
+	    
+  		<section class="post">
+            <h1 class="post-title">
+              <a href="/posts/2015-05-04-finding-an-alternative-to-stdbitset/">Finding an alternative to std::bitset</a>
+            </h1>
+            <h3 class="post-subtitle">
+            	
+            </h3>
+            
+            	<span class="post-date">
+                	<span class="post-date-day"><sup>4</sup></span><span class="post-date-separator">/</span><span class="post-date-month">May</span> <span class="post-date-year">2015</span>
+            	</span>
+            	
+            
+            	
+            		<span class="post-author-single">By <a class="post-author"  target="">kondrak</a></span>
+            		
+
+
+
+
+            	
+            
+
+			
+			
+				<div class="post-categories">
+				
+					<a class="post-category post-category-c&#43;&#43;" href="https://kondrak.github.io//categories/c&#43;&#43;">C&#43;&#43;</a>
+				
+					<a class="post-category post-category-programming" href="https://kondrak.github.io//categories/programming">Programming</a>
+				
+				</div>
+			
+
+			
+
+			
+
+            <p style="text-align: justify;">
+  In one of my games I ran into a seemingly simple problem: saving a puzzle state (ie. completed/not completed) for each of 105 available levels. Naturally first thing that came to mind was a static <code>bool</code> array with required amount of entries &#8211; both easy to maintain and write to disk without hassle:
+</p>
+
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cxx" data-lang="cxx"><span style="color:#078;font-weight:bold">bool</span> m_levelComplete[<span style="color:#f60">105</span>];  <span style="color:#09f;font-style:italic">// array of 105 bools (in most cases: 8 * 105 bits)
+</span></code></pre></div>
+
+<p style="text-align: justify;">
+  That would serve my purpose well but I felt like expanding on the problem a bit. In my particular case, the array would take 105 bytes (or 840 bits). Not too much, but the excessive redundancy felt &#8220;dirty&#8221;, so I decided to tackle this issue and find a different way. Second solution that came to my mind was using a <code>std::bitset</code> object:
+</p>
+
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cxx" data-lang="cxx"><span style="color:#099">#include</span> <span style="color:#099">&lt;bitset&gt;</span><span style="color:#099">
+</span><span style="color:#099"></span>std<span style="color:#555">::</span>bitset<span style="color:#555">&lt;</span><span style="color:#f60">105</span><span style="color:#555">&gt;</span> m_levelComplete;  <span style="color:#09f;font-style:italic">// better in terms of size but still &#34;not quite right&#34;
+</span></code></pre></div>
+
+<p style="text-align: justify;">
+  A lot better in terms of storage, <code>std::bitset</code> felt like the thing I needed... with one (well, two, as it turned out later) exceptions: it was not trivial to serialize and store to disk (which I didn&#8217;t like) and it produced erratic behavior on one of the target platforms (Nintendo 3DS). For various reasons I also needed to know the underlying type of variables that the bits were &#8220;stored in&#8221;, so this particular implemenation didn&#8217;t fit my purpose. Eventually I started implementing a simple bitset/bit vector of my own:
+</p>
+
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cxx" data-lang="cxx"><span style="color:#099">#define BS_NUM_ELEM (size_t)(numBits / (sizeof(storageType) * 8) + numBits / (sizeof(storageType) * 8) % 2)
+</span><span style="color:#099"></span>
+<span style="color:#069;font-weight:bold">template</span><span style="color:#555">&lt;</span><span style="color:#069;font-weight:bold">typename</span> storageType, size_t numBits<span style="color:#555">&gt;</span> <span style="color:#069;font-weight:bold">class</span><span style="color:#a00;background-color:#faa"> </span><span style="color:#0a8;font-weight:bold">BitSet</span>
+{
+    storageType m_bits[BS_NUM_ELEM];
+};
+</code></pre></div>
+
+<p style="text-align: justify;">
+  For starters, I encapsulate <code>m_bits</code> array of desired data type. In order to satisfy the amount of bits, I calculate the required amount of array elements using the <code>BS_NUM_ELEM</code> macro. As you can see, the number of elements will be always rounded up, so we get nicely aligned data. For example: using <code>unsigned long long</code> for underlying type (and assuming it&#8217;s 64 bit in size), we get <code>m_bits[2]</code>, so essentialy 128 available bits. Since this is a regular C-style array it will be easily saved to file but also size redundancy will be low (depending on which data type you use, the redundancy can get even lower). Having this very basic structure, I needed a way to set, clear and access individual bits:
+</p>
+
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cxx" data-lang="cxx"><span style="color:#099">#define BS_NUM_ELEM (size_t)(numBits / (sizeof(storageType) * 8) + numBits / (sizeof(storageType) * 8) % 2)
+</span><span style="color:#099"></span>
+<span style="color:#069;font-weight:bold">template</span><span style="color:#555">&lt;</span><span style="color:#069;font-weight:bold">typename</span> storageType, size_t numBits<span style="color:#555">&gt;</span> <span style="color:#069;font-weight:bold">class</span><span style="color:#a00;background-color:#faa"> </span><span style="color:#0a8;font-weight:bold">BitSet</span>
+{
+<span style="color:#069;font-weight:bold">public</span><span style="color:#555">:</span>
+    <span style="color:#09f;font-style:italic">// set bit value
+</span><span style="color:#09f;font-style:italic"></span>    <span style="color:#078;font-weight:bold">void</span> Set(size_t bitNo)
+    {
+        <span style="color:#069;font-weight:bold">for</span> (size_t i <span style="color:#555">=</span> <span style="color:#f60">0</span>; i <span style="color:#555">&lt;</span> BS_NUM_ELEM; <span style="color:#555">++</span>i)
+        {
+            <span style="color:#069;font-weight:bold">if</span> (bitNo <span style="color:#555">&lt;</span> (i <span style="color:#555">+</span> <span style="color:#f60">1</span>) <span style="color:#555">*</span> <span style="color:#069;font-weight:bold">sizeof</span>(storageType) <span style="color:#555">*</span> <span style="color:#f60">8</span>)
+            {
+                m_bits[i] <span style="color:#555">|=</span> ((storageType)<span style="color:#f60">0x01</span> <span style="color:#555">&lt;&lt;</span> (bitNo <span style="color:#555">-</span> i <span style="color:#555">*</span> <span style="color:#069;font-weight:bold">sizeof</span>(storageType) <span style="color:#555">*</span> <span style="color:#f60">8</span>));
+                <span style="color:#069;font-weight:bold">break</span>;
+            }
+        }
+    }
+
+    <span style="color:#09f;font-style:italic">// clear bit value
+</span><span style="color:#09f;font-style:italic"></span>    <span style="color:#078;font-weight:bold">void</span> Clear(size_t bitNo)
+    {
+        <span style="color:#069;font-weight:bold">for</span> (size_t i <span style="color:#555">=</span> <span style="color:#f60">0</span>; i <span style="color:#555">&lt;</span> BS_NUM_ELEM; <span style="color:#555">++</span>i)
+        {
+            <span style="color:#069;font-weight:bold">if</span> (bitNo <span style="color:#555">&lt;</span> (i <span style="color:#555">+</span> <span style="color:#f60">1</span>) <span style="color:#555">*</span> <span style="color:#069;font-weight:bold">sizeof</span>(storageType) <span style="color:#555">*</span> <span style="color:#f60">8</span>)
+            {
+                m_bits[i] <span style="color:#555">&amp;=</span> <span style="color:#555">~</span>((storageType)<span style="color:#f60">0x01</span> <span style="color:#555">&lt;&lt;</span> (bitNo <span style="color:#555">-</span> i <span style="color:#555">*</span> <span style="color:#069;font-weight:bold">sizeof</span>(storageType) <span style="color:#555">*</span> <span style="color:#f60">8</span>));
+                <span style="color:#069;font-weight:bold">break</span>;
+            }
+        }
+    }
+
+    <span style="color:#09f;font-style:italic">// access bit value
+</span><span style="color:#09f;font-style:italic"></span>    <span style="color:#078;font-weight:bold">bool</span> <span style="color:#069;font-weight:bold">operator</span>[](size_t bitNo)
+    {
+        <span style="color:#069;font-weight:bold">for</span> (size_t i <span style="color:#555">=</span> <span style="color:#f60">0</span>; i <span style="color:#555">&lt;</span> BS_NUM_ELEM; <span style="color:#555">++</span>i)
+        {
+            <span style="color:#069;font-weight:bold">if</span> (bitNo <span style="color:#555">&lt;</span> (i <span style="color:#555">+</span> <span style="color:#f60">1</span>) <span style="color:#555">*</span> <span style="color:#069;font-weight:bold">sizeof</span>(storageType) <span style="color:#555">*</span> <span style="color:#f60">8</span>)
+            {
+                <span style="color:#069;font-weight:bold">return</span> ((m_bits[i] <span style="color:#555">&gt;&gt;</span> (bitNo <span style="color:#555">-</span> i <span style="color:#555">*</span> <span style="color:#069;font-weight:bold">sizeof</span>(storageType) <span style="color:#555">*</span> <span style="color:#f60">8</span>)) <span style="color:#555">&amp;</span> <span style="color:#f60">0x01</span>) <span style="color:#555">&amp;&amp;</span> <span style="color:#f60">0x01</span>;
+            }
+        }
+
+        <span style="color:#069;font-weight:bold">return</span> <span style="color:#366">false</span>;
+    }
+
+<span style="color:#069;font-weight:bold">private</span><span style="color:#555">:</span>
+    storageType m_bits[BS_NUM_ELEM];
+};
+</code></pre></div>
+
+<p style="text-align: justify;">
+  The code should be fairly self explanatory (I omitted constructors for clarity). First we determine in which stored variable our desired bit resides. Once it&#8217;s located, we set/clear proper bit in said variable. Accessing the bit is done easily with <code>operator[]</code> &#8211; note how I return a boolean which simply determines whether desired bit is non-zero.
+</p>
+
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cxx" data-lang="cxx"><span style="color:#09f;font-style:italic">// Usage
+</span><span style="color:#09f;font-style:italic"></span>BitSet<span style="color:#555">&lt;</span><span style="color:#078;font-weight:bold">unsigned</span> <span style="color:#078;font-weight:bold">long</span> <span style="color:#078;font-weight:bold">long</span>, <span style="color:#f60">104</span><span style="color:#555">&gt;</span> bv; <span style="color:#09f;font-style:italic">// create an &#34;aligned&#34; 128 bit set stored in two ULL variables.
+</span><span style="color:#09f;font-style:italic"></span>printf(<span style="color:#c30">&#34;%d&#34;</span>, <span style="color:#069;font-weight:bold">sizeof</span>(bv)); <span style="color:#09f;font-style:italic">// 16 bytes/128 bits
+</span><span style="color:#09f;font-style:italic"></span>bv.Set(<span style="color:#f60">24</span>); <span style="color:#09f;font-style:italic">// set bit 24
+</span><span style="color:#09f;font-style:italic"></span>bv.Set(<span style="color:#f60">103</span>); <span style="color:#09f;font-style:italic">// set bit 103
+</span><span style="color:#09f;font-style:italic"></span>
+...
+</code></pre></div>
+
+<p>Full template code can be downloaded from: <a href="https://github.com/kondrak/cpp_tools/tree/master/bitset">https://github.com/kondrak/cpp_tools/tree/master/bitset</a></p>
+	
+			
+
+			
+
+			
+				<div class="paging">
+					<span class="paging-label">More Reading</span>
+					
+					<div class="paging-newer">
+						<span class="dark-red">Newer</span><span class="decorative-marker">//</span>
+						<a class="paging-link" href="/posts/2015-05-05-using-c-unions-in-high-level-code/">Using C unions in high level code</a>
+		            </div>
+		            
+
+					
+                    
+					<div class="paging-older">
+						<span class="dark-red">Older</span><span class="decorative-marker">//</span>
+			            <a class="paging-link" href="/posts/2015-05-04-effective-modern-c-by-scott-meyers/">Effective Modern C&#43;&#43; by Scott Meyers</a>
+		            </div>
+                    
+		            
+	            </div>
+            
+          </section>
+          
+          	
+          
+        
+      <div class="footer">
+	<hr class="thin" />
+	<div class="pure-menu pure-menu-horizontal pure-menu-open">
+		<ul class="footer-menu">
+		
+		</ul>
+	</div>
+
+	<p>&copy; 2020. All rights reserved.</p>
+</div>
+    </div>
+  </div>
+	
+
+	
+
+  
+</body>
+</html>

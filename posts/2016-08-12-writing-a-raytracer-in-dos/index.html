@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-us">
+<head>
+  <title>
+    Writing a raytracer in DOS // Krzysztof Kondrak&#39;s website
+  </title>
+
+  <link href="http://gmpg.org/xfn/11" rel="profile">
+<meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+
+<meta name="description" content="">
+<meta name="keywords" content="">
+<meta name="author" content="kondrak">
+<meta name="generator" content="Hugo 0.55.1" />
+
+  <meta property="og:title" content="Writing a raytracer in DOS" />
+<meta property="og:description" content="" />
+<meta property="og:type" content="website" />
+<meta property="og:locale" content="en_US" />
+<meta property="og:url" content="https://kondrak.github.io/posts/2016-08-12-writing-a-raytracer-in-dos/" />
+
+
+  
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/pure/0.5.0/base-min.css">
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/pure/0.5.0/pure-min.css">
+  
+  
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/pure/0.5.0/grids-responsive-min.css">
+  
+  
+
+  <link rel="stylesheet" href="https://kondrak.github.io//css/redlounge.css">
+  <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet">
+  <link href='//fonts.googleapis.com/css?family=Raleway:400,200,100,700,300,500,600,800' rel='stylesheet' type='text/css'>
+  <link href='//fonts.googleapis.com/css?family=Libre+Baskerville:400,700,400italic' rel='stylesheet' type='text/css'>
+
+  
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/touch-icon-144-precomposed.png">
+  <link rel="shortcut icon" type="image/x-icon" href="/img/favicon.png">
+
+  
+  <link href="" rel="alternate" type="application/rss+xml" title="Krzysztof Kondrak&#39;s website" />
+
+    
+  
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.7/styles/tomorrow-night-bright.min.css">
+  
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.7/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
+
+
+  
+
+  
+
+  
+
+  
+</head>
+
+<body>
+	
+
+	<div id="layout" class="pure-g">
+    <div class="sidebar pure-u-1 pure-u-md-1-4">
+  <div class="header">
+    
+
+	
+
+    <h1 class="brand-title">Krzysztof Kondrak</h1>
+    <h2 class="brand-tagline">game tech programmer</h2>
+
+    <nav class="nav">
+      <ul class="nav-list">
+        <li class="nav-item"><span class="nav-item-separator">//</span><a href="https://kondrak.github.io/">Home</a></li>
+        
+          <li class="nav-item"><span class="nav-item-separator">//</span><a href="/about">About me</a></li>
+        
+          <li class="nav-item"><span class="nav-item-separator">//</span><a href="/projects">Projects</a></li>
+        
+      </ul>
+    </nav>
+
+    
+    <div class="social-buttons">
+      
+        
+          
+          
+             <a href="https://github.com/kondrak"  target="_blank"> <i class='fa fa-github fa-lg'></i></a>
+          
+        
+      
+        
+          
+          
+             <a href="http://www.linkedin.com/in/kondrak"  target="_blank"> <i class='fa fa-linkedin fa-lg'></i></a>
+          
+        
+      
+        
+          
+          
+             <a href="https://www.shadertoy.com/user/k_kondrak"  target="_blank"> <i class='fa fa-cube fa-lg'></i></a>
+          
+        
+      
+        
+          
+          
+             <a href="http://www.twitter.com/k_kondrak"  target="_blank"> <i class='fa fa-twitter fa-lg'></i></a>
+          
+        
+      
+        
+          
+          
+             <a href="https://www.youtube.com/channel/UC6gj_jbYQG1oVdqQv4EV0pw"  target="_blank"> <i class='fa fa-youtube-play fa-lg'></i></a>
+          
+        
+      
+        
+          
+          
+             <a href="/links" > <i class='fa fa-link fa-lg'></i></a>
+          
+        
+      
+      
+    </div>
+    
+
+  </div>
+</div>
+
+	
+	
+
+    <div class="content pure-u-1 pure-u-md-3-4">
+		<a name="top"></a>
+		
+
+		
+			
+	    
+  		<section class="post">
+            <h1 class="post-title">
+              <a href="/posts/2016-08-12-writing-a-raytracer-in-dos/">Writing a raytracer in DOS</a>
+            </h1>
+            <h3 class="post-subtitle">
+            	
+            </h3>
+            
+            	<span class="post-date">
+                	<span class="post-date-day"><sup>12</sup></span><span class="post-date-separator">/</span><span class="post-date-month">Aug</span> <span class="post-date-year">2016</span>
+            	</span>
+            	
+            
+            	
+            		<span class="post-author-single">By <a class="post-author"  target="">kondrak</a></span>
+            		
+
+
+
+
+            	
+            
+
+			
+			
+				<div class="post-categories">
+				
+					<a class="post-category post-category-programming" href="https://kondrak.github.io//categories/programming">Programming</a>
+				
+				</div>
+			
+
+			
+
+			
+
+            <p style="text-align: justify;">
+  TL;DR; It&#8217;s not as hard as people think! <a href="https://github.com/kondrak/dostracer">Full source code on GitHub.</a>
+</p>
+
+<p style="text-align: justify;">
+  <strong>Disclaimer:</strong> this is not a step-by-step introduction to raytracing, rather the fundamental components I needed to get it working in DOS. Sorry! 🙂 Check out the GitHub link if you&#8217;d rather jump straight into implementation details. And now, with that out of the way...
+</p>
+
+<p style="text-align: justify;">
+  Some time ago, I decided to finally write my first raytracer, seeing it as such a hot topic in realistic computer graphics. If you look around, you&#8217;ll find tons of examples on how to accomplish this. The task is even simpler if you only want to focus on primitive shapes such as spheres and planes, so for a moderately skilled programmer a basic raytracer shouldn&#8217;t take too much time to implement. Since that doesn&#8217;t sound too exciting, I figured I&#8217;d raise the bar a bit and write the entire thing for DOS and VGA graphics &#8211; the platform I never get to truly code on when I was younger!
+</p>
+
+<p><strong>1. Figuring out VGA screen access</strong></p>
+
+<p style="text-align: justify;">
+  Raytracing is all about calculating final color of each pixel on the screen. This intuitively makes us want to be able to manipulate each pixel in some nice, linear fashion. With modern APIs you can easily achieve this by accessing texture data, in DOS things get a bit more complicated. This is where <a href="https://en.wikipedia.org/wiki/Mode_13h">mode 13h</a> comes in!
+</p>
+
+<p style="text-align: justify;">
+  Depending on the graphics mode, a sequence of consecutive pixels on the screen can be accessed in different ways. In mode 13h you get access to the start address of screen memory and from there you can get to entire screen data as if it were an array of pixels:
+</p>
+
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cxx" data-lang="cxx"><span style="color:#09f;font-style:italic">// pointer to VGA memory in mode 13h
+</span><span style="color:#09f;font-style:italic"></span><span style="color:#078;font-weight:bold">unsigned</span> <span style="color:#078;font-weight:bold">char</span> <span style="color:#555">*</span>VGA <span style="color:#555">=</span> (<span style="color:#078;font-weight:bold">unsigned</span> <span style="color:#078;font-weight:bold">char</span> <span style="color:#555">*</span>)<span style="color:#f60">0xA0000000L</span>;
+
+<span style="color:#069;font-weight:bold">static</span> <span style="color:#069;font-weight:bold">const</span> <span style="color:#078;font-weight:bold">int</span> SCREEN_WIDTH  <span style="color:#555">=</span> <span style="color:#f60">320</span>;
+<span style="color:#069;font-weight:bold">static</span> <span style="color:#069;font-weight:bold">const</span> <span style="color:#078;font-weight:bold">int</span> SCREEN_HEIGHT <span style="color:#555">=</span> <span style="color:#f60">200</span>;
+
+<span style="color:#078;font-weight:bold">int</span> <span style="color:#c0f">main</span>()
+{
+    <span style="color:#09f;font-style:italic">// set graphics mode 13h
+</span><span style="color:#09f;font-style:italic"></span>    _asm {
+            mov ah, <span style="color:#f60">0x00</span>
+            mov al, <span style="color:#f60">0x13</span>
+            <span style="color:#078;font-weight:bold">int</span> <span style="color:#f60">10</span>h
+    }
+    
+    <span style="color:#069;font-weight:bold">for</span> (x <span style="color:#555">=</span> <span style="color:#f60">0</span>; x <span style="color:#555">&lt;</span> SCREEN_WIDTH; x<span style="color:#555">++</span>)
+    {
+        <span style="color:#069;font-weight:bold">for</span> (y <span style="color:#555">=</span> <span style="color:#f60">0</span>; y <span style="color:#555">&lt;</span> SCREEN_HEIGHT; y<span style="color:#555">++</span>)
+        {
+            <span style="color:#09f;font-style:italic">/* 
+</span><span style="color:#09f;font-style:italic">                Fetch pixel color here 
+</span><span style="color:#09f;font-style:italic">            */</span>
+            
+            <span style="color:#09f;font-style:italic">// draw the pixel!
+</span><span style="color:#09f;font-style:italic"></span>            VGA[(y <span style="color:#555">&lt;&lt;</span> <span style="color:#f60">8</span>) <span style="color:#555">+</span> (y <span style="color:#555">&lt;&lt;</span> <span style="color:#f60">6</span>) <span style="color:#555">+</span> x] <span style="color:#555">=</span> pixelColor;
+        }
+    }
+}
+</code></pre></div>
+
+<p style="text-align: justify;">
+  Setting <code>pixelColor</code> to an integral value in the range [0-255] will fill entire screen with respective color from VGA palette (more on that later). A good start! Now to get some actual raytracing done. 🙂
+</p>
+
+<p><strong>2. The Raytracing</strong></p>
+
+<p style="text-align: justify;">
+  One excellent property of mathematical principles is that they can be applied to any programming language and platform, now matter how old or obsucre it is. Here, it&#8217;s no different &#8211; in order to start off with raytracing, we need some basic representation of the shapes we want to put in the scene &#8211; planes and spheres in this particular case. We will also need to represent the ray itself to perform the tracing (and to make surface bouncing a bit easier):
+</p>
+
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cxx" data-lang="cxx"><span style="color:#069;font-weight:bold">typedef</span> <span style="color:#069;font-weight:bold">struct</span>
+{
+    Vector3f m_origin;
+    Vector3f m_dir;
+} Ray;
+
+<span style="color:#069;font-weight:bold">typedef</span> <span style="color:#069;font-weight:bold">struct</span>
+{
+    Vector3f m_origin;
+    <span style="color:#078;font-weight:bold">double</span>  m_radius;
+    <span style="color:#078;font-weight:bold">int</span>     m_reflective; <span style="color:#09f;font-style:italic">// sphere is reflective - 1/0 
+</span><span style="color:#09f;font-style:italic"></span>    <span style="color:#078;font-weight:bold">int</span>     m_refractive; <span style="color:#09f;font-style:italic">// sphere is refractive - 1/0 
+</span><span style="color:#09f;font-style:italic"></span>    <span style="color:#078;font-weight:bold">double</span>  m_color[<span style="color:#f60">3</span>];   <span style="color:#09f;font-style:italic">// RGB of the sphere
+</span><span style="color:#09f;font-style:italic"></span>} Sphere;
+
+<span style="color:#069;font-weight:bold">typedef</span> <span style="color:#069;font-weight:bold">struct</span>
+{
+    Vector3f m_normal;
+    <span style="color:#078;font-weight:bold">double</span>   m_distance;
+    <span style="color:#078;font-weight:bold">int</span>      m_reflective; <span style="color:#09f;font-style:italic">// plane is reflective - 1/0 
+</span><span style="color:#09f;font-style:italic"></span>    <span style="color:#078;font-weight:bold">double</span>   m_color[<span style="color:#f60">3</span>];   <span style="color:#09f;font-style:italic">// RGB of the sphere
+</span><span style="color:#09f;font-style:italic"></span>} Plane;
+
+
+<span style="color:#09f;font-style:italic">// scene we&#39;re going to raytrace
+</span><span style="color:#09f;font-style:italic"></span><span style="color:#069;font-weight:bold">typedef</span> <span style="color:#069;font-weight:bold">struct</span>
+{
+    Sphere spheres[NUM_SPHERES];
+    Plane  planes[NUM_PLANES];
+    Vector3f lightPos;  <span style="color:#09f;font-style:italic">// light source position
+</span><span style="color:#09f;font-style:italic"></span>} Scene;
+
+<span style="color:#09f;font-style:italic">/* see dt_trace.c on Github repo for implementation details of the following functions */</span>
+Vector3f <span style="color:#c0f">reflect</span>(<span style="color:#069;font-weight:bold">const</span> Ray <span style="color:#555">*</span>r, <span style="color:#069;font-weight:bold">const</span> Vector3f <span style="color:#555">*</span>normal);    
+Vector3f <span style="color:#c0f">refract</span>(<span style="color:#069;font-weight:bold">const</span> Ray <span style="color:#555">*</span>r, <span style="color:#069;font-weight:bold">const</span> Vector3f <span style="color:#555">*</span>normal);
+<span style="color:#078;font-weight:bold">double</span> <span style="color:#c0f">intersectSphere</span>(<span style="color:#069;font-weight:bold">const</span> Ray <span style="color:#555">*</span>r, <span style="color:#069;font-weight:bold">const</span> Sphere <span style="color:#555">*</span>s, Vector3f <span style="color:#555">*</span>oIntersectPoint);
+<span style="color:#078;font-weight:bold">double</span> <span style="color:#c0f">intersectPlane</span>(<span style="color:#069;font-weight:bold">const</span> Ray <span style="color:#555">*</span>r, <span style="color:#069;font-weight:bold">const</span> Plane <span style="color:#555">*</span>p, Vector3f <span style="color:#555">*</span>oIntersectPoint);
+
+<span style="color:#09f;font-style:italic">// raytracing function
+</span><span style="color:#09f;font-style:italic"></span><span style="color:#078;font-weight:bold">int</span> <span style="color:#c0f">rayTrace</span>(<span style="color:#069;font-weight:bold">const</span> Ray <span style="color:#555">*</span>r, <span style="color:#069;font-weight:bold">const</span> Scene <span style="color:#555">*</span>s, <span style="color:#069;font-weight:bold">const</span> <span style="color:#078;font-weight:bold">void</span> <span style="color:#555">*</span>currObject, <span style="color:#078;font-weight:bold">int</span> x, <span style="color:#078;font-weight:bold">int</span> y);
+</code></pre></div>
+
+<p style="text-align: justify;">
+  The structs should be self explanatory &#8211; every object is defined by the minimum amount of information needed to represent it mathematically. We also define a set of functions to perform reflection, refraction and intersection checks as well as the <code>rayTrace</code> function which will recursively call itself to determine where the ray eventually hits. Playing around with reflection and refraction is not an issue either, since like everything else it can be easilly determined with math. The final code will be written in C, so we&#8217;re using integers to store boolean flags (though some will likely argue it&#8217;s a waste of space and a plain char or a short would suffice!). With all of the above implemented, I was able to trace my first sphere:
+</p>
+
+<p style="display: block; text-align: center;">
+  <img src="http://kondrak.info/images/blog/rt2.png" alt="" /><br /><em>First render of a solid, raytraced sphere.</em>
+</p>
+
+<p><strong>3. Shading in VGA</strong></p>
+
+<p style="text-align: justify;">
+  Having mastered rendering of geometry, it was time to add some light and shading to the scene. In modern graphics doing that is (mostly) trivial &#8211; all color calculcations can be easily done using the RGB channels, so it&#8217;s pretty straightforward to get the final pixel with all light sources accounted for. With VGA things are a bit more involved, since instead of RGB we&#8217;re operating with palettes.
+</p>
+
+<p style="text-align: justify;">
+  Without going into too much detail, a VGA palette is a set of 256 integers (starting with 0), each one representing a single color out of the available pool of 256 different values. One may wonder at first how was 256 colors enough &#8220;back in the day&#8221; and most certainly a lot of games looked like they could handle a lot more than that! When DOS programming was still a big thing, there were number of tricks circulating in the game industry. Palette swapping, color cycling and the fact that you could create your own palettes made it possible to fool people into believing they see a lot more colors than what standard VGA could provide. Different graphics mode had also different capabilities and some games were notorious for switching between them to get higher screen resolutions and more color values (Bullfrog&#8217;s &#8220;Syndicate&#8221; was such an example). However, I digress...
+</p>
+
+<p style="display: block; text-align: center;">
+  <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/66/VGA_palette_with_black_borders.svg/2000px-VGA_palette_with_black_borders.svg.png" alt="" style="width: 655px; height: 437px" /><br /><em>Standard VGA palette. Courtesy of Wikipedia.</em>
+</p>
+
+<p style="text-align: justify;">
+  For the purpose of this demonstration I decided to use the standard VGA palette. For the the available test scene <a href="https://en.wikipedia.org/wiki/Lambertian_reflectance">Lambert shading</a> was sufficient and pretty easy to implement. The only problem to solve was getting RGB values for each color and its respective palette index. One way to do this is to create a simple mapping array:
+</p>
+
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cxx" data-lang="cxx"><span style="color:#09f;font-style:italic">// standard Lambert shading (see dt_trace.c for implementation details)
+</span><span style="color:#09f;font-style:italic">// iRGB - input color
+</span><span style="color:#09f;font-style:italic">// oRGB - output color calculated with the consideration of light pos and normal vector
+</span><span style="color:#09f;font-style:italic"></span><span style="color:#078;font-weight:bold">void</span> <span style="color:#c0f">lambertShade</span>(<span style="color:#069;font-weight:bold">const</span> Vector3f <span style="color:#555">*</span>light, <span style="color:#069;font-weight:bold">const</span> Vector3f <span style="color:#555">*</span>normal, 
+                  <span style="color:#069;font-weight:bold">const</span> <span style="color:#078;font-weight:bold">double</span> <span style="color:#555">*</span>iRGB, <span style="color:#078;font-weight:bold">double</span> <span style="color:#555">*</span>oRGB);
+
+<span style="color:#09f;font-style:italic">// RGB values of default VGA palette (mode 13h)
+</span><span style="color:#09f;font-style:italic"></span> 
+<span style="color:#078;font-weight:bold">int</span> VGAPalette[][<span style="color:#f60">3</span>] <span style="color:#555">=</span> {
+  <span style="color:#09f;font-style:italic">// R     G     B      // pal index - color
+</span><span style="color:#09f;font-style:italic"></span>  { <span style="color:#f60">0x00</span>, <span style="color:#f60">0x00</span>, <span style="color:#f60">0x00</span> }, <span style="color:#09f;font-style:italic">// 0 - black
+</span><span style="color:#09f;font-style:italic"></span>  { <span style="color:#f60">0x00</span>, <span style="color:#f60">0x00</span>, <span style="color:#f60">0xAA</span> }, <span style="color:#09f;font-style:italic">// 1 - dark blue
+</span><span style="color:#09f;font-style:italic"></span>  { <span style="color:#f60">0x00</span>, <span style="color:#f60">0xAA</span>, <span style="color:#f60">0x00</span> }, <span style="color:#09f;font-style:italic">// 2 - dark green
+</span><span style="color:#09f;font-style:italic"></span>  { <span style="color:#f60">0x00</span>, <span style="color:#f60">0xAA</span>, <span style="color:#f60">0xAA</span> }, <span style="color:#09f;font-style:italic">// 3 - dark cyan
+</span><span style="color:#09f;font-style:italic"></span>  <span style="color:#09f;font-style:italic">// all remaining colors go here
+</span><span style="color:#09f;font-style:italic"></span>  (...)
+  { <span style="color:#f60">0x00</span>, <span style="color:#f60">0x00</span>, <span style="color:#f60">0x00</span> }  <span style="color:#09f;font-style:italic">// 255 - black
+</span><span style="color:#09f;font-style:italic"></span>};
+</code></pre></div>
+
+<p style="text-align: justify;">
+  So far so good! But considering that Lambert shading properly determines the final color, how do we map it back to a palette index to display it properly on the screen? One (naive) way to do it is to search for the color closest matching the RGB values of the final, calculated pixel and return its index in the VGA palette which will give us the &#8220;highest fidelity&#8221; using standard colors. This is called finding the <a href="https://en.wikipedia.org/wiki/Euclidean_distance">Euclidean distance</a> between two points, only in this case we&#8217;re not matching the <code>(x, y, z)</code> coordinates bur rather the <code>(R, G, B)</code> values of two different colors. The one with smallest &#8220;distance&#8221; to the desired source color will have its indexed in VGA palette returned:
+</p>
+
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cxx" data-lang="cxx"><span style="color:#09f;font-style:italic">// color quantisation using Euclidean distance
+</span><span style="color:#09f;font-style:italic">// srcColor is a set of 3 doubles: R,G and B values respectively
+</span><span style="color:#09f;font-style:italic"></span><span style="color:#078;font-weight:bold">int</span> <span style="color:#c0f">findColor</span>(<span style="color:#069;font-weight:bold">const</span> <span style="color:#078;font-weight:bold">double</span> <span style="color:#555">*</span>srcColor)
+{
+    <span style="color:#09f;font-style:italic">// define max Euclidean distance as 3 * 256^2 + 1
+</span><span style="color:#09f;font-style:italic"></span>    <span style="color:#078;font-weight:bold">long</span> <span style="color:#078;font-weight:bold">int</span> nd <span style="color:#555">=</span> <span style="color:#f60">196609L</span>;
+    <span style="color:#078;font-weight:bold">int</span> i, palIdx <span style="color:#555">=</span> <span style="color:#f60">0</span>;
+
+    <span style="color:#09f;font-style:italic">// cycle through the entire palette and find color closest to srcColor&#39;s RGB
+</span><span style="color:#09f;font-style:italic"></span>    <span style="color:#069;font-weight:bold">for</span> (i <span style="color:#555">=</span> <span style="color:#f60">0</span>; i <span style="color:#555">&lt;</span> <span style="color:#f60">256</span>; i<span style="color:#555">++</span>)
+    {
+        <span style="color:#078;font-weight:bold">long</span> <span style="color:#078;font-weight:bold">int</span> r <span style="color:#555">=</span> (<span style="color:#078;font-weight:bold">long</span> <span style="color:#078;font-weight:bold">int</span>)(srcColor[<span style="color:#f60">0</span>] <span style="color:#555">-</span> (<span style="color:#078;font-weight:bold">double</span>)VGAPalette[i][<span style="color:#f60">0</span>]);
+        <span style="color:#078;font-weight:bold">long</span> <span style="color:#078;font-weight:bold">int</span> g <span style="color:#555">=</span> (<span style="color:#078;font-weight:bold">long</span> <span style="color:#078;font-weight:bold">int</span>)(srcColor[<span style="color:#f60">1</span>] <span style="color:#555">-</span> (<span style="color:#078;font-weight:bold">double</span>)VGAPalette[i][<span style="color:#f60">1</span>]);
+        <span style="color:#078;font-weight:bold">long</span> <span style="color:#078;font-weight:bold">int</span> b <span style="color:#555">=</span> (<span style="color:#078;font-weight:bold">long</span> <span style="color:#078;font-weight:bold">int</span>)(srcColor[<span style="color:#f60">2</span>] <span style="color:#555">-</span> (<span style="color:#078;font-weight:bold">double</span>)VGAPalette[i][<span style="color:#f60">2</span>]);
+
+        <span style="color:#09f;font-style:italic">// sqrt() not needed: it won&#39;t change the final evaluation
+</span><span style="color:#09f;font-style:italic"></span>        <span style="color:#078;font-weight:bold">long</span> <span style="color:#078;font-weight:bold">int</span> d <span style="color:#555">=</span> r <span style="color:#555">*</span> r <span style="color:#555">+</span> g <span style="color:#555">*</span> g <span style="color:#555">+</span> b <span style="color:#555">*</span> b;
+
+        <span style="color:#069;font-weight:bold">if</span> (d <span style="color:#555">&lt;</span> nd)
+        {
+            nd <span style="color:#555">=</span> d;
+            palIdx <span style="color:#555">=</span> i;
+        }
+    }
+
+    <span style="color:#069;font-weight:bold">return</span> palIdx;
+}
+</code></pre></div>
+
+<p style="text-align: justify;">
+  There are several optimizations that could be used to improve search speed of the nearest color. First, there are duplicated colors in the palette, so it&#8217;s not really necessary to search through the entire 256 array of values. Second, remember we&#8217;re using the standard VGA palette, so all colors are pretty much scattered through the entire range of 256 values. To make the lookup faster, one way would be to create your own palette with all similar colors placed right next to each other. Using custom palettes is also encouraged, since it gives you the possibility to tweak what the user sees on the screen and as such can improve the quality of final image.
+</p>
+
+<p style="text-align: justify;">
+  Putting all of the components together and adding a lightsource was now enough to produce the following result:
+</p>
+
+<p style="display: block; text-align: center;">
+  <img src="http://kondrak.info/images/blog/rt3.png" alt="" /><br /><em>Notice how the white sphere seems to look better than the others &#8211; this is due to there being 16 shades of gray in the standard VGA palette.</em>
+</p>
+
+<p><strong>4. Final result</strong></p>
+
+<p style="text-align: justify;">
+  The beauty of work I did up until this point is that it made everything &#8220;just work&#8221; as you&#8217;d expect it (provided of course that refraction and reflection functions were implemented correctly). With just a little work of creating a new scene, adding planes to it and setting some reflection and refraction attributes, I was able to come up with the following image:
+</p>
+
+<p style="display: block; text-align: center;">
+  <img src="http://kondrak.info/images/dostrace/dostrace1.png" alt="" /><br /><em>Final rendered image with reflective and refractive surfaces.</em>
+</p></p> 
+
+<p style="text-align: justify;">
+  It doesn&#8217;t stop there, though! <a href="https://github.com/kondrak/dostracer">Full source code on GitHub</a> also comes with a simple implementation of <a href="https://en.wikipedia.org/wiki/Dither">dither</a> to further improve image quality. To read more about VGA programming, check out <a href="http://www.brackeen.com/vga/">David Brackeen&#8217;s website</a> which was a major help in writing my code!
+</p>
+
+<p style="display: block; text-align: center;">
+  <img src="http://kondrak.info/images/dostrace/dostrace6.png" alt="" /><br /><em>Dithered grayscale image. Higher &#8220;spectrum&#8221; of shadow values is a result of 16 different shades of gray being stored in standard VGA palette and the addition of dither.</em>
+</p></p>
+	
+			
+
+			
+
+			
+				<div class="paging">
+					<span class="paging-label">More Reading</span>
+					
+					<div class="paging-newer">
+						<span class="dark-red">Newer</span><span class="decorative-marker">//</span>
+						<a class="paging-link" href="/posts/2016-08-22-stdvector-or-c-style-array/">std::vector or C-style array?</a>
+		            </div>
+		            
+
+					
+                    
+					<div class="paging-older">
+						<span class="dark-red">Older</span><span class="decorative-marker">//</span>
+			            <a class="paging-link" href="/posts/2016-06-14-so-you-want-to-be-a-programmer/">So you want to be a programmer?</a>
+		            </div>
+                    
+		            
+	            </div>
+            
+          </section>
+          
+          	
+          
+        
+      <div class="footer">
+	<hr class="thin" />
+	<div class="pure-menu pure-menu-horizontal pure-menu-open">
+		<ul class="footer-menu">
+		
+		</ul>
+	</div>
+
+	<p>&copy; 2020. All rights reserved.</p>
+</div>
+    </div>
+  </div>
+	
+
+	
+
+  
+</body>
+</html>

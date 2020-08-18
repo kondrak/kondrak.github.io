@@ -1,0 +1,230 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Posts on Krzysztof Kondrak&#39;s website</title>
+    <link>https://kondrak.github.io/posts/</link>
+    <description>Recent content in Posts on Krzysztof Kondrak&#39;s website</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sun, 11 Dec 2016 18:41:28 +0000</lastBuildDate>
+    
+	<atom:link href="https://kondrak.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Coincidence, luck and getting my first job in gamedev</title>
+      <link>https://kondrak.github.io/posts/2016-12-11-coincidence-luck-and-getting-my-first-job-in-gamedev/</link>
+      <pubDate>Sun, 11 Dec 2016 18:41:28 +0000</pubDate>
+      
+      <guid>https://kondrak.github.io/posts/2016-12-11-coincidence-luck-and-getting-my-first-job-in-gamedev/</guid>
+      <description>&lt;p style=&#34;text-align: justify;&#34;&gt;
+  I recently hit a milestone in my professional career &amp;#8211; it&amp;#8217;s been exactly 9 years since I made a move into games industry. This may not sound like something profound or significant but the circumstances of my transition from regular software development were rather interesting. I think it&amp;#8217;s fair for me to say I was quite lucky and found myself in the right place at the right time. Today I want to share something I always bring up when talking to students or people who want to get a job in games REALLY bad but don&amp;#8217;t know who to ask or how to start. This is the story of how I unintentionally and accidentally started making in games.
+&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Teaching is hard</title>
+      <link>https://kondrak.github.io/posts/2016-11-24-teaching-is-hard/</link>
+      <pubDate>Thu, 24 Nov 2016 23:04:01 +0000</pubDate>
+      
+      <guid>https://kondrak.github.io/posts/2016-11-24-teaching-is-hard/</guid>
+      <description>&lt;p style=&#34;text-align: justify;&#34;&gt;
+  Even though it&amp;#8217;s been many years, I can still remember my first days in school after I started education as a little kid. I truly admired and looked up to teachers who, to me, were the living embodiment of knowledge. I think I was really lucky because I was taught by people who truly had the calling and for a brief moment I even wanted to become a professor myself. However, as the years passed on, I developed a feeling that I would not make a good person to share what I know with others. My patience was low and I found it tremendously difficult to discuss things that were obvious to me but a novelty to others. Becoming a teacher turned into a nightmare job for me and I quickly realized this is something I want to stay away from as far as possible.
+&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Introvert&#39;s survival guide to attending industry events</title>
+      <link>https://kondrak.github.io/posts/2016-10-31-introverts-survival-guide-to-attending-industry-events/</link>
+      <pubDate>Mon, 31 Oct 2016 21:33:26 +0000</pubDate>
+      
+      <guid>https://kondrak.github.io/posts/2016-10-31-introverts-survival-guide-to-attending-industry-events/</guid>
+      <description>Disclaimer: this post is written based on my recent experiences and things that worked for me personally &amp;#8211; your milage may vary! I&amp;#8217;ve been an introvert ever since I can remember. If you&amp;#8217;re anything like me, big social events probably make you feel anxious, sometimes to the point of wanting to cancel your plans and just hide somewhere out of the public view. This was one of the reasons I felt on the fence about attending large community events, even the ones focusing around my work and interests.</description>
+    </item>
+    
+    <item>
+      <title>std::vector or C-style array?</title>
+      <link>https://kondrak.github.io/posts/2016-08-22-stdvector-or-c-style-array/</link>
+      <pubDate>Mon, 22 Aug 2016 22:40:24 +0000</pubDate>
+      
+      <guid>https://kondrak.github.io/posts/2016-08-22-stdvector-or-c-style-array/</guid>
+      <description>&lt;p style=&#34;text-align: justify;&#34;&gt;
+  I recently overheard a rather interesting statement concerning programming and thought I&amp;#8217;d share it with the world via a Tweet and a small counter example. This started an interesting discussion:
+&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Writing a raytracer in DOS</title>
+      <link>https://kondrak.github.io/posts/2016-08-12-writing-a-raytracer-in-dos/</link>
+      <pubDate>Fri, 12 Aug 2016 22:19:46 +0000</pubDate>
+      
+      <guid>https://kondrak.github.io/posts/2016-08-12-writing-a-raytracer-in-dos/</guid>
+      <description>&lt;p style=&#34;text-align: justify;&#34;&gt;
+  TL;DR; It&amp;#8217;s not as hard as people think! &lt;a href=&#34;https://github.com/kondrak/dostracer&#34;&gt;Full source code on GitHub.&lt;/a&gt;
+&lt;/p&gt;
+
+&lt;p style=&#34;text-align: justify;&#34;&gt;
+  &lt;strong&gt;Disclaimer:&lt;/strong&gt; this is not a step-by-step introduction to raytracing, rather the fundamental components I needed to get it working in DOS. Sorry! 🙂 Check out the GitHub link if you&amp;#8217;d rather jump straight into implementation details. And now, with that out of the way...
+&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>So you want to be a programmer?</title>
+      <link>https://kondrak.github.io/posts/2016-06-14-so-you-want-to-be-a-programmer/</link>
+      <pubDate>Tue, 14 Jun 2016 21:10:30 +0000</pubDate>
+      
+      <guid>https://kondrak.github.io/posts/2016-06-14-so-you-want-to-be-a-programmer/</guid>
+      <description>&lt;p style=&#34;text-align: justify;&#34;&gt;
+  I recently spoke to a couple high-school students who were eager to learn how to become programmers. They wanted to jump into it without any indication on where or how to start, which made me realize how difficult it can be for people without any prior experience. This inspired me to write this post and share my thoughts on what any programmer initiate should know and realize. This is not a programming tutorial by any means, just a set of guidelines which I would follow myself, knowing what I know today.
+&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Rendering in VR using OpenGL instancing</title>
+      <link>https://kondrak.github.io/posts/2016-05-21-rendering-in-vr-using-opengl-instancing/</link>
+      <pubDate>Sat, 21 May 2016 15:01:38 +0000</pubDate>
+      
+      <guid>https://kondrak.github.io/posts/2016-05-21-rendering-in-vr-using-opengl-instancing/</guid>
+      <description>&lt;p style=&#34;text-align: justify;&#34;&gt;
+  TL;DR; &lt;a href=&#34;https://github.com/kondrak/oculusvr_samples/tree/master/InstancedRender&#34;&gt;download code sample from GitHub!&lt;/a&gt;
+&lt;/p&gt;
+
+&lt;p style=&#34;text-align: justify;&#34;&gt;
+  In all of my VR applications thus far, I&amp;#8217;ve been using separate eye buffers for rendering, seeing it as a convenience. Recently, however, I started wondering how I could improve drawing times and reduce unnecessary overhead, so my attention turned toward single render target solution and how it could take advantage of instanced rendering. Here&amp;#8217;s a short summary of my results.
+&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Why I think Oculus wins over Vive... for now.</title>
+      <link>https://kondrak.github.io/posts/2016-05-14-why-i-think-oculus-wins-over-vive-for-now/</link>
+      <pubDate>Sat, 14 May 2016 00:42:06 +0000</pubDate>
+      
+      <guid>https://kondrak.github.io/posts/2016-05-14-why-i-think-oculus-wins-over-vive-for-now/</guid>
+      <description>&lt;p style=&#34;text-align: justify;&#34;&gt;
+  Disclaimer: The following is based on experiences with early releases of hardware and software for both Oculus and Vive, so your mileage may vary!
+&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Dealing with LinkedIn tech recruiters - 3 simple steps</title>
+      <link>https://kondrak.github.io/posts/2016-05-08-linkedin-tech-recruiters/</link>
+      <pubDate>Sun, 08 May 2016 22:32:35 +0000</pubDate>
+      
+      <guid>https://kondrak.github.io/posts/2016-05-08-linkedin-tech-recruiters/</guid>
+      <description>&lt;p style=&#34;text-align: justify;&#34;&gt;
+  It&amp;#8217;s that time of year again &amp;#8211; recruiters on LinkedIn are starting to send out messages and job ads faster than anyone can read them. This is something I think every tech person experiences after spending substantial amount of time registered there. What suprises me is that a vast majority of people I know despise getting this kind of mail which, at the first glance, seems contradicting to the purpose of being on a professional social network. While different people may have different reasons to being registered on LinkedIn, I seem to have a rather unpopular approach of treating it as an opportunity to possibly land my next job &amp;#8211; something that happened to me before, twice. With that being said, I accept all contact invitations unless the account is clearly recognized as spam or completely unrelated to my line of work (and that doesn&amp;#8217;t happen very often).
+&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>My experiences going Rust from C&#43;&#43;</title>
+      <link>https://kondrak.github.io/posts/2016-03-19-my-experiences-going-rust-from-c/</link>
+      <pubDate>Sat, 19 Mar 2016 15:36:17 +0000</pubDate>
+      
+      <guid>https://kondrak.github.io/posts/2016-03-19-my-experiences-going-rust-from-c/</guid>
+      <description>&lt;p style=&#34;text-align: justify;&#34;&gt;
+  I&amp;#8217;ve been experimenting with &lt;a href=&#34;https://www.rust-lang.org/&#34;&gt;Rust&lt;/a&gt; for over 6 months now. Most of that time I spent playing around with a &lt;a href=&#34;https://github.com/kondrak/rust64&#34;&gt;C64 emulator&lt;/a&gt; I wrote as a first project and initially I thought about creating a series on that topic. However, since there&amp;#8217;s so much reading material on the Internet about it already, I figured maybe it would be a good idea to write an intro for C/C++ programmers on Rust. But then I found &lt;a href=&#34;http://science.raphael.poss.name/rust-for-functional-programmers.html&#34;&gt;this article&lt;/a&gt;, so I decided to take a completely different route.
+&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>The many faces of perspective projection matrix</title>
+      <link>https://kondrak.github.io/posts/2015-07-14-the-many-faces-of-perspective-projection-matrix/</link>
+      <pubDate>Tue, 14 Jul 2015 23:27:24 +0000</pubDate>
+      
+      <guid>https://kondrak.github.io/posts/2015-07-14-the-many-faces-of-perspective-projection-matrix/</guid>
+      <description>&lt;p style=&#34;text-align: justify;&#34;&gt;
+  One of the first things I stumbled upon in the beginning of my adventure with graphics programming were types of matrices and view spaces. I remember it took me a while to wrap my head around different naming conventions (is clip space the same as screen space or...?) and how each and every projection worked from theoretical standpoint. With Internet around it&amp;#8217;s so much easier to figure things out but there&amp;#8217;s one thing that I remember baffling me: the relation between different forms of perspective projection matrix.
+&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Oculus Rift DK2 (SDK 0.6.0.1) and OpenGL ES 2.0</title>
+      <link>https://kondrak.github.io/posts/2015-07-10-oculus-rift-dk2-sdk-0-6-0-1-and-opengl-es-2-0/</link>
+      <pubDate>Fri, 10 Jul 2015 23:39:31 +0000</pubDate>
+      
+      <guid>https://kondrak.github.io/posts/2015-07-10-oculus-rift-dk2-sdk-0-6-0-1-and-opengl-es-2-0/</guid>
+      <description>&lt;p style=&#34;text-align: justify;&#34;&gt;
+  Recently I&amp;#8217;ve been working on a VR port for &lt;a href=&#34;https://www.youtube.com/watch?v=j34I7lRfYck&#34;&gt;Rage of the Gladiator&lt;/a&gt;, a game that was originally released for mobile devices and used OpenGL ES 2.0 as the rendering backend. This seemingly simple task soon created several fun problems resulting in limitation of this graphics SDK in relation to &amp;#8220;full-fledged&amp;#8221; OpenGL. My initial idea was to rewrite the entire renderer but very soon this approach turned out to be a dead end (suffice to say, the original codebase was slightly convoluted), so I decided to stick with the original implementation. To run an OpenGL ES application on a PC I used the &lt;a href=&#34;http://community.imgtec.com/developers/powervr/graphics-sdk/&#34;&gt;PowerVR SDK&lt;/a&gt; which is an excellent emulation of mobile rendering environment on a desktop computer.
+&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Sparse matrices and projection calculations</title>
+      <link>https://kondrak.github.io/posts/2015-05-19-sparse-matrices-and-projection-calculations/</link>
+      <pubDate>Tue, 19 May 2015 14:43:55 +0000</pubDate>
+      
+      <guid>https://kondrak.github.io/posts/2015-05-19-sparse-matrices-and-projection-calculations/</guid>
+      <description>&lt;p style=&#34;text-align: justify;&#34;&gt;
+  If you ever worked with high performance 3D applications you know that every cycle counts. One of the issues programmers try to solve is reducing computation time when dealing with matrices and vectors, especially if calculations are done very frequently each frame. Here&amp;#8217;s a little trick that can save you some memory and cycle counts when determining projection. Consider a typical projection matrix P:
+&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Game Engine Architecture by Jason Gregory</title>
+      <link>https://kondrak.github.io/posts/2015-05-15-game-engine-architecture-by-jason-gregory/</link>
+      <pubDate>Fri, 15 May 2015 22:45:11 +0000</pubDate>
+      
+      <guid>https://kondrak.github.io/posts/2015-05-15-game-engine-architecture-by-jason-gregory/</guid>
+      <description>&lt;p style=&#34;text-align: justify;&#34;&gt;
+  &lt;a href=&#34;http://www.amazon.com/Engine-Architecture-Second-Jason-Gregory/dp/1466560010/ref=sr_1_1?ie=UTF8&amp;qid=1431611182&amp;sr=8-1&amp;keywords=game+engine+architecture&#34;&gt;&lt;img src=&#34;http://ecx.images-amazon.com/images/I/51XoHf5t-zL._AA160_.jpg&#34; alt=&#34;&#34; align=&#34;left&#34; /&gt;&lt;/a&gt;This is the book I&amp;#8217;ve been wanting to read for a long time. With close to 1000 pages of pure content, you get a heavily condensed compendium on good, bad and typical practices in game engine design. What&amp;#8217;s great about this book is that even though it reads like something straight out of a university library, all the information is based on the author&amp;#8217;s practical experience. This means that there&amp;#8217;s relatively very little &amp;#8220;dry&amp;#8221; theory in favor of analysis of real life applications and how each component may perform on current gaming hardware. The latter was something I found especially interesting, since there&amp;#8217;s very few articles out there that give you a decent comparison of the XBox or PS4 hardware against a desktop PC. If you never worked in AAA gamedev, you will definitely learn a lot. That said, the book is clearly aimed at people with various programming or industry experience. If you already shipped a title, you may find some parts of the book rather obvious. Nevertheless even having prior knowledge of the covered topics didn&amp;#8217;t prevent me from catching some interesting quirks, making going through the entire thing worthwhile.
+&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>&#34;Hazumi&#34; - a game that came to be against all odds</title>
+      <link>https://kondrak.github.io/posts/2015-05-09-hazumi-a-game-that-came-to-be-against-all-odds/</link>
+      <pubDate>Sat, 09 May 2015 20:32:45 +0000</pubDate>
+      
+      <guid>https://kondrak.github.io/posts/2015-05-09-hazumi-a-game-that-came-to-be-against-all-odds/</guid>
+      <description>&lt;p style=&#34;text-align: justify;&#34;&gt;
+  December 2014 and January 2015 mark the dates when my simple puzzle game &amp;#8220;Hazumi&amp;#8221; came out for the Nintendo 3DS. It&amp;#8217;s been almost 6 months and only recently I started feeling the whole production pressure wearing off, so I decided to share my story with other inspiring game developers out there in hopes that they don&amp;#8217;t repeat the mistakes I made. You won&amp;#8217;t find any marketing tips here nor how to interact with the social media to promote your work &amp;#8211; there&amp;#8217;s a ton of a lot better articles on that topics out there. What I could seldom find was sort of a personal confession from the developers on how they felt during the development and what they had to go through over the course of their work which should be as important in order to maintain mental health. I&amp;#8217;m writing this in hopes that someone benefits from my experiences.
+&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Templates and C-style array size</title>
+      <link>https://kondrak.github.io/posts/2015-05-05-templates-and-c-style-array-size/</link>
+      <pubDate>Tue, 05 May 2015 14:47:40 +0000</pubDate>
+      
+      <guid>https://kondrak.github.io/posts/2015-05-05-templates-and-c-style-array-size/</guid>
+      <description>&lt;p style=&#34;text-align: justify;&#34;&gt;
+  If you&amp;#8217;re dealing with templates a lot in your C++ code, then you&amp;#8217;re likely familiar with how template type deduction works. It&amp;#8217;s an extensive topic which I&amp;#8217;m not going to cover in detail here but while reading &lt;a href=&#34;https://kondrak.github.io/programming/effective-modern-c-by-scott-meyers/&#34;&gt;this book&lt;/a&gt; I found one aspect of it quite useful in my work.
+&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Using C unions in high level code</title>
+      <link>https://kondrak.github.io/posts/2015-05-05-using-c-unions-in-high-level-code/</link>
+      <pubDate>Tue, 05 May 2015 12:08:59 +0000</pubDate>
+      
+      <guid>https://kondrak.github.io/posts/2015-05-05-using-c-unions-in-high-level-code/</guid>
+      <description>&lt;p style=&#34;text-align: justify;&#34;&gt;
+  I always considered the C &lt;code&gt;union&lt;/code&gt; to be highly underappreciated ugly-child that nobody cares about in high level programming. Not really meant for persistent storage (specific cases excluded), it&amp;#8217;s difficult to see any good use for such constructs, especially for beginner programmers. Unless you deal with compilers or close to the metal development, chances are you have barely used or spotted a &lt;code&gt;union&lt;/code&gt; in an application&amp;#8217;s runtime code. But unions can come in handy, sometimes in quite unexpected ways. I often forget about their applications, so hopefully this post will help me remember in the future.
+&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Finding an alternative to std::bitset</title>
+      <link>https://kondrak.github.io/posts/2015-05-04-finding-an-alternative-to-stdbitset/</link>
+      <pubDate>Mon, 04 May 2015 23:25:44 +0000</pubDate>
+      
+      <guid>https://kondrak.github.io/posts/2015-05-04-finding-an-alternative-to-stdbitset/</guid>
+      <description>&lt;p style=&#34;text-align: justify;&#34;&gt;
+  In one of my games I ran into a seemingly simple problem: saving a puzzle state (ie. completed/not completed) for each of 105 available levels. Naturally first thing that came to mind was a static &lt;code&gt;bool&lt;/code&gt; array with required amount of entries &amp;#8211; both easy to maintain and write to disk without hassle:
+&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Effective Modern C&#43;&#43; by Scott Meyers</title>
+      <link>https://kondrak.github.io/posts/2015-05-04-effective-modern-c-by-scott-meyers/</link>
+      <pubDate>Mon, 04 May 2015 11:32:29 +0000</pubDate>
+      
+      <guid>https://kondrak.github.io/posts/2015-05-04-effective-modern-c-by-scott-meyers/</guid>
+      <description>&lt;p style=&#34;text-align: justify;&#34;&gt;
+  &lt;a href=&#34;http://www.amazon.com/Effective-Modern-Specific-Ways-Improve/dp/1491903996/ref=sr_1_1?ie=UTF8&amp;qid=1430727323&amp;sr=8-1&amp;keywords=effective+modern+c%2B%2B&#34;&gt;&lt;img src=&#34;http://ecx.images-amazon.com/images/I/515MGXnS72L._AA160_.jpg&#34; alt=&#34;&#34; align=&#34;left&#34; /&gt;&lt;/a&gt;If you&amp;#8217;ve been on the C++ bandwagon for a while you probably heard about Scott Meyers and his &amp;#8220;Effective...&amp;#8221; book series. While I haven&amp;#8217;t read every single one of them, the ones I did check out always came packed with highly compressed information on how to become a more productive C++ programmer. &amp;#8220;Effective Modern C++&amp;#8221; is, thankfully, no exception.
+&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-us">
+<head>
+  <title>
+    std::vector or C-style array? // Krzysztof Kondrak&#39;s website
+  </title>
+
+  <link href="http://gmpg.org/xfn/11" rel="profile">
+<meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+
+<meta name="description" content="">
+<meta name="keywords" content="">
+<meta name="author" content="kondrak">
+<meta name="generator" content="Hugo 0.55.1" />
+
+  <meta property="og:title" content="std::vector or C-style array?" />
+<meta property="og:description" content="" />
+<meta property="og:type" content="website" />
+<meta property="og:locale" content="en_US" />
+<meta property="og:url" content="https://kondrak.github.io/posts/2016-08-22-stdvector-or-c-style-array/" />
+
+
+  
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/pure/0.5.0/base-min.css">
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/pure/0.5.0/pure-min.css">
+  
+  
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/pure/0.5.0/grids-responsive-min.css">
+  
+  
+
+  <link rel="stylesheet" href="https://kondrak.github.io//css/redlounge.css">
+  <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet">
+  <link href='//fonts.googleapis.com/css?family=Raleway:400,200,100,700,300,500,600,800' rel='stylesheet' type='text/css'>
+  <link href='//fonts.googleapis.com/css?family=Libre+Baskerville:400,700,400italic' rel='stylesheet' type='text/css'>
+
+  
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/touch-icon-144-precomposed.png">
+  <link rel="shortcut icon" type="image/x-icon" href="/img/favicon.png">
+
+  
+  <link href="" rel="alternate" type="application/rss+xml" title="Krzysztof Kondrak&#39;s website" />
+
+    
+  
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.7/styles/tomorrow-night-bright.min.css">
+  
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.7/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
+
+
+  
+
+  
+
+  
+
+  
+</head>
+
+<body>
+	
+
+	<div id="layout" class="pure-g">
+    <div class="sidebar pure-u-1 pure-u-md-1-4">
+  <div class="header">
+    
+
+	
+
+    <h1 class="brand-title">Krzysztof Kondrak</h1>
+    <h2 class="brand-tagline">game tech programmer</h2>
+
+    <nav class="nav">
+      <ul class="nav-list">
+        <li class="nav-item"><span class="nav-item-separator">//</span><a href="https://kondrak.github.io/">Home</a></li>
+        
+          <li class="nav-item"><span class="nav-item-separator">//</span><a href="/about">About me</a></li>
+        
+          <li class="nav-item"><span class="nav-item-separator">//</span><a href="/projects">Projects</a></li>
+        
+      </ul>
+    </nav>
+
+    
+    <div class="social-buttons">
+      
+        
+          
+          
+             <a href="https://github.com/kondrak"  target="_blank"> <i class='fa fa-github fa-lg'></i></a>
+          
+        
+      
+        
+          
+          
+             <a href="http://www.linkedin.com/in/kondrak"  target="_blank"> <i class='fa fa-linkedin fa-lg'></i></a>
+          
+        
+      
+        
+          
+          
+             <a href="https://www.shadertoy.com/user/k_kondrak"  target="_blank"> <i class='fa fa-cube fa-lg'></i></a>
+          
+        
+      
+        
+          
+          
+             <a href="http://www.twitter.com/k_kondrak"  target="_blank"> <i class='fa fa-twitter fa-lg'></i></a>
+          
+        
+      
+        
+          
+          
+             <a href="https://www.youtube.com/channel/UC6gj_jbYQG1oVdqQv4EV0pw"  target="_blank"> <i class='fa fa-youtube-play fa-lg'></i></a>
+          
+        
+      
+        
+          
+          
+             <a href="/links" > <i class='fa fa-link fa-lg'></i></a>
+          
+        
+      
+      
+    </div>
+    
+
+  </div>
+</div>
+
+	
+	
+
+    <div class="content pure-u-1 pure-u-md-3-4">
+		<a name="top"></a>
+		
+
+		
+			
+	    
+  		<section class="post">
+            <h1 class="post-title">
+              <a href="/posts/2016-08-22-stdvector-or-c-style-array/">std::vector or C-style array?</a>
+            </h1>
+            <h3 class="post-subtitle">
+            	
+            </h3>
+            
+            	<span class="post-date">
+                	<span class="post-date-day"><sup>22</sup></span><span class="post-date-separator">/</span><span class="post-date-month">Aug</span> <span class="post-date-year">2016</span>
+            	</span>
+            	
+            
+            	
+            		<span class="post-author-single">By <a class="post-author"  target="">kondrak</a></span>
+            		
+
+
+
+
+            	
+            
+
+			
+			
+				<div class="post-categories">
+				
+					<a class="post-category post-category-c&#43;&#43;" href="https://kondrak.github.io//categories/c&#43;&#43;">C&#43;&#43;</a>
+				
+					<a class="post-category post-category-programming" href="https://kondrak.github.io//categories/programming">Programming</a>
+				
+				</div>
+			
+
+			
+
+			
+
+            <p style="text-align: justify;">
+  I recently overheard a rather interesting statement concerning programming and thought I&#8217;d share it with the world via a Tweet and a small counter example. This started an interesting discussion:
+</p>
+
+<p><blockquote class="twitter-tweet" data-lang="en"><p lang="en" dir="ltr">OH today: &quot;Always use std::vector over plain array in C++&quot;.<br><br>Well&hellip;<br>1. <a href="https://t.co/4u4S0L2PSF">https://t.co/4u4S0L2PSF</a> <br>2. <a href="https://t.co/0PvPPxFn8w">https://t.co/0PvPPxFn8w</a><br><br>I love dogmas!</p>&mdash; Krzysztof Kondrak (@k_kondrak) <a href="https://twitter.com/k_kondrak/status/766341288358735872?ref_src=twsrc%5Etfw">August 18, 2016</a></blockquote>
+<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script></p>
+
+<p style="text-align: justify;">
+  What I believed would go by unnoticed, spawned a series of interesting views on this topic &#8211; some of them missing my original point. Therefore, I figured it&#8217;d be a good idea to expand my thought into something longer than 140 characters. Note however, that this is not a full dissection of pros and cons of one solution over the other but a general opinion!
+</p>
+
+<p><strong>Original statement and code example</strong></p>
+
+<p style="text-align: justify;">
+  So the original statement claims that you should <strong>always</strong> use std::vector instead of a C-style array for data containment. The keyword &#8220;always&#8221; is what triggered my Tweet, claiming that in every instance it&#8217;s a desired and better solution. To see how this works out, here&#8217;s an example &#8211; a short program to create a static container of 10 integers, assign them values and return. First, let&#8217;s use the &#8220;dogmatic&#8221; approach:
+</p>
+
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cxx" data-lang="cxx"><span style="color:#09f;font-style:italic">// approach 1: using std::vector
+</span><span style="color:#09f;font-style:italic"></span><span style="color:#099">#include</span> <span style="color:#099">&lt;vector&gt;</span><span style="color:#099">
+</span><span style="color:#099"></span><span style="color:#078;font-weight:bold">int</span> <span style="color:#c0f">main</span>() { 
+  std<span style="color:#555">::</span>vector<span style="color:#555">&lt;</span><span style="color:#078;font-weight:bold">int</span><span style="color:#555">&gt;</span> foo;
+  foo.resize(<span style="color:#f60">10</span>);
+  
+  <span style="color:#069;font-weight:bold">for</span>(<span style="color:#078;font-weight:bold">int</span> i <span style="color:#555">=</span> <span style="color:#f60">0</span>; i <span style="color:#555">&lt;</span> <span style="color:#f60">10</span>; i<span style="color:#555">++</span>)
+    foo[i] <span style="color:#555">=</span> i;
+  
+  <span style="color:#069;font-weight:bold">return</span> <span style="color:#f60">0</span>;
+}
+</code></pre></div>
+
+<p style="text-align: justify;">
+  Alternatively, let&#8217;s do the same thing with a classic C-style array.
+</p>
+
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cxx" data-lang="cxx"><span style="color:#09f;font-style:italic">// approach 2: using C array
+</span><span style="color:#09f;font-style:italic"></span>
+<span style="color:#078;font-weight:bold">int</span> <span style="color:#c0f">main</span>() {
+  <span style="color:#078;font-weight:bold">int</span> foo[<span style="color:#f60">10</span>];
+  
+  <span style="color:#069;font-weight:bold">for</span>(<span style="color:#078;font-weight:bold">int</span> i <span style="color:#555">=</span> <span style="color:#f60">0</span>; i <span style="color:#555">&amp;</span>lt; <span style="color:#f60">10</span>; i<span style="color:#555">++</span>)
+    foo[i] <span style="color:#555">=</span> i;
+  
+  <span style="color:#069;font-weight:bold">return</span> <span style="color:#f60">0</span>;
+}
+</code></pre></div>
+
+<p style="text-align: justify;">
+  Running both pieces of code through a compiler (unoptimized &#8211; will soon explain why) creates interesting results when looking at the assembly. <a href="https://godbolt.org/g/hA20J0">Approach 1</a> produces output too long to be put in this post, however with <a href="https://godbolt.org/g/vIKYj4">approach 2</a> we get this neat code:
+</p>
+
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-asm" data-lang="asm"><span style="color:#99f">main:</span>
+        <span style="color:#c0f">push</span>    <span style="color:#360">rbp</span>
+        <span style="color:#c0f">mov</span>     <span style="color:#360">rbp</span>, <span style="color:#360">rsp</span>
+        <span style="color:#c0f">mov</span>     <span style="color:#360">DWORD</span> <span style="color:#360">PTR</span> [<span style="color:#360">rbp-4</span>], <span style="color:#f60">0</span>
+<span style="color:#99f">.L3:</span>
+        <span style="color:#c0f">cmp</span>     <span style="color:#360">DWORD</span> <span style="color:#360">PTR</span> [<span style="color:#360">rbp-4</span>], <span style="color:#f60">9</span>
+        <span style="color:#c0f">jg</span>      <span style="color:#360">.L2</span>
+        <span style="color:#c0f">mov</span>     <span style="color:#360">eax</span>, <span style="color:#360">DWORD</span> <span style="color:#360">PTR</span> [<span style="color:#360">rbp-4</span>]
+        <span style="color:#c0f">cdqe</span>
+        <span style="color:#c0f">mov</span>     <span style="color:#360">edx</span>, <span style="color:#360">DWORD</span> <span style="color:#360">PTR</span> [<span style="color:#360">rbp-4</span>]
+        <span style="color:#c0f">mov</span>     <span style="color:#360">DWORD</span> <span style="color:#360">PTR</span> [<span style="color:#360">rbp-48</span><span style="color:#a00;background-color:#faa">+</span><span style="color:#360">rax</span>*<span style="color:#f60">4</span>], <span style="color:#360">edx</span>
+        <span style="color:#c0f">add</span>     <span style="color:#360">DWORD</span> <span style="color:#360">PTR</span> [<span style="color:#360">rbp-4</span>], <span style="color:#f60">1</span>
+        <span style="color:#c0f">jmp</span>     <span style="color:#360">.L3</span>
+<span style="color:#99f">.L2:</span>
+        <span style="color:#c0f">mov</span>     <span style="color:#360">eax</span>, <span style="color:#f60">0</span>
+        <span style="color:#c0f">pop</span>     <span style="color:#360">rbp</span>
+        <span style="color:#c0f">ret</span></code></pre></div>
+
+<p><strong>&#8220;You forgot the -O flag!&#8221;</strong></p>
+
+<p style="text-align: justify;">
+  It&#8217;s true that the optimization flag can be passed to a compiler and in all likelihood, this is what you&#8217;ll be working with most of your time. There are, however, few specific reasons I deliberately choose not to demonstrate code with optimizations enabled:
+</p>
+
+<p style="text-align: justify;">
+  1. Most developers work primarily with debug code during development process. While your mileage may vary, chances are that your debug session will be done with the use of debug symbols most of the time.<br /> 2. Optimizations (even for debug builds) cost you build time.<br /> 3. DON&#8217;T RELY ON A COMPILER IF YOU CAN WRITE BETTER CODE YOURSELF.
+</p>
+
+<p><strong>Why you should care?</strong></p>
+
+<p style="text-align: justify;">
+  The reason I put emphasis on the last sentence is because a lot of modern day programmers are taught to delegate all the heavy work to the compiler with an assumption that it will always turn out fine. What this belief leads to is crawling debug code in the best case. Take, for example, the <a href="https://godbolt.org/g/RMgjBv">first approach using -O3</a> and the <a href="https://godbolt.org/g/2tVY59">counter example</a>, also with -O3. My personal belief is that you should rely on the -O flag only as last resort (and even then take it with a grain of salt). To that extent, using complex structures such as <code>std::vector</code>, <code>std::array</code> and others should be only done when it&#8217;s justified and doesn&#8217;t incur unnecessary performance penalties on the executed code. It is not, in fact, the high count of assembly lines that&#8217;s the main problem, rather the heap allocations that take place when using STL containers. In many scenarios this is more penalizing than anything else, so unless a dynamic sized array is really needed, it&#8217;s not worth following established dogmas (whether STL is good for game programming is a completely different story).
+</p>
+
+<p><strong>Who should I do?</strong></p>
+
+<p style="text-align: justify;">
+  Don&#8217;t get too obsesive about the topic! I think it&#8217;s good practice to get your code to be as fast as possible without using excessive compiler optimizations but on the other hand &#8211; it <strong>is</strong>, after all, a tool that is handed to the programmer. And always be a bit cautious and sceptical when somebody tells you that solution A is &#8220;always&#8221; better than B &#8211; chances are, there&#8217;s a solution C that bests them all! 😉
+</p>
+	
+			
+
+			
+
+			
+				<div class="paging">
+					<span class="paging-label">More Reading</span>
+					
+					<div class="paging-newer">
+						<span class="dark-red">Newer</span><span class="decorative-marker">//</span>
+						<a class="paging-link" href="/posts/2016-10-31-introverts-survival-guide-to-attending-industry-events/">Introvert&#39;s survival guide to attending industry events</a>
+		            </div>
+		            
+
+					
+                    
+					<div class="paging-older">
+						<span class="dark-red">Older</span><span class="decorative-marker">//</span>
+			            <a class="paging-link" href="/posts/2016-08-12-writing-a-raytracer-in-dos/">Writing a raytracer in DOS</a>
+		            </div>
+                    
+		            
+	            </div>
+            
+          </section>
+          
+          	
+          
+        
+      <div class="footer">
+	<hr class="thin" />
+	<div class="pure-menu pure-menu-horizontal pure-menu-open">
+		<ul class="footer-menu">
+		
+		</ul>
+	</div>
+
+	<p>&copy; 2020. All rights reserved.</p>
+</div>
+    </div>
+  </div>
+	
+
+	
+
+  
+</body>
+</html>

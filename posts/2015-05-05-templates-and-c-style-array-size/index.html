@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-us">
+<head>
+  <title>
+    Templates and C-style array size // Krzysztof Kondrak&#39;s website
+  </title>
+
+  <link href="http://gmpg.org/xfn/11" rel="profile">
+<meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+
+<meta name="description" content="">
+<meta name="keywords" content="">
+<meta name="author" content="kondrak">
+<meta name="generator" content="Hugo 0.55.1" />
+
+  <meta property="og:title" content="Templates and C-style array size" />
+<meta property="og:description" content="" />
+<meta property="og:type" content="website" />
+<meta property="og:locale" content="en_US" />
+<meta property="og:url" content="https://kondrak.github.io/posts/2015-05-05-templates-and-c-style-array-size/" />
+
+
+  
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/pure/0.5.0/base-min.css">
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/pure/0.5.0/pure-min.css">
+  
+  
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/pure/0.5.0/grids-responsive-min.css">
+  
+  
+
+  <link rel="stylesheet" href="https://kondrak.github.io//css/redlounge.css">
+  <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet">
+  <link href='//fonts.googleapis.com/css?family=Raleway:400,200,100,700,300,500,600,800' rel='stylesheet' type='text/css'>
+  <link href='//fonts.googleapis.com/css?family=Libre+Baskerville:400,700,400italic' rel='stylesheet' type='text/css'>
+
+  
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/touch-icon-144-precomposed.png">
+  <link rel="shortcut icon" type="image/x-icon" href="/img/favicon.png">
+
+  
+  <link href="" rel="alternate" type="application/rss+xml" title="Krzysztof Kondrak&#39;s website" />
+
+    
+  
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.7/styles/tomorrow-night-bright.min.css">
+  
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.7/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
+
+
+  
+
+  
+
+  
+
+  
+</head>
+
+<body>
+	
+
+	<div id="layout" class="pure-g">
+    <div class="sidebar pure-u-1 pure-u-md-1-4">
+  <div class="header">
+    
+
+	
+
+    <h1 class="brand-title">Krzysztof Kondrak</h1>
+    <h2 class="brand-tagline">game tech programmer</h2>
+
+    <nav class="nav">
+      <ul class="nav-list">
+        <li class="nav-item"><span class="nav-item-separator">//</span><a href="https://kondrak.github.io/">Home</a></li>
+        
+          <li class="nav-item"><span class="nav-item-separator">//</span><a href="/about">About me</a></li>
+        
+          <li class="nav-item"><span class="nav-item-separator">//</span><a href="/projects">Projects</a></li>
+        
+      </ul>
+    </nav>
+
+    
+    <div class="social-buttons">
+      
+        
+          
+          
+             <a href="https://github.com/kondrak"  target="_blank"> <i class='fa fa-github fa-lg'></i></a>
+          
+        
+      
+        
+          
+          
+             <a href="http://www.linkedin.com/in/kondrak"  target="_blank"> <i class='fa fa-linkedin fa-lg'></i></a>
+          
+        
+      
+        
+          
+          
+             <a href="https://www.shadertoy.com/user/k_kondrak"  target="_blank"> <i class='fa fa-cube fa-lg'></i></a>
+          
+        
+      
+        
+          
+          
+             <a href="http://www.twitter.com/k_kondrak"  target="_blank"> <i class='fa fa-twitter fa-lg'></i></a>
+          
+        
+      
+        
+          
+          
+             <a href="https://www.youtube.com/channel/UC6gj_jbYQG1oVdqQv4EV0pw"  target="_blank"> <i class='fa fa-youtube-play fa-lg'></i></a>
+          
+        
+      
+        
+          
+          
+             <a href="/links" > <i class='fa fa-link fa-lg'></i></a>
+          
+        
+      
+      
+    </div>
+    
+
+  </div>
+</div>
+
+	
+	
+
+    <div class="content pure-u-1 pure-u-md-3-4">
+		<a name="top"></a>
+		
+
+		
+			
+	    
+  		<section class="post">
+            <h1 class="post-title">
+              <a href="/posts/2015-05-05-templates-and-c-style-array-size/">Templates and C-style array size</a>
+            </h1>
+            <h3 class="post-subtitle">
+            	
+            </h3>
+            
+            	<span class="post-date">
+                	<span class="post-date-day"><sup>5</sup></span><span class="post-date-separator">/</span><span class="post-date-month">May</span> <span class="post-date-year">2015</span>
+            	</span>
+            	
+            
+            	
+            		<span class="post-author-single">By <a class="post-author"  target="">kondrak</a></span>
+            		
+
+
+
+
+            	
+            
+
+			
+			
+				<div class="post-categories">
+				
+					<a class="post-category post-category-c&#43;&#43;" href="https://kondrak.github.io//categories/c&#43;&#43;">C&#43;&#43;</a>
+				
+					<a class="post-category post-category-programming" href="https://kondrak.github.io//categories/programming">Programming</a>
+				
+				</div>
+			
+
+			
+
+			
+
+            <p style="text-align: justify;">
+  If you&#8217;re dealing with templates a lot in your C++ code, then you&#8217;re likely familiar with how template type deduction works. It&#8217;s an extensive topic which I&#8217;m not going to cover in detail here but while reading <a href="/programming/effective-modern-c-by-scott-meyers/">this book</a> I found one aspect of it quite useful in my work.
+</p>
+
+<p>Remember how you sometimes needed to know the size of C-style arrays? One way to determine it was doing something like this:</p>
+
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cxx" data-lang="cxx"><span style="color:#069;font-weight:bold">const</span> <span style="color:#078;font-weight:bold">int</span> cArray[] <span style="color:#555">=</span> { <span style="color:#f60">1</span>, <span style="color:#f60">2</span>, <span style="color:#f60">3</span>, <span style="color:#f60">4</span>, <span style="color:#f60">5</span> };
+
+std<span style="color:#555">::</span>size_t aSize <span style="color:#555">=</span> <span style="color:#069;font-weight:bold">sizeof</span>(cArray) <span style="color:#555">/</span> <span style="color:#069;font-weight:bold">sizeof</span>(cArray[<span style="color:#f60">0</span>]);
+</code></pre></div>
+
+<p style="text-align: justify;">
+  Nothing wrong with doing it this way but thanks to templates and the way they deduce data types we can get the array size in a much cleaner manner. To briefly recap on C-style arrays, even though you can specify a function signature using this syntax:
+</p>
+
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cxx" data-lang="cxx"><span style="color:#09f;font-style:italic">// how we may declare a function
+</span><span style="color:#09f;font-style:italic"></span><span style="color:#078;font-weight:bold">void</span> <span style="color:#c0f">foo</span>(<span style="color:#078;font-weight:bold">int</span> arr[])
+{
+}
+</code></pre></div>
+
+<p>What we essentially get is an implicit pointer conversion by the compiler:</p>
+
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cxx" data-lang="cxx"><span style="color:#09f;font-style:italic">// what compiler actually sees
+</span><span style="color:#09f;font-style:italic"></span><span style="color:#078;font-weight:bold">void</span> <span style="color:#c0f">foo</span>(<span style="color:#078;font-weight:bold">int</span> <span style="color:#555">*</span>arr)
+{
+}
+</code></pre></div>
+
+<p style="text-align: justify;">
+  This poses a problem, since there doesn&#8217;t seem to be an easy and obvious way to &#8220;extract&#8221; array size from the function variable. But there is a solution, one that employs templates. If you read up on how template type deduction works, you&#8217;ll learn that C-style array (and function pointers) is a special case treated differently depending on how you declare a template function:
+</p>
+
+<p style="text-align: justify;">
+  &#8211; If a template function takes a non-reference and non-pointer parameter, deduced type for C-array is a pointer to its first element<br /> &#8211; If a template function takes a reference parameter, deduced type for C-array is the actual array type
+</p>
+
+<p>So in practice, what happens is:</p>
+
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cxx" data-lang="cxx"><span style="color:#069;font-weight:bold">const</span> <span style="color:#078;font-weight:bold">int</span> cArray[] <span style="color:#555">=</span> { <span style="color:#f60">1</span>, <span style="color:#f60">2</span>, <span style="color:#f60">3</span>, <span style="color:#f60">4</span>, <span style="color:#f60">5</span> };
+
+<span style="color:#069;font-weight:bold">template</span><span style="color:#555">&lt;</span><span style="color:#069;font-weight:bold">typename</span> T<span style="color:#555">&gt;</span>
+<span style="color:#078;font-weight:bold">void</span> foo(T arg)
+{
+}
+
+<span style="color:#069;font-weight:bold">template</span><span style="color:#555">&lt;</span><span style="color:#069;font-weight:bold">typename</span> T<span style="color:#555">&gt;</span>
+<span style="color:#078;font-weight:bold">void</span> foo2(T<span style="color:#555">&amp;</span> arg)
+{
+}
+
+foo(cArray);  <span style="color:#09f;font-style:italic">// T will be deduced as int*
+</span><span style="color:#09f;font-style:italic"></span>foo2(cArray); <span style="color:#09f;font-style:italic">// T will be deduced as int[5]
+</span></code></pre></div>
+
+<p style="text-align: justify;">
+  The case of <code>T &arg</code> produces an interesting implication, since it allows us to directly access the size of an array from within the template function. For this, however, the argument has to be slightly modified:
+</p>
+
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cxx" data-lang="cxx"><span style="color:#09f;font-style:italic">// get C-style array size in a simple, painless way
+</span><span style="color:#09f;font-style:italic"></span><span style="color:#069;font-weight:bold">template</span><span style="color:#555">&lt;</span><span style="color:#069;font-weight:bold">typename</span> T, std<span style="color:#555">::</span>size_t N<span style="color:#555">&gt;</span>
+<span style="color:#069;font-weight:bold">constexpr</span> std<span style="color:#555">::</span>size_t arraySize(T(<span style="color:#555">&amp;</span>)[N]) <span style="color:#069;font-weight:bold">noexcept</span>
+{
+    <span style="color:#069;font-weight:bold">return</span> N;
+} 
+
+<span style="color:#09f;font-style:italic">// Usage example:
+</span><span style="color:#09f;font-style:italic"></span><span style="color:#069;font-weight:bold">const</span> <span style="color:#078;font-weight:bold">int</span> cArray[] <span style="color:#555">=</span> { <span style="color:#f60">1</span>, <span style="color:#f60">2</span>, <span style="color:#f60">3</span>, <span style="color:#f60">4</span>, <span style="color:#f60">5</span> };
+std<span style="color:#555">::</span>size_t aSize <span style="color:#555">=</span> arraySize(cArray); <span style="color:#09f;font-style:italic">// aSize is now 5
+</span></code></pre></div>
+
+<p style="text-align: justify;">
+  The <code>constexpr</code> keyword allow us to directly initialize static array sizes with the function&#8217;s result, while <code>noexcept</code> gives the compiler a chance for additional optimization. While this solution doesn&#8217;t help much when dealing with dynamically allocated arrays, it&#8217;s fun to know that C++ templates, usually regarded as code obfuscators, can make programming cleaner in certain applications.
+</p>
+	
+			
+
+			
+
+			
+				<div class="paging">
+					<span class="paging-label">More Reading</span>
+					
+					<div class="paging-newer">
+						<span class="dark-red">Newer</span><span class="decorative-marker">//</span>
+						<a class="paging-link" href="/posts/2015-05-09-hazumi-a-game-that-came-to-be-against-all-odds/">&#34;Hazumi&#34; - a game that came to be against all odds</a>
+		            </div>
+		            
+
+					
+                    
+					<div class="paging-older">
+						<span class="dark-red">Older</span><span class="decorative-marker">//</span>
+			            <a class="paging-link" href="/posts/2015-05-05-using-c-unions-in-high-level-code/">Using C unions in high level code</a>
+		            </div>
+                    
+		            
+	            </div>
+            
+          </section>
+          
+          	
+          
+        
+      <div class="footer">
+	<hr class="thin" />
+	<div class="pure-menu pure-menu-horizontal pure-menu-open">
+		<ul class="footer-menu">
+		
+		</ul>
+	</div>
+
+	<p>&copy; 2020. All rights reserved.</p>
+</div>
+    </div>
+  </div>
+	
+
+	
+
+  
+</body>
+</html>

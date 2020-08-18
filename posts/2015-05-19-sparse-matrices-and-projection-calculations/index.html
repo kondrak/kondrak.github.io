@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-us">
+<head>
+  <title>
+    Sparse matrices and projection calculations // Krzysztof Kondrak&#39;s website
+  </title>
+
+  <link href="http://gmpg.org/xfn/11" rel="profile">
+<meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+
+<meta name="description" content="">
+<meta name="keywords" content="">
+<meta name="author" content="kondrak">
+<meta name="generator" content="Hugo 0.55.1" />
+
+  <meta property="og:title" content="Sparse matrices and projection calculations" />
+<meta property="og:description" content="" />
+<meta property="og:type" content="website" />
+<meta property="og:locale" content="en_US" />
+<meta property="og:url" content="https://kondrak.github.io/posts/2015-05-19-sparse-matrices-and-projection-calculations/" />
+
+
+  
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/pure/0.5.0/base-min.css">
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/pure/0.5.0/pure-min.css">
+  
+  
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/pure/0.5.0/grids-responsive-min.css">
+  
+  
+
+  <link rel="stylesheet" href="https://kondrak.github.io//css/redlounge.css">
+  <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet">
+  <link href='//fonts.googleapis.com/css?family=Raleway:400,200,100,700,300,500,600,800' rel='stylesheet' type='text/css'>
+  <link href='//fonts.googleapis.com/css?family=Libre+Baskerville:400,700,400italic' rel='stylesheet' type='text/css'>
+
+  
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/touch-icon-144-precomposed.png">
+  <link rel="shortcut icon" type="image/x-icon" href="/img/favicon.png">
+
+  
+  <link href="" rel="alternate" type="application/rss+xml" title="Krzysztof Kondrak&#39;s website" />
+
+    
+  
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.7/styles/tomorrow-night-bright.min.css">
+  
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.7/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
+
+
+  
+
+  
+
+  
+
+  
+</head>
+
+<body>
+	
+
+	<div id="layout" class="pure-g">
+    <div class="sidebar pure-u-1 pure-u-md-1-4">
+  <div class="header">
+    
+
+	
+
+    <h1 class="brand-title">Krzysztof Kondrak</h1>
+    <h2 class="brand-tagline">game tech programmer</h2>
+
+    <nav class="nav">
+      <ul class="nav-list">
+        <li class="nav-item"><span class="nav-item-separator">//</span><a href="https://kondrak.github.io/">Home</a></li>
+        
+          <li class="nav-item"><span class="nav-item-separator">//</span><a href="/about">About me</a></li>
+        
+          <li class="nav-item"><span class="nav-item-separator">//</span><a href="/projects">Projects</a></li>
+        
+      </ul>
+    </nav>
+
+    
+    <div class="social-buttons">
+      
+        
+          
+          
+             <a href="https://github.com/kondrak"  target="_blank"> <i class='fa fa-github fa-lg'></i></a>
+          
+        
+      
+        
+          
+          
+             <a href="http://www.linkedin.com/in/kondrak"  target="_blank"> <i class='fa fa-linkedin fa-lg'></i></a>
+          
+        
+      
+        
+          
+          
+             <a href="https://www.shadertoy.com/user/k_kondrak"  target="_blank"> <i class='fa fa-cube fa-lg'></i></a>
+          
+        
+      
+        
+          
+          
+             <a href="http://www.twitter.com/k_kondrak"  target="_blank"> <i class='fa fa-twitter fa-lg'></i></a>
+          
+        
+      
+        
+          
+          
+             <a href="https://www.youtube.com/channel/UC6gj_jbYQG1oVdqQv4EV0pw"  target="_blank"> <i class='fa fa-youtube-play fa-lg'></i></a>
+          
+        
+      
+        
+          
+          
+             <a href="/links" > <i class='fa fa-link fa-lg'></i></a>
+          
+        
+      
+      
+    </div>
+    
+
+  </div>
+</div>
+
+	
+	
+
+    <div class="content pure-u-1 pure-u-md-3-4">
+		<a name="top"></a>
+		
+
+		
+			
+	    
+  		<section class="post">
+            <h1 class="post-title">
+              <a href="/posts/2015-05-19-sparse-matrices-and-projection-calculations/">Sparse matrices and projection calculations</a>
+            </h1>
+            <h3 class="post-subtitle">
+            	
+            </h3>
+            
+            	<span class="post-date">
+                	<span class="post-date-day"><sup>19</sup></span><span class="post-date-separator">/</span><span class="post-date-month">May</span> <span class="post-date-year">2015</span>
+            	</span>
+            	
+            
+            	
+            		<span class="post-author-single">By <a class="post-author"  target="">kondrak</a></span>
+            		
+
+
+
+
+            	
+            
+
+			
+			
+				<div class="post-categories">
+				
+					<a class="post-category post-category-c&#43;&#43;" href="https://kondrak.github.io//categories/c&#43;&#43;">C&#43;&#43;</a>
+				
+					<a class="post-category post-category-programming" href="https://kondrak.github.io//categories/programming">Programming</a>
+				
+				</div>
+			
+
+			
+
+			
+
+            <p style="text-align: justify;">
+  If you ever worked with high performance 3D applications you know that every cycle counts. One of the issues programmers try to solve is reducing computation time when dealing with matrices and vectors, especially if calculations are done very frequently each frame. Here&#8217;s a little trick that can save you some memory and cycle counts when determining projection. Consider a typical projection matrix P:
+</p>
+
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cxx" data-lang="cxx">[ A, <span style="color:#f60">0</span>, <span style="color:#f60">0</span>, <span style="color:#f60">0</span> ]
+[ <span style="color:#f60">0</span>, B, <span style="color:#f60">0</span>, <span style="color:#f60">0</span> ]
+[ <span style="color:#f60">0</span>, <span style="color:#f60">0</span>, C, D ]
+[ <span style="color:#f60">0</span>, <span style="color:#f60">0</span>, E, <span style="color:#f60">0</span> ]
+</code></pre></div>
+
+<p style="text-align: justify;">
+  Projection is essentially just a linear transformation in homogenous coordinate space. If vertex coordinates are already expressed in view space as a 4-element vector (Vv):
+</p>
+
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cxx" data-lang="cxx">Vv <span style="color:#555">=</span> [vx, vy, vz, <span style="color:#f60">1</span>]
+</code></pre></div>
+
+<p>then getting clip space homogenous coordinates (Vh) is simply:</p>
+
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cxx" data-lang="cxx">Vh <span style="color:#555">=</span> Vv <span style="color:#555">*</span> P <span style="color:#555">=</span> [ a, b, c, w ]
+</code></pre></div>
+
+<p style="text-align: justify;">
+  We then divide <strong><em>a</em></strong>, <strong><em>b</em></strong> and <strong><em>c</em></strong> by <strong><em>w</em></strong> to get the regular 3D coordinates. There&#8217;s a small optimization that can be done here, provided that:
+</p>
+
+<p style="text-align: justify;">
+  1. Most elements of object&#8217;s transformation/modelview matrix are 0 (this is called a sparse matrix). If this is the case, performing additional projection transformation using matrix multiplication is unnecessary and creates computation and memory overhead.<br /> 2. The sparse transformation/modelview matrix has it&#8217;s last row equal to [ 0, 0, 0, 1 ].<br /> 3. The object&#8217;s transformation/modelview matrix is non-projective (we wouldn&#8217;t have to bother otherwise!).
+</p>
+
+<p style="text-align: justify;">
+  If condition 1 is met, then we only need 4 elements to determine projection (instead of a matrix), as long as we&#8217;re dividing by a positive constant: [ A/D, B/D, C/D, E/D ].
+</p>
+
+<p style="text-align: justify;">
+  Condition 2 implicates that for proper model -> view vertex transformation we only need three 4-element vectors instead of a 4&#215;4 modelview matrix. We can then get the view space coordinates of a vertex by performing dot products. Below is a simplified vertex shader code of how the optimization can be applied (in actual codebase I used it to reduce sizes of bone animation matrices, so the full code is slightly more complex):
+</p>
+
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-glsl" data-lang="glsl"><span style="color:#099">#version 100</span>
+<span style="color:#069;font-weight:bold">attribute</span> <span style="color:#069;font-weight:bold">highp</span> <span style="color:#069;font-weight:bold">vec3</span> inVertexPos;
+<span style="color:#069;font-weight:bold">uniform</span>   <span style="color:#069;font-weight:bold">highp</span> <span style="color:#069;font-weight:bold">vec4</span> inModelView[<span style="color:#f60">3</span>]; <span style="color:#09f;font-style:italic">// first three rows of modelview matrix</span>
+<span style="color:#069;font-weight:bold">uniform</span>   <span style="color:#069;font-weight:bold">highp</span> <span style="color:#069;font-weight:bold">vec4</span> inProjection;   <span style="color:#09f;font-style:italic">// projection matrix elements expressed as: [A/D, B/D, C/D, E/D]</span>
+
+<span style="color:#069;font-weight:bold">void</span> main()
+{
+    <span style="color:#09f;font-style:italic">// transform from model space to view space</span>
+    <span style="color:#069;font-weight:bold">highp</span> <span style="color:#069;font-weight:bold">vec3</span> viewSpacePos;
+    viewSpacePos.x <span style="color:#555">=</span> dot(inModelView[<span style="color:#f60">0</span>], <span style="color:#069;font-weight:bold">vec4</span>(inVertexPos, <span style="color:#f60">1.0</span>));
+    viewSpacePos.y <span style="color:#555">=</span> dot(inModelView[<span style="color:#f60">1</span>], <span style="color:#069;font-weight:bold">vec4</span>(inVertexPos, <span style="color:#f60">1.0</span>));
+    viewSpacePos.z <span style="color:#555">=</span> dot(inModelView[<span style="color:#f60">2</span>], <span style="color:#069;font-weight:bold">vec4</span>(inVertexPos, <span style="color:#f60">1.0</span>)); 
+
+    <span style="color:#09f;font-style:italic">// calculations using view space vertex position</span>
+    (...)
+
+    <span style="color:#09f;font-style:italic">// transform from view space to clip space</span>
+    gl_Position <span style="color:#555">=</span> viewSpacePos.xyzz <span style="color:#555">*</span> inProjection;
+    gl_Position.z <span style="color:#555">+=</span> <span style="color:#f60">1.0</span>;
+}</code></pre></div>
+
+<p style="text-align: justify;">
+  Note that depending on how you define your projection matrix in your codebase, it might be necessary to flip signs, ie.:
+</p>
+
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-glsl" data-lang="glsl">(...)
+
+<span style="color:#069;font-weight:bold">uniform</span>   <span style="color:#069;font-weight:bold">highp</span> <span style="color:#069;font-weight:bold">vec4</span> inProjection; <span style="color:#09f;font-style:italic">// projection matrix elements expressed as: [-A/D, -B/D, -C/D, -E/D]</span>
+<span style="color:#069;font-weight:bold">void</span> main()
+{
+    (...)
+    gl_Position.z <span style="color:#555">-=</span> <span style="color:#f60">1.0</span>;
+}</code></pre></div>
+
+<p style="text-align: justify;">
+  This neat trick, as well as many others came from <a href="http://imgtec.eetrend.com/sites/imgtec.eetrend.com/files/download/201402/1462-2116-powervrdexingnengjianyi.pdf">PowerVR Performance Recommendations</a> which is an excellent source for mobile graphics developers.
+</p>
+	
+			
+
+			
+
+			
+				<div class="paging">
+					<span class="paging-label">More Reading</span>
+					
+					<div class="paging-newer">
+						<span class="dark-red">Newer</span><span class="decorative-marker">//</span>
+						<a class="paging-link" href="/posts/2015-07-10-oculus-rift-dk2-sdk-0-6-0-1-and-opengl-es-2-0/">Oculus Rift DK2 (SDK 0.6.0.1) and OpenGL ES 2.0</a>
+		            </div>
+		            
+
+					
+                    
+					<div class="paging-older">
+						<span class="dark-red">Older</span><span class="decorative-marker">//</span>
+			            <a class="paging-link" href="/posts/2015-05-15-game-engine-architecture-by-jason-gregory/">Game Engine Architecture by Jason Gregory</a>
+		            </div>
+                    
+		            
+	            </div>
+            
+          </section>
+          
+          	
+          
+        
+      <div class="footer">
+	<hr class="thin" />
+	<div class="pure-menu pure-menu-horizontal pure-menu-open">
+		<ul class="footer-menu">
+		
+		</ul>
+	</div>
+
+	<p>&copy; 2020. All rights reserved.</p>
+</div>
+    </div>
+  </div>
+	
+
+	
+
+  
+</body>
+</html>

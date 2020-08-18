@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>VR on Krzysztof Kondrak&#39;s website</title>
+    <link>https://kondrak.github.io/categories/vr/</link>
+    <description>Recent content in VR on Krzysztof Kondrak&#39;s website</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sat, 21 May 2016 15:01:38 +0000</lastBuildDate>
+    
+	<atom:link href="https://kondrak.github.io/categories/vr/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Rendering in VR using OpenGL instancing</title>
+      <link>https://kondrak.github.io/posts/2016-05-21-rendering-in-vr-using-opengl-instancing/</link>
+      <pubDate>Sat, 21 May 2016 15:01:38 +0000</pubDate>
+      
+      <guid>https://kondrak.github.io/posts/2016-05-21-rendering-in-vr-using-opengl-instancing/</guid>
+      <description>&lt;p style=&#34;text-align: justify;&#34;&gt;
+  TL;DR; &lt;a href=&#34;https://github.com/kondrak/oculusvr_samples/tree/master/InstancedRender&#34;&gt;download code sample from GitHub!&lt;/a&gt;
+&lt;/p&gt;
+
+&lt;p style=&#34;text-align: justify;&#34;&gt;
+  In all of my VR applications thus far, I&amp;#8217;ve been using separate eye buffers for rendering, seeing it as a convenience. Recently, however, I started wondering how I could improve drawing times and reduce unnecessary overhead, so my attention turned toward single render target solution and how it could take advantage of instanced rendering. Here&amp;#8217;s a short summary of my results.
+&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Why I think Oculus wins over Vive... for now.</title>
+      <link>https://kondrak.github.io/posts/2016-05-14-why-i-think-oculus-wins-over-vive-for-now/</link>
+      <pubDate>Sat, 14 May 2016 00:42:06 +0000</pubDate>
+      
+      <guid>https://kondrak.github.io/posts/2016-05-14-why-i-think-oculus-wins-over-vive-for-now/</guid>
+      <description>&lt;p style=&#34;text-align: justify;&#34;&gt;
+  Disclaimer: The following is based on experiences with early releases of hardware and software for both Oculus and Vive, so your mileage may vary!
+&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Oculus Rift DK2 (SDK 0.6.0.1) and OpenGL ES 2.0</title>
+      <link>https://kondrak.github.io/posts/2015-07-10-oculus-rift-dk2-sdk-0-6-0-1-and-opengl-es-2-0/</link>
+      <pubDate>Fri, 10 Jul 2015 23:39:31 +0000</pubDate>
+      
+      <guid>https://kondrak.github.io/posts/2015-07-10-oculus-rift-dk2-sdk-0-6-0-1-and-opengl-es-2-0/</guid>
+      <description>&lt;p style=&#34;text-align: justify;&#34;&gt;
+  Recently I&amp;#8217;ve been working on a VR port for &lt;a href=&#34;https://www.youtube.com/watch?v=j34I7lRfYck&#34;&gt;Rage of the Gladiator&lt;/a&gt;, a game that was originally released for mobile devices and used OpenGL ES 2.0 as the rendering backend. This seemingly simple task soon created several fun problems resulting in limitation of this graphics SDK in relation to &amp;#8220;full-fledged&amp;#8221; OpenGL. My initial idea was to rewrite the entire renderer but very soon this approach turned out to be a dead end (suffice to say, the original codebase was slightly convoluted), so I decided to stick with the original implementation. To run an OpenGL ES application on a PC I used the &lt;a href=&#34;http://community.imgtec.com/developers/powervr/graphics-sdk/&#34;&gt;PowerVR SDK&lt;/a&gt; which is an excellent emulation of mobile rendering environment on a desktop computer.
+&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

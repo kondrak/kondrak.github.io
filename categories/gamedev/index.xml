@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Gamedev on Krzysztof Kondrak&#39;s website</title>
+    <link>https://kondrak.github.io/categories/gamedev/</link>
+    <description>Recent content in Gamedev on Krzysztof Kondrak&#39;s website</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sun, 11 Dec 2016 18:41:28 +0000</lastBuildDate>
+    
+	<atom:link href="https://kondrak.github.io/categories/gamedev/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Coincidence, luck and getting my first job in gamedev</title>
+      <link>https://kondrak.github.io/posts/2016-12-11-coincidence-luck-and-getting-my-first-job-in-gamedev/</link>
+      <pubDate>Sun, 11 Dec 2016 18:41:28 +0000</pubDate>
+      
+      <guid>https://kondrak.github.io/posts/2016-12-11-coincidence-luck-and-getting-my-first-job-in-gamedev/</guid>
+      <description>&lt;p style=&#34;text-align: justify;&#34;&gt;
+  I recently hit a milestone in my professional career &amp;#8211; it&amp;#8217;s been exactly 9 years since I made a move into games industry. This may not sound like something profound or significant but the circumstances of my transition from regular software development were rather interesting. I think it&amp;#8217;s fair for me to say I was quite lucky and found myself in the right place at the right time. Today I want to share something I always bring up when talking to students or people who want to get a job in games REALLY bad but don&amp;#8217;t know who to ask or how to start. This is the story of how I unintentionally and accidentally started making in games.
+&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Oculus Rift DK2 (SDK 0.6.0.1) and OpenGL ES 2.0</title>
+      <link>https://kondrak.github.io/posts/2015-07-10-oculus-rift-dk2-sdk-0-6-0-1-and-opengl-es-2-0/</link>
+      <pubDate>Fri, 10 Jul 2015 23:39:31 +0000</pubDate>
+      
+      <guid>https://kondrak.github.io/posts/2015-07-10-oculus-rift-dk2-sdk-0-6-0-1-and-opengl-es-2-0/</guid>
+      <description>&lt;p style=&#34;text-align: justify;&#34;&gt;
+  Recently I&amp;#8217;ve been working on a VR port for &lt;a href=&#34;https://www.youtube.com/watch?v=j34I7lRfYck&#34;&gt;Rage of the Gladiator&lt;/a&gt;, a game that was originally released for mobile devices and used OpenGL ES 2.0 as the rendering backend. This seemingly simple task soon created several fun problems resulting in limitation of this graphics SDK in relation to &amp;#8220;full-fledged&amp;#8221; OpenGL. My initial idea was to rewrite the entire renderer but very soon this approach turned out to be a dead end (suffice to say, the original codebase was slightly convoluted), so I decided to stick with the original implementation. To run an OpenGL ES application on a PC I used the &lt;a href=&#34;http://community.imgtec.com/developers/powervr/graphics-sdk/&#34;&gt;PowerVR SDK&lt;/a&gt; which is an excellent emulation of mobile rendering environment on a desktop computer.
+&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Game Engine Architecture by Jason Gregory</title>
+      <link>https://kondrak.github.io/posts/2015-05-15-game-engine-architecture-by-jason-gregory/</link>
+      <pubDate>Fri, 15 May 2015 22:45:11 +0000</pubDate>
+      
+      <guid>https://kondrak.github.io/posts/2015-05-15-game-engine-architecture-by-jason-gregory/</guid>
+      <description>&lt;p style=&#34;text-align: justify;&#34;&gt;
+  &lt;a href=&#34;http://www.amazon.com/Engine-Architecture-Second-Jason-Gregory/dp/1466560010/ref=sr_1_1?ie=UTF8&amp;qid=1431611182&amp;sr=8-1&amp;keywords=game+engine+architecture&#34;&gt;&lt;img src=&#34;http://ecx.images-amazon.com/images/I/51XoHf5t-zL._AA160_.jpg&#34; alt=&#34;&#34; align=&#34;left&#34; /&gt;&lt;/a&gt;This is the book I&amp;#8217;ve been wanting to read for a long time. With close to 1000 pages of pure content, you get a heavily condensed compendium on good, bad and typical practices in game engine design. What&amp;#8217;s great about this book is that even though it reads like something straight out of a university library, all the information is based on the author&amp;#8217;s practical experience. This means that there&amp;#8217;s relatively very little &amp;#8220;dry&amp;#8221; theory in favor of analysis of real life applications and how each component may perform on current gaming hardware. The latter was something I found especially interesting, since there&amp;#8217;s very few articles out there that give you a decent comparison of the XBox or PS4 hardware against a desktop PC. If you never worked in AAA gamedev, you will definitely learn a lot. That said, the book is clearly aimed at people with various programming or industry experience. If you already shipped a title, you may find some parts of the book rather obvious. Nevertheless even having prior knowledge of the covered topics didn&amp;#8217;t prevent me from catching some interesting quirks, making going through the entire thing worthwhile.
+&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>&#34;Hazumi&#34; - a game that came to be against all odds</title>
+      <link>https://kondrak.github.io/posts/2015-05-09-hazumi-a-game-that-came-to-be-against-all-odds/</link>
+      <pubDate>Sat, 09 May 2015 20:32:45 +0000</pubDate>
+      
+      <guid>https://kondrak.github.io/posts/2015-05-09-hazumi-a-game-that-came-to-be-against-all-odds/</guid>
+      <description>&lt;p style=&#34;text-align: justify;&#34;&gt;
+  December 2014 and January 2015 mark the dates when my simple puzzle game &amp;#8220;Hazumi&amp;#8221; came out for the Nintendo 3DS. It&amp;#8217;s been almost 6 months and only recently I started feeling the whole production pressure wearing off, so I decided to share my story with other inspiring game developers out there in hopes that they don&amp;#8217;t repeat the mistakes I made. You won&amp;#8217;t find any marketing tips here nor how to interact with the social media to promote your work &amp;#8211; there&amp;#8217;s a ton of a lot better articles on that topics out there. What I could seldom find was sort of a personal confession from the developers on how they felt during the development and what they had to go through over the course of their work which should be as important in order to maintain mental health. I&amp;#8217;m writing this in hopes that someone benefits from my experiences.
+&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

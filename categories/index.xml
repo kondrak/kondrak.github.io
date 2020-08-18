@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Categories on Krzysztof Kondrak&#39;s website</title>
+    <link>https://kondrak.github.io/categories/</link>
+    <description>Recent content in Categories on Krzysztof Kondrak&#39;s website</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sun, 11 Dec 2016 18:41:28 +0000</lastBuildDate>
+    
+	<atom:link href="https://kondrak.github.io/categories/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Gamedev</title>
+      <link>https://kondrak.github.io/categories/gamedev/</link>
+      <pubDate>Sun, 11 Dec 2016 18:41:28 +0000</pubDate>
+      
+      <guid>https://kondrak.github.io/categories/gamedev/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Other</title>
+      <link>https://kondrak.github.io/categories/other/</link>
+      <pubDate>Sun, 11 Dec 2016 18:41:28 +0000</pubDate>
+      
+      <guid>https://kondrak.github.io/categories/other/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Programming</title>
+      <link>https://kondrak.github.io/categories/programming/</link>
+      <pubDate>Mon, 31 Oct 2016 21:33:26 +0000</pubDate>
+      
+      <guid>https://kondrak.github.io/categories/programming/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>C&#43;&#43;</title>
+      <link>https://kondrak.github.io/categories/c&#43;&#43;/</link>
+      <pubDate>Mon, 22 Aug 2016 22:40:24 +0000</pubDate>
+      
+      <guid>https://kondrak.github.io/categories/c&#43;&#43;/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>VR</title>
+      <link>https://kondrak.github.io/categories/vr/</link>
+      <pubDate>Sat, 21 May 2016 15:01:38 +0000</pubDate>
+      
+      <guid>https://kondrak.github.io/categories/vr/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>C64</title>
+      <link>https://kondrak.github.io/categories/c64/</link>
+      <pubDate>Sat, 19 Mar 2016 15:36:17 +0000</pubDate>
+      
+      <guid>https://kondrak.github.io/categories/c64/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Rust</title>
+      <link>https://kondrak.github.io/categories/rust/</link>
+      <pubDate>Sat, 19 Mar 2016 15:36:17 +0000</pubDate>
+      
+      <guid>https://kondrak.github.io/categories/rust/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Books</title>
+      <link>https://kondrak.github.io/categories/books/</link>
+      <pubDate>Fri, 15 May 2015 22:45:11 +0000</pubDate>
+      
+      <guid>https://kondrak.github.io/categories/books/</guid>
+      <description></description>
+    </item>
+    
+  </channel>
+</rss>

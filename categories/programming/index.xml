@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Programming on Krzysztof Kondrak&#39;s website</title>
+    <link>https://kondrak.github.io/categories/programming/</link>
+    <description>Recent content in Programming on Krzysztof Kondrak&#39;s website</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Mon, 31 Oct 2016 21:33:26 +0000</lastBuildDate>
+    
+	<atom:link href="https://kondrak.github.io/categories/programming/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Introvert&#39;s survival guide to attending industry events</title>
+      <link>https://kondrak.github.io/posts/2016-10-31-introverts-survival-guide-to-attending-industry-events/</link>
+      <pubDate>Mon, 31 Oct 2016 21:33:26 +0000</pubDate>
+      
+      <guid>https://kondrak.github.io/posts/2016-10-31-introverts-survival-guide-to-attending-industry-events/</guid>
+      <description>Disclaimer: this post is written based on my recent experiences and things that worked for me personally &amp;#8211; your milage may vary! I&amp;#8217;ve been an introvert ever since I can remember. If you&amp;#8217;re anything like me, big social events probably make you feel anxious, sometimes to the point of wanting to cancel your plans and just hide somewhere out of the public view. This was one of the reasons I felt on the fence about attending large community events, even the ones focusing around my work and interests.</description>
+    </item>
+    
+    <item>
+      <title>std::vector or C-style array?</title>
+      <link>https://kondrak.github.io/posts/2016-08-22-stdvector-or-c-style-array/</link>
+      <pubDate>Mon, 22 Aug 2016 22:40:24 +0000</pubDate>
+      
+      <guid>https://kondrak.github.io/posts/2016-08-22-stdvector-or-c-style-array/</guid>
+      <description>&lt;p style=&#34;text-align: justify;&#34;&gt;
+  I recently overheard a rather interesting statement concerning programming and thought I&amp;#8217;d share it with the world via a Tweet and a small counter example. This started an interesting discussion:
+&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Writing a raytracer in DOS</title>
+      <link>https://kondrak.github.io/posts/2016-08-12-writing-a-raytracer-in-dos/</link>
+      <pubDate>Fri, 12 Aug 2016 22:19:46 +0000</pubDate>
+      
+      <guid>https://kondrak.github.io/posts/2016-08-12-writing-a-raytracer-in-dos/</guid>
+      <description>&lt;p style=&#34;text-align: justify;&#34;&gt;
+  TL;DR; It&amp;#8217;s not as hard as people think! &lt;a href=&#34;https://github.com/kondrak/dostracer&#34;&gt;Full source code on GitHub.&lt;/a&gt;
+&lt;/p&gt;
+
+&lt;p style=&#34;text-align: justify;&#34;&gt;
+  &lt;strong&gt;Disclaimer:&lt;/strong&gt; this is not a step-by-step introduction to raytracing, rather the fundamental components I needed to get it working in DOS. Sorry! 🙂 Check out the GitHub link if you&amp;#8217;d rather jump straight into implementation details. And now, with that out of the way...
+&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>So you want to be a programmer?</title>
+      <link>https://kondrak.github.io/posts/2016-06-14-so-you-want-to-be-a-programmer/</link>
+      <pubDate>Tue, 14 Jun 2016 21:10:30 +0000</pubDate>
+      
+      <guid>https://kondrak.github.io/posts/2016-06-14-so-you-want-to-be-a-programmer/</guid>
+      <description>&lt;p style=&#34;text-align: justify;&#34;&gt;
+  I recently spoke to a couple high-school students who were eager to learn how to become programmers. They wanted to jump into it without any indication on where or how to start, which made me realize how difficult it can be for people without any prior experience. This inspired me to write this post and share my thoughts on what any programmer initiate should know and realize. This is not a programming tutorial by any means, just a set of guidelines which I would follow myself, knowing what I know today.
+&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Rendering in VR using OpenGL instancing</title>
+      <link>https://kondrak.github.io/posts/2016-05-21-rendering-in-vr-using-opengl-instancing/</link>
+      <pubDate>Sat, 21 May 2016 15:01:38 +0000</pubDate>
+      
+      <guid>https://kondrak.github.io/posts/2016-05-21-rendering-in-vr-using-opengl-instancing/</guid>
+      <description>&lt;p style=&#34;text-align: justify;&#34;&gt;
+  TL;DR; &lt;a href=&#34;https://github.com/kondrak/oculusvr_samples/tree/master/InstancedRender&#34;&gt;download code sample from GitHub!&lt;/a&gt;
+&lt;/p&gt;
+
+&lt;p style=&#34;text-align: justify;&#34;&gt;
+  In all of my VR applications thus far, I&amp;#8217;ve been using separate eye buffers for rendering, seeing it as a convenience. Recently, however, I started wondering how I could improve drawing times and reduce unnecessary overhead, so my attention turned toward single render target solution and how it could take advantage of instanced rendering. Here&amp;#8217;s a short summary of my results.
+&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>My experiences going Rust from C&#43;&#43;</title>
+      <link>https://kondrak.github.io/posts/2016-03-19-my-experiences-going-rust-from-c/</link>
+      <pubDate>Sat, 19 Mar 2016 15:36:17 +0000</pubDate>
+      
+      <guid>https://kondrak.github.io/posts/2016-03-19-my-experiences-going-rust-from-c/</guid>
+      <description>&lt;p style=&#34;text-align: justify;&#34;&gt;
+  I&amp;#8217;ve been experimenting with &lt;a href=&#34;https://www.rust-lang.org/&#34;&gt;Rust&lt;/a&gt; for over 6 months now. Most of that time I spent playing around with a &lt;a href=&#34;https://github.com/kondrak/rust64&#34;&gt;C64 emulator&lt;/a&gt; I wrote as a first project and initially I thought about creating a series on that topic. However, since there&amp;#8217;s so much reading material on the Internet about it already, I figured maybe it would be a good idea to write an intro for C/C++ programmers on Rust. But then I found &lt;a href=&#34;http://science.raphael.poss.name/rust-for-functional-programmers.html&#34;&gt;this article&lt;/a&gt;, so I decided to take a completely different route.
+&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>The many faces of perspective projection matrix</title>
+      <link>https://kondrak.github.io/posts/2015-07-14-the-many-faces-of-perspective-projection-matrix/</link>
+      <pubDate>Tue, 14 Jul 2015 23:27:24 +0000</pubDate>
+      
+      <guid>https://kondrak.github.io/posts/2015-07-14-the-many-faces-of-perspective-projection-matrix/</guid>
+      <description>&lt;p style=&#34;text-align: justify;&#34;&gt;
+  One of the first things I stumbled upon in the beginning of my adventure with graphics programming were types of matrices and view spaces. I remember it took me a while to wrap my head around different naming conventions (is clip space the same as screen space or...?) and how each and every projection worked from theoretical standpoint. With Internet around it&amp;#8217;s so much easier to figure things out but there&amp;#8217;s one thing that I remember baffling me: the relation between different forms of perspective projection matrix.
+&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Oculus Rift DK2 (SDK 0.6.0.1) and OpenGL ES 2.0</title>
+      <link>https://kondrak.github.io/posts/2015-07-10-oculus-rift-dk2-sdk-0-6-0-1-and-opengl-es-2-0/</link>
+      <pubDate>Fri, 10 Jul 2015 23:39:31 +0000</pubDate>
+      
+      <guid>https://kondrak.github.io/posts/2015-07-10-oculus-rift-dk2-sdk-0-6-0-1-and-opengl-es-2-0/</guid>
+      <description>&lt;p style=&#34;text-align: justify;&#34;&gt;
+  Recently I&amp;#8217;ve been working on a VR port for &lt;a href=&#34;https://www.youtube.com/watch?v=j34I7lRfYck&#34;&gt;Rage of the Gladiator&lt;/a&gt;, a game that was originally released for mobile devices and used OpenGL ES 2.0 as the rendering backend. This seemingly simple task soon created several fun problems resulting in limitation of this graphics SDK in relation to &amp;#8220;full-fledged&amp;#8221; OpenGL. My initial idea was to rewrite the entire renderer but very soon this approach turned out to be a dead end (suffice to say, the original codebase was slightly convoluted), so I decided to stick with the original implementation. To run an OpenGL ES application on a PC I used the &lt;a href=&#34;http://community.imgtec.com/developers/powervr/graphics-sdk/&#34;&gt;PowerVR SDK&lt;/a&gt; which is an excellent emulation of mobile rendering environment on a desktop computer.
+&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Sparse matrices and projection calculations</title>
+      <link>https://kondrak.github.io/posts/2015-05-19-sparse-matrices-and-projection-calculations/</link>
+      <pubDate>Tue, 19 May 2015 14:43:55 +0000</pubDate>
+      
+      <guid>https://kondrak.github.io/posts/2015-05-19-sparse-matrices-and-projection-calculations/</guid>
+      <description>&lt;p style=&#34;text-align: justify;&#34;&gt;
+  If you ever worked with high performance 3D applications you know that every cycle counts. One of the issues programmers try to solve is reducing computation time when dealing with matrices and vectors, especially if calculations are done very frequently each frame. Here&amp;#8217;s a little trick that can save you some memory and cycle counts when determining projection. Consider a typical projection matrix P:
+&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Templates and C-style array size</title>
+      <link>https://kondrak.github.io/posts/2015-05-05-templates-and-c-style-array-size/</link>
+      <pubDate>Tue, 05 May 2015 14:47:40 +0000</pubDate>
+      
+      <guid>https://kondrak.github.io/posts/2015-05-05-templates-and-c-style-array-size/</guid>
+      <description>&lt;p style=&#34;text-align: justify;&#34;&gt;
+  If you&amp;#8217;re dealing with templates a lot in your C++ code, then you&amp;#8217;re likely familiar with how template type deduction works. It&amp;#8217;s an extensive topic which I&amp;#8217;m not going to cover in detail here but while reading &lt;a href=&#34;https://kondrak.github.io/programming/effective-modern-c-by-scott-meyers/&#34;&gt;this book&lt;/a&gt; I found one aspect of it quite useful in my work.
+&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Using C unions in high level code</title>
+      <link>https://kondrak.github.io/posts/2015-05-05-using-c-unions-in-high-level-code/</link>
+      <pubDate>Tue, 05 May 2015 12:08:59 +0000</pubDate>
+      
+      <guid>https://kondrak.github.io/posts/2015-05-05-using-c-unions-in-high-level-code/</guid>
+      <description>&lt;p style=&#34;text-align: justify;&#34;&gt;
+  I always considered the C &lt;code&gt;union&lt;/code&gt; to be highly underappreciated ugly-child that nobody cares about in high level programming. Not really meant for persistent storage (specific cases excluded), it&amp;#8217;s difficult to see any good use for such constructs, especially for beginner programmers. Unless you deal with compilers or close to the metal development, chances are you have barely used or spotted a &lt;code&gt;union&lt;/code&gt; in an application&amp;#8217;s runtime code. But unions can come in handy, sometimes in quite unexpected ways. I often forget about their applications, so hopefully this post will help me remember in the future.
+&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Finding an alternative to std::bitset</title>
+      <link>https://kondrak.github.io/posts/2015-05-04-finding-an-alternative-to-stdbitset/</link>
+      <pubDate>Mon, 04 May 2015 23:25:44 +0000</pubDate>
+      
+      <guid>https://kondrak.github.io/posts/2015-05-04-finding-an-alternative-to-stdbitset/</guid>
+      <description>&lt;p style=&#34;text-align: justify;&#34;&gt;
+  In one of my games I ran into a seemingly simple problem: saving a puzzle state (ie. completed/not completed) for each of 105 available levels. Naturally first thing that came to mind was a static &lt;code&gt;bool&lt;/code&gt; array with required amount of entries &amp;#8211; both easy to maintain and write to disk without hassle:
+&lt;/p&gt;</description>
+    </item>
+    
+    <item>
+      <title>Effective Modern C&#43;&#43; by Scott Meyers</title>
+      <link>https://kondrak.github.io/posts/2015-05-04-effective-modern-c-by-scott-meyers/</link>
+      <pubDate>Mon, 04 May 2015 11:32:29 +0000</pubDate>
+      
+      <guid>https://kondrak.github.io/posts/2015-05-04-effective-modern-c-by-scott-meyers/</guid>
+      <description>&lt;p style=&#34;text-align: justify;&#34;&gt;
+  &lt;a href=&#34;http://www.amazon.com/Effective-Modern-Specific-Ways-Improve/dp/1491903996/ref=sr_1_1?ie=UTF8&amp;qid=1430727323&amp;sr=8-1&amp;keywords=effective+modern+c%2B%2B&#34;&gt;&lt;img src=&#34;http://ecx.images-amazon.com/images/I/515MGXnS72L._AA160_.jpg&#34; alt=&#34;&#34; align=&#34;left&#34; /&gt;&lt;/a&gt;If you&amp;#8217;ve been on the C++ bandwagon for a while you probably heard about Scott Meyers and his &amp;#8220;Effective...&amp;#8221; book series. While I haven&amp;#8217;t read every single one of them, the ones I did check out always came packed with highly compressed information on how to become a more productive C++ programmer. &amp;#8220;Effective Modern C++&amp;#8221; is, thankfully, no exception.
+&lt;/p&gt;</description>
+    </item>
+    
+  </channel>
+</rss>

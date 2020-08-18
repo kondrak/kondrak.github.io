@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-us">
+<head>
+  <title>
+    Rendering in VR using OpenGL instancing // Krzysztof Kondrak&#39;s website
+  </title>
+
+  <link href="http://gmpg.org/xfn/11" rel="profile">
+<meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+
+<meta name="description" content="">
+<meta name="keywords" content="">
+<meta name="author" content="kondrak">
+<meta name="generator" content="Hugo 0.55.1" />
+
+  <meta property="og:title" content="Rendering in VR using OpenGL instancing" />
+<meta property="og:description" content="" />
+<meta property="og:type" content="website" />
+<meta property="og:locale" content="en_US" />
+<meta property="og:url" content="https://kondrak.github.io/posts/2016-05-21-rendering-in-vr-using-opengl-instancing/" />
+
+
+  
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/pure/0.5.0/base-min.css">
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/pure/0.5.0/pure-min.css">
+  
+  
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/pure/0.5.0/grids-responsive-min.css">
+  
+  
+
+  <link rel="stylesheet" href="https://kondrak.github.io//css/redlounge.css">
+  <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet">
+  <link href='//fonts.googleapis.com/css?family=Raleway:400,200,100,700,300,500,600,800' rel='stylesheet' type='text/css'>
+  <link href='//fonts.googleapis.com/css?family=Libre+Baskerville:400,700,400italic' rel='stylesheet' type='text/css'>
+
+  
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/touch-icon-144-precomposed.png">
+  <link rel="shortcut icon" type="image/x-icon" href="/img/favicon.png">
+
+  
+  <link href="" rel="alternate" type="application/rss+xml" title="Krzysztof Kondrak&#39;s website" />
+
+    
+  
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.7/styles/tomorrow-night-bright.min.css">
+  
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.7/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
+
+
+  
+
+  
+
+  
+
+  
+</head>
+
+<body>
+	
+
+	<div id="layout" class="pure-g">
+    <div class="sidebar pure-u-1 pure-u-md-1-4">
+  <div class="header">
+    
+
+	
+
+    <h1 class="brand-title">Krzysztof Kondrak</h1>
+    <h2 class="brand-tagline">game tech programmer</h2>
+
+    <nav class="nav">
+      <ul class="nav-list">
+        <li class="nav-item"><span class="nav-item-separator">//</span><a href="https://kondrak.github.io/">Home</a></li>
+        
+          <li class="nav-item"><span class="nav-item-separator">//</span><a href="/about">About me</a></li>
+        
+          <li class="nav-item"><span class="nav-item-separator">//</span><a href="/projects">Projects</a></li>
+        
+      </ul>
+    </nav>
+
+    
+    <div class="social-buttons">
+      
+        
+          
+          
+             <a href="https://github.com/kondrak"  target="_blank"> <i class='fa fa-github fa-lg'></i></a>
+          
+        
+      
+        
+          
+          
+             <a href="http://www.linkedin.com/in/kondrak"  target="_blank"> <i class='fa fa-linkedin fa-lg'></i></a>
+          
+        
+      
+        
+          
+          
+             <a href="https://www.shadertoy.com/user/k_kondrak"  target="_blank"> <i class='fa fa-cube fa-lg'></i></a>
+          
+        
+      
+        
+          
+          
+             <a href="http://www.twitter.com/k_kondrak"  target="_blank"> <i class='fa fa-twitter fa-lg'></i></a>
+          
+        
+      
+        
+          
+          
+             <a href="https://www.youtube.com/channel/UC6gj_jbYQG1oVdqQv4EV0pw"  target="_blank"> <i class='fa fa-youtube-play fa-lg'></i></a>
+          
+        
+      
+        
+          
+          
+             <a href="/links" > <i class='fa fa-link fa-lg'></i></a>
+          
+        
+      
+      
+    </div>
+    
+
+  </div>
+</div>
+
+	
+	
+
+    <div class="content pure-u-1 pure-u-md-3-4">
+		<a name="top"></a>
+		
+
+		
+			
+	    
+  		<section class="post">
+            <h1 class="post-title">
+              <a href="/posts/2016-05-21-rendering-in-vr-using-opengl-instancing/">Rendering in VR using OpenGL instancing</a>
+            </h1>
+            <h3 class="post-subtitle">
+            	
+            </h3>
+            
+            	<span class="post-date">
+                	<span class="post-date-day"><sup>21</sup></span><span class="post-date-separator">/</span><span class="post-date-month">May</span> <span class="post-date-year">2016</span>
+            	</span>
+            	
+            
+            	
+            		<span class="post-author-single">By <a class="post-author"  target="">kondrak</a></span>
+            		
+
+
+
+
+            	
+            
+
+			
+			
+				<div class="post-categories">
+				
+					<a class="post-category post-category-c&#43;&#43;" href="https://kondrak.github.io//categories/c&#43;&#43;">C&#43;&#43;</a>
+				
+					<a class="post-category post-category-programming" href="https://kondrak.github.io//categories/programming">Programming</a>
+				
+					<a class="post-category post-category-vr" href="https://kondrak.github.io//categories/vr">VR</a>
+				
+				</div>
+			
+
+			
+
+			
+
+            <p style="text-align: justify;">
+  TL;DR; <a href="https://github.com/kondrak/oculusvr_samples/tree/master/InstancedRender">download code sample from GitHub!</a>
+</p>
+
+<p style="text-align: justify;">
+  In all of my VR applications thus far, I&#8217;ve been using separate eye buffers for rendering, seeing it as a convenience. Recently, however, I started wondering how I could improve drawing times and reduce unnecessary overhead, so my attention turned toward single render target solution and how it could take advantage of instanced rendering. Here&#8217;s a short summary of my results.
+</p>
+
+<p style="text-align: justify;">
+  To briefly recap, there are two distinct ways you can use to render to the HMD (in this particular case I&#8217;ll be focusing on Oculus Rift):
+</p>
+
+<p style="text-align: justify;">
+  1. Create two render targets (one per eye) and draw the scene to each one of them accordingly.<br /> 2. Create a single, large render target and use proper viewports to draw each eye to it.
+</p>
+
+<p style="text-align: justify;">
+  The details on how both of these can be achieved are not specified, so it&#8217;s up to the programmer to figure out how to get both images. Usually, the first idea that comes to mind is to simply recalculate MVP matrix for each eye every frame and render the scene twice, which may look like this in C++ pseudocode:
+</p>
+
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cxx" data-lang="cxx"><span style="color:#069;font-weight:bold">for</span> (<span style="color:#078;font-weight:bold">int</span> eyeIndex <span style="color:#555">=</span> <span style="color:#f60">0</span>; eyeIndex <span style="color:#555">&lt;</span> ovrEye_Count; eyeIndex<span style="color:#555">++</span>)
+{
+    <span style="color:#09f;font-style:italic">// recalculate ModelViewProjection matrix for current eye
+</span><span style="color:#09f;font-style:italic"></span>    OVR<span style="color:#555">::</span>Matrix4f MVPMatrix <span style="color:#555">=</span> g_oculusVR.OnEyeRender(eyeIndex); 
+
+    <span style="color:#09f;font-style:italic">// setup scene&#39;s shaders and positions using MVPMatrix
+</span><span style="color:#09f;font-style:italic"></span>    <span style="color:#09f;font-style:italic">// setup of HMD viewports and buffers goes here
+</span><span style="color:#09f;font-style:italic"></span>    (...)
+
+    <span style="color:#09f;font-style:italic">// final image ends up in correct viewport/render buffer of the HMD
+</span><span style="color:#09f;font-style:italic"></span>    glDrawArrays(GL_TRIANGLE_STRIP, <span style="color:#f60">0</span>, num_verts);
+}
+</code></pre></div>
+
+<p style="text-align: justify;">
+  This works fine but what we&#8217;re essentially doing is doubling the amount of draw calls due to rendering everything twice. With modern GPUs this may not necessarily be that big of a deal, however the CPU <-> GPU communication quickly becomes the bottleneck as the scene complexity goes up. During my tests, trying to render a scene with 2500 quads and no culling resulted in drastic framerate drop and GPU rendering time increase. With Oculus SDK 1.3 this can, in fact, go unnoticed due to asynchronous timewarp but we don&#8217;t want to deal with performance losses! This is where instancing can play a big role in gaining significant boost.
+</p>
+
+<p style="text-align: justify;">
+  In a nutshell, with instancing we can render multiple instances (hence the name) of the same geometry with only single draw call. What this means is we can draw the entire scene multiple times as if we were doing it only once (not entirely true but for our purposes we can assume it works that way). So the amount of draw calls is reduced by half in our case and we end up with code that may look like this:
+</p>
+
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cxx" data-lang="cxx"><span style="color:#09f;font-style:italic">// MVP matrices for left and right eye
+</span><span style="color:#09f;font-style:italic"></span>GLfloat mvps[<span style="color:#f60">32</span>];
+
+<span style="color:#09f;font-style:italic">// fetch location of MVP UBO in shader
+</span><span style="color:#09f;font-style:italic"></span>GLuint mvpBinding <span style="color:#555">=</span> <span style="color:#f60">0</span>;
+GLint blockIdx <span style="color:#555">=</span> glGetUniformBlockIndex(shader_id, <span style="color:#c30">&#34;EyeMVPs&#34;</span>);
+glUniformBlockBinding(shader_id, blockIdx, mvpBinding);
+
+<span style="color:#09f;font-style:italic">// fetch MVP matrices for both eyes
+</span><span style="color:#09f;font-style:italic"></span><span style="color:#069;font-weight:bold">for</span> (<span style="color:#078;font-weight:bold">int</span> i <span style="color:#555">=</span> <span style="color:#f60">0</span>; i <span style="color:#555">&lt;</span> <span style="color:#f60">2</span>; i<span style="color:#555">++</span>)
+{
+    OVR<span style="color:#555">::</span>Matrix4f MVPMatrix <span style="color:#555">=</span> g_oculusVR.OnEyeRender(i);
+    memcpy(<span style="color:#555">&amp;</span>mvps[i <span style="color:#555">*</span> <span style="color:#f60">16</span>], <span style="color:#555">&amp;</span>MVPMatrix.Transposed().M[<span style="color:#f60">0</span>][<span style="color:#f60">0</span>], <span style="color:#069;font-weight:bold">sizeof</span>(GLfloat) <span style="color:#555">*</span> <span style="color:#f60">16</span>);
+}
+
+<span style="color:#09f;font-style:italic">// update MVP UBO with new eye matrices
+</span><span style="color:#09f;font-style:italic"></span>glBindBuffer(GL_UNIFORM_BUFFER, mvpUBO);
+glBufferData(GL_UNIFORM_BUFFER, <span style="color:#f60">2</span> <span style="color:#555">*</span> <span style="color:#069;font-weight:bold">sizeof</span>(GLfloat) <span style="color:#555">*</span> <span style="color:#f60">16</span>, mvps, GL_STREAM_DRAW);
+glBindBufferRange(GL_UNIFORM_BUFFER, mvpBinding, mvpUBO, <span style="color:#f60">0</span>, <span style="color:#f60">2</span> <span style="color:#555">*</span> <span style="color:#069;font-weight:bold">sizeof</span>(GLfloat) <span style="color:#555">*</span> <span style="color:#f60">16</span>);
+
+<span style="color:#09f;font-style:italic">// at this point we have both viewports calculated by the SDK, fetch them
+</span><span style="color:#09f;font-style:italic"></span>ovrRecti viewPortL <span style="color:#555">=</span> g_oculusVR.GetEyeViewport(<span style="color:#f60">0</span>);
+ovrRecti viewPortR <span style="color:#555">=</span> g_oculusVR.GetEyeViewport(<span style="color:#f60">1</span>);
+
+<span style="color:#09f;font-style:italic">// create viewport array for geometry shader
+</span><span style="color:#09f;font-style:italic"></span>GLfloat viewports[] <span style="color:#555">=</span> { (GLfloat)viewPortL.Pos.x, (GLfloat)viewPortL.Pos.y, 
+                        (GLfloat)viewPortL.Size.w, (GLfloat)viewPortL.Size.h,
+                        (GLfloat)viewPortR.Pos.x, (GLfloat)viewPortR.Pos.y, 
+                        (GLfloat)viewPortR.Size.w, (GLfloat)viewPortR.Size.h };
+glViewportArrayv(<span style="color:#f60">0</span>, <span style="color:#f60">2</span>, viewports);
+
+<span style="color:#09f;font-style:italic">// setup the scene and perform instanced render - half the drawcalls!
+</span><span style="color:#09f;font-style:italic"></span>(...)
+glDrawArraysInstanced(GL_TRIANGLE_STRIP, <span style="color:#f60">0</span>, num_verts, <span style="color:#f60">2</span>);
+</code></pre></div>
+
+<p style="text-align: justify;">
+  There&#8217;s a bit more going on now, so let&#8217;s go through the pseudocode step by step:
+</p>
+
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cxx" data-lang="cxx"><span style="color:#09f;font-style:italic">// MVP matrices for left and right eye
+</span><span style="color:#09f;font-style:italic"></span>GLfloat mvps[<span style="color:#f60">32</span>];
+
+<span style="color:#09f;font-style:italic">// fetch location of MVP UBO in shader
+</span><span style="color:#09f;font-style:italic"></span>GLuint mvpBinding <span style="color:#555">=</span> <span style="color:#f60">0</span>;
+GLint blockIdx <span style="color:#555">=</span> glGetUniformBlockIndex(shader_id, <span style="color:#c30">&#34;EyeMVPs&#34;</span>);
+glUniformBlockBinding(shader_id, blockIdx, mvpBinding);
+
+<span style="color:#09f;font-style:italic">// fetch MVP matrices for both eyes
+</span><span style="color:#09f;font-style:italic"></span><span style="color:#069;font-weight:bold">for</span> (<span style="color:#078;font-weight:bold">int</span> i <span style="color:#555">=</span> <span style="color:#f60">0</span>; i <span style="color:#555">&lt;</span> <span style="color:#f60">2</span>; i<span style="color:#555">++</span>)
+{
+    OVR<span style="color:#555">::</span>Matrix4f MVPMatrix <span style="color:#555">=</span> g_oculusVR.OnEyeRender(i);
+    memcpy(<span style="color:#555">&amp;</span>mvps[i <span style="color:#555">*</span> <span style="color:#f60">16</span>], <span style="color:#555">&amp;</span>MVPMatrix.Transposed().M[<span style="color:#f60">0</span>][<span style="color:#f60">0</span>], <span style="color:#069;font-weight:bold">sizeof</span>(GLfloat) <span style="color:#555">*</span> <span style="color:#f60">16</span>);
+}
+</code></pre></div>
+
+<p style="text-align: justify;">
+  Starting each frame, we recalculate MVP matrix for each eye just as before. This time, however, it is the only thing we do in a loop. The results are stored in a <code>GLfloat</code> array, since this will be the shader input when drawing both eyes (4&#215;4 matrix is 16 floats, so we need 32 element array to store both eyes). The matrices will be stored in a uniform buffer object, so we need fetch the location of the uniform block before we can perform the update.
+</p>
+
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cxx" data-lang="cxx"><span style="color:#09f;font-style:italic">// update MVP UBO with new eye matrices
+</span><span style="color:#09f;font-style:italic"></span>glBindBuffer(GL_UNIFORM_BUFFER, mvpUBO);
+glBufferData(GL_UNIFORM_BUFFER, <span style="color:#f60">2</span> <span style="color:#555">*</span> <span style="color:#069;font-weight:bold">sizeof</span>(GLfloat) <span style="color:#555">*</span> <span style="color:#f60">16</span>, mvps, GL_STREAM_DRAW);
+glBindBufferRange(GL_UNIFORM_BUFFER, mvpBinding, mvpUBO, <span style="color:#f60">0</span>, <span style="color:#f60">2</span> <span style="color:#555">*</span> <span style="color:#069;font-weight:bold">sizeof</span>(GLfloat) <span style="color:#555">*</span> <span style="color:#f60">16</span>);
+
+<span style="color:#09f;font-style:italic">// at this point we have both viewports calculated by the SDK, fetch them
+</span><span style="color:#09f;font-style:italic"></span>ovrRecti viewPortL <span style="color:#555">=</span> g_oculusVR.GetEyeViewport(<span style="color:#f60">0</span>);
+ovrRecti viewPortR <span style="color:#555">=</span> g_oculusVR.GetEyeViewport(<span style="color:#f60">1</span>);
+
+<span style="color:#09f;font-style:italic">// create viewport array for geometry shader
+</span><span style="color:#09f;font-style:italic"></span>GLfloat viewports[] <span style="color:#555">=</span> { (GLfloat)viewPortL.Pos.x, (GLfloat)viewPortL.Pos.y, 
+                        (GLfloat)viewPortL.Size.w, (GLfloat)viewPortL.Size.h,
+                        (GLfloat)viewPortR.Pos.x, (GLfloat)viewPortR.Pos.y, 
+                        (GLfloat)viewPortR.Size.w, (GLfloat)viewPortR.Size.h };
+glViewportArrayv(<span style="color:#f60">0</span>, <span style="color:#f60">2</span>, viewports);
+
+<span style="color:#09f;font-style:italic">// setup the scene and perform instanced render - half the drawcalls!
+</span><span style="color:#09f;font-style:italic"></span>(...)
+glDrawArraysInstanced(GL_TRIANGLE_STRIP, <span style="color:#f60">0</span>, num_verts, <span style="color:#f60">2</span>);
+</code></pre></div>
+
+<p style="text-align: justify;">
+  First, we update the UBO storing both MVPs with new calculated values, after which we get to rendering part. Contrary to DirectX, there&#8217;s no trivial way to draw to multiple viewports using single draw call in OpenGL, so we&#8217;re taking advantage of a (relatively) new feature: viewport arrays. This, combined with the <code>gl_ViewportIndex</code> attribute in a geometry shader will allow us to tell <code>glDrawArraysInstanced()</code> which rendered instance goes into which eye. Final result and performance graphs can be seen on the following screenshot:
+</p>
+
+<p style="display: block; text-align: center;">
+  <a href="http://kondrak.info/images/vr_instanced.png"><img src="http://kondrak.info/images/vr_instanced.png" alt="" /></a><br /><em>Test application rendering 2500 unculled, textured quads. Left: rendering scene twice, once per viewport. Right: using instancing.</em>
+</p>
+
+<p style="text-align: justify;">
+  Full source code of the test application can be <a href="https://github.com/kondrak/oculusvr_samples/tree/master/InstancedRender">downloaded from GitHub.</a>
+</p>
+	
+			
+
+			
+
+			
+				<div class="paging">
+					<span class="paging-label">More Reading</span>
+					
+					<div class="paging-newer">
+						<span class="dark-red">Newer</span><span class="decorative-marker">//</span>
+						<a class="paging-link" href="/posts/2016-06-14-so-you-want-to-be-a-programmer/">So you want to be a programmer?</a>
+		            </div>
+		            
+
+					
+                    
+					<div class="paging-older">
+						<span class="dark-red">Older</span><span class="decorative-marker">//</span>
+			            <a class="paging-link" href="/posts/2016-05-14-why-i-think-oculus-wins-over-vive-for-now/">Why I think Oculus wins over Vive... for now.</a>
+		            </div>
+                    
+		            
+	            </div>
+            
+          </section>
+          
+          	
+          
+        
+      <div class="footer">
+	<hr class="thin" />
+	<div class="pure-menu pure-menu-horizontal pure-menu-open">
+		<ul class="footer-menu">
+		
+		</ul>
+	</div>
+
+	<p>&copy; 2020. All rights reserved.</p>
+</div>
+    </div>
+  </div>
+	
+
+	
+
+  
+</body>
+</html>

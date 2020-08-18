@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-us">
+<head>
+  <title>
+    Oculus Rift DK2 (SDK 0.6.0.1) and OpenGL ES 2.0 // Krzysztof Kondrak&#39;s website
+  </title>
+
+  <link href="http://gmpg.org/xfn/11" rel="profile">
+<meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+
+<meta name="description" content="">
+<meta name="keywords" content="">
+<meta name="author" content="kondrak">
+<meta name="generator" content="Hugo 0.55.1" />
+
+  <meta property="og:title" content="Oculus Rift DK2 (SDK 0.6.0.1) and OpenGL ES 2.0" />
+<meta property="og:description" content="" />
+<meta property="og:type" content="website" />
+<meta property="og:locale" content="en_US" />
+<meta property="og:url" content="https://kondrak.github.io/posts/2015-07-10-oculus-rift-dk2-sdk-0-6-0-1-and-opengl-es-2-0/" />
+
+
+  
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/pure/0.5.0/base-min.css">
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/pure/0.5.0/pure-min.css">
+  
+  
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/pure/0.5.0/grids-responsive-min.css">
+  
+  
+
+  <link rel="stylesheet" href="https://kondrak.github.io//css/redlounge.css">
+  <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet">
+  <link href='//fonts.googleapis.com/css?family=Raleway:400,200,100,700,300,500,600,800' rel='stylesheet' type='text/css'>
+  <link href='//fonts.googleapis.com/css?family=Libre+Baskerville:400,700,400italic' rel='stylesheet' type='text/css'>
+
+  
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/touch-icon-144-precomposed.png">
+  <link rel="shortcut icon" type="image/x-icon" href="/img/favicon.png">
+
+  
+  <link href="" rel="alternate" type="application/rss+xml" title="Krzysztof Kondrak&#39;s website" />
+
+    
+  
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.7/styles/tomorrow-night-bright.min.css">
+  
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.7/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
+
+
+  
+
+  
+
+  
+
+  
+</head>
+
+<body>
+	
+
+	<div id="layout" class="pure-g">
+    <div class="sidebar pure-u-1 pure-u-md-1-4">
+  <div class="header">
+    
+
+	
+
+    <h1 class="brand-title">Krzysztof Kondrak</h1>
+    <h2 class="brand-tagline">game tech programmer</h2>
+
+    <nav class="nav">
+      <ul class="nav-list">
+        <li class="nav-item"><span class="nav-item-separator">//</span><a href="https://kondrak.github.io/">Home</a></li>
+        
+          <li class="nav-item"><span class="nav-item-separator">//</span><a href="/about">About me</a></li>
+        
+          <li class="nav-item"><span class="nav-item-separator">//</span><a href="/projects">Projects</a></li>
+        
+      </ul>
+    </nav>
+
+    
+    <div class="social-buttons">
+      
+        
+          
+          
+             <a href="https://github.com/kondrak"  target="_blank"> <i class='fa fa-github fa-lg'></i></a>
+          
+        
+      
+        
+          
+          
+             <a href="http://www.linkedin.com/in/kondrak"  target="_blank"> <i class='fa fa-linkedin fa-lg'></i></a>
+          
+        
+      
+        
+          
+          
+             <a href="https://www.shadertoy.com/user/k_kondrak"  target="_blank"> <i class='fa fa-cube fa-lg'></i></a>
+          
+        
+      
+        
+          
+          
+             <a href="http://www.twitter.com/k_kondrak"  target="_blank"> <i class='fa fa-twitter fa-lg'></i></a>
+          
+        
+      
+        
+          
+          
+             <a href="https://www.youtube.com/channel/UC6gj_jbYQG1oVdqQv4EV0pw"  target="_blank"> <i class='fa fa-youtube-play fa-lg'></i></a>
+          
+        
+      
+        
+          
+          
+             <a href="/links" > <i class='fa fa-link fa-lg'></i></a>
+          
+        
+      
+      
+    </div>
+    
+
+  </div>
+</div>
+
+	
+	
+
+    <div class="content pure-u-1 pure-u-md-3-4">
+		<a name="top"></a>
+		
+
+		
+			
+	    
+  		<section class="post">
+            <h1 class="post-title">
+              <a href="/posts/2015-07-10-oculus-rift-dk2-sdk-0-6-0-1-and-opengl-es-2-0/">Oculus Rift DK2 (SDK 0.6.0.1) and OpenGL ES 2.0</a>
+            </h1>
+            <h3 class="post-subtitle">
+            	
+            </h3>
+            
+            	<span class="post-date">
+                	<span class="post-date-day"><sup>10</sup></span><span class="post-date-separator">/</span><span class="post-date-month">Jul</span> <span class="post-date-year">2015</span>
+            	</span>
+            	
+            
+            	
+            		<span class="post-author-single">By <a class="post-author"  target="">kondrak</a></span>
+            		
+
+
+
+
+            	
+            
+
+			
+			
+				<div class="post-categories">
+				
+					<a class="post-category post-category-gamedev" href="https://kondrak.github.io//categories/gamedev">Gamedev</a>
+				
+					<a class="post-category post-category-programming" href="https://kondrak.github.io//categories/programming">Programming</a>
+				
+					<a class="post-category post-category-vr" href="https://kondrak.github.io//categories/vr">VR</a>
+				
+				</div>
+			
+
+			
+
+			
+
+            <p style="text-align: justify;">
+  Recently I&#8217;ve been working on a VR port for <a href="https://www.youtube.com/watch?v=j34I7lRfYck">Rage of the Gladiator</a>, a game that was originally released for mobile devices and used OpenGL ES 2.0 as the rendering backend. This seemingly simple task soon created several fun problems resulting in limitation of this graphics SDK in relation to &#8220;full-fledged&#8221; OpenGL. My initial idea was to rewrite the entire renderer but very soon this approach turned out to be a dead end (suffice to say, the original codebase was slightly convoluted), so I decided to stick with the original implementation. To run an OpenGL ES application on a PC I used the <a href="http://community.imgtec.com/developers/powervr/graphics-sdk/">PowerVR SDK</a> which is an excellent emulation of mobile rendering environment on a desktop computer.
+</p>
+
+<p style="text-align: justify;">
+  Once I got the game up and running, I started figuring out how to plug in my existing Oculus code to get proper output both on the device and in the mirroring window. Rendering to the Rift worked pretty much out of the box &#8211; it only required changing the depth buffer internal format of each eye buffer to <code>GL_DEPTH_COMPONENT16</code> (from the &#8220;default&#8221; <code>GL_DEPTH_COMPONENT24</code>). Creating a proper mirror output was a whole different story and while not excessively complicated, it did require some workarounds to get it working. Here&#8217;s a list of things I ran into &#8211; something you should consider if you ever decide to use Open GL ES in your VR application (but why would you, anyway? 🙂 ):
+</p>
+
+<p><strong>1. Replacement for glBlitFramebuffer()</strong></p>
+
+<p style="text-align: justify;">
+  Starting with Oculus SDK 0.6.0.0, rendering mirror texture to window is as easy as getting the system-handled swap texture and perform a blit to the window back buffer:
+</p>
+
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cxx" data-lang="cxx"><span style="color:#09f;font-style:italic">// Blit mirror texture to back buffer
+</span><span style="color:#09f;font-style:italic"></span>    glBindFramebuffer(GL_READ_FRAMEBUFFER, m_mirrorFBO);
+    glBindFramebuffer(GL_DRAW_FRAMEBUFFER, <span style="color:#f60">0</span>);
+    GLint w <span style="color:#555">=</span> m_mirrorTexture<span style="color:#555">-&gt;</span>OGL.Header.TextureSize.w;
+    GLint h <span style="color:#555">=</span> m_mirrorTexture<span style="color:#555">-&gt;</span>OGL.Header.TextureSize.h;
+
+    <span style="color:#09f;font-style:italic">// perform the blit
+</span><span style="color:#09f;font-style:italic"></span>    glBlitFramebuffer(<span style="color:#f60">0</span>, h, w, <span style="color:#f60">0</span>, <span style="color:#f60">0</span>, <span style="color:#f60">0</span>, w, h, GL_COLOR_BUFFER_BIT, GL_NEAREST);
+
+    glBindFramebuffer(GL_READ_FRAMEBUFFER, <span style="color:#f60">0</span>);
+</code></pre></div>
+
+<p style="text-align: justify;">
+  With OpenGL ES 2.0 you will soon notice that <code>glBlitFramebuffer()</code> is not present. This causes more complications than may seem at first because now you have to manually render a textured quad which, while not particularily difficult, is still a lot more code to write:
+</p>
+
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cxx" data-lang="cxx"><span style="color:#09f;font-style:italic">// create VBO for the mirror - call this once before BlitMirror()!
+</span><span style="color:#09f;font-style:italic"></span><span style="color:#078;font-weight:bold">void</span> <span style="color:#c0f">CreateMirrorVBO</span>()
+{
+    <span style="color:#069;font-weight:bold">const</span> <span style="color:#078;font-weight:bold">float</span> verts[] <span style="color:#555">=</span> { <span style="color:#09f;font-style:italic">// quad vertices
+</span><span style="color:#09f;font-style:italic"></span>                            <span style="color:#555">-</span><span style="color:#f60">1.0f</span>, <span style="color:#f60">1.0f</span>, <span style="color:#f60">1.0f</span>, <span style="color:#f60">1.0f</span>, <span style="color:#555">-</span><span style="color:#f60">1.0f</span>, <span style="color:#555">-</span><span style="color:#f60">1.0f</span>, <span style="color:#f60">1.0f</span>, <span style="color:#555">-</span><span style="color:#f60">1.0f</span>,
+
+                            <span style="color:#09f;font-style:italic">// quad tex coords
+</span><span style="color:#09f;font-style:italic"></span>                            <span style="color:#f60">0.0f</span>, <span style="color:#f60">0.0f</span>, <span style="color:#f60">1.0f</span>, <span style="color:#f60">0.0f</span>, <span style="color:#f60">0.0f</span>, <span style="color:#f60">1.0f</span>, <span style="color:#f60">1.0f</span>, <span style="color:#f60">1.0f</span>,
+
+                            <span style="color:#09f;font-style:italic">// quad color
+</span><span style="color:#09f;font-style:italic"></span>                            <span style="color:#f60">1.0f</span>, <span style="color:#f60">1.0f</span>, <span style="color:#f60">1.0f</span>, <span style="color:#f60">1.0f</span>, <span style="color:#f60">1.0f</span>, <span style="color:#f60">1.0f</span>,
+                            <span style="color:#f60">1.0f</span>, <span style="color:#f60">1.0f</span>, <span style="color:#f60">1.0f</span>, <span style="color:#f60">1.0f</span>, <span style="color:#f60">1.0f</span>, <span style="color:#f60">1.0f</span>
+    };
+
+    glGenBuffers(<span style="color:#f60">1</span>, <span style="color:#555">&amp;</span>mirrorVBO);
+    glBindBuffer(GL_ARRAY_BUFFER, mirrorVBO);
+    glBufferData(GL_ARRAY_BUFFER, <span style="color:#069;font-weight:bold">sizeof</span>(verts), verts, GL_STATIC_DRAW);
+}
+
+<span style="color:#078;font-weight:bold">void</span> <span style="color:#c0f">BlitMirror</span>()
+{
+    <span style="color:#09f;font-style:italic">// bind a simple shader rendering a textured (and optionally colored) quad
+</span><span style="color:#09f;font-style:italic"></span>    ShaderManager<span style="color:#555">::</span>GetInstance()<span style="color:#555">-&gt;</span>UseShaderProgram(MainApp<span style="color:#555">::</span>ST_QUAD_BITMAP);
+
+    <span style="color:#09f;font-style:italic">// bind the stored window FBO - why stored? See 2.
+</span><span style="color:#09f;font-style:italic"></span>    glBindFramebuffer(GL_FRAMEBUFFER, platform<span style="color:#555">::</span>Platform<span style="color:#555">::</span>GetFBO());
+    glActiveTexture(GL_TEXTURE0);
+    glBindTexture(GL_TEXTURE_2D, m_mirrorTexture<span style="color:#555">-&gt;</span>OGL.TexId);
+
+    <span style="color:#09f;font-style:italic">// we need vertex, texcoord and color - used by the shader
+</span><span style="color:#09f;font-style:italic"></span>    glEnableVertexAttribArray(VERTEX_ARRAY);
+    glEnableVertexAttribArray(TEXCOORD_ARRAY);
+    glEnableVertexAttribArray(COLOR_ARRAY);
+
+    glBindBuffer(GL_ARRAY_BUFFER, mirrorVBO);
+    glVertexAttribPointer(VERTEX_ARRAY, <span style="color:#f60">2</span>, GL_FLOAT, GL_FALSE, <span style="color:#f60">0</span>, (<span style="color:#069;font-weight:bold">const</span> <span style="color:#078;font-weight:bold">void</span><span style="color:#555">*</span>)<span style="color:#f60">0</span>);
+
+    glEnableVertexAttribArray(TEXCOORD_ARRAY);
+    glVertexAttribPointer(TEXCOORD_ARRAY, <span style="color:#f60">2</span>, GL_FLOAT, GL_FALSE, <span style="color:#f60">0</span>, (<span style="color:#069;font-weight:bold">const</span> <span style="color:#078;font-weight:bold">void</span><span style="color:#555">*</span>)(<span style="color:#f60">8</span> <span style="color:#555">*</span> <span style="color:#069;font-weight:bold">sizeof</span>(<span style="color:#078;font-weight:bold">float</span>)));
+
+    glEnableVertexAttribArray(COLOR_ARRAY);
+    glVertexAttribPointer(COLOR_ARRAY, <span style="color:#f60">3</span>, GL_FLOAT, GL_FALSE, <span style="color:#f60">0</span>, (<span style="color:#069;font-weight:bold">const</span> <span style="color:#078;font-weight:bold">void</span><span style="color:#555">*</span>)(<span style="color:#f60">16</span> <span style="color:#555">*</span> <span style="color:#069;font-weight:bold">sizeof</span>(<span style="color:#078;font-weight:bold">float</span>)));
+
+    <span style="color:#09f;font-style:italic">// set the viewport and render textured quad
+</span><span style="color:#09f;font-style:italic"></span>    glViewport(<span style="color:#f60">0</span>, <span style="color:#f60">0</span>, WINDOW_WIDTH, WINDOW_HEIGHT);
+    glDrawArrays(GL_TRIANGLE_STRIP, <span style="color:#f60">0</span>, <span style="color:#f60">4</span>);
+
+    <span style="color:#09f;font-style:italic">// safety disable
+</span><span style="color:#09f;font-style:italic"></span>    glBindBuffer(GL_ARRAY_BUFFER, <span style="color:#f60">0</span>);
+    glDisableVertexAttribArray(VERTEX_ARRAY);
+    glDisableVertexAttribArray(TEXCOORD_ARRAY);
+    glDisableVertexAttribArray(COLOR_ARRAY);
+}
+</code></pre></div>
+
+<p><strong>2. Keeping track of the window/screen FBO</strong></p>
+
+<p style="text-align: justify;">
+  Many complex games of today heavily employ the use of rendering to texture for special effects or various other purposes. My experience shows that once programmers start using RTT, the calls to <code>glBindFramebuffer()</code> start appearing at an alarming rate in various parts of the code, disregarding the fact that in many instances switches between rendering to texture and rendering to the actual window happen more often than it should. Not counting performance impact, usually this behavior does not produce unwanted results and it *may* not matter whether we squeeze a render to window between various RTTs or not. Now, consider that the Oculus mirror render is virtually a blit to separate eye buffers which are then later again blitted to the output window buffer resulting in the popular distorted image you see in YouTube videos. If the rendering code performs a blit to window in-between RTTs, parts of the final image may be distorted by weirdly overlaying images.
+</p>
+
+<p style="display: block; text-align: center;">
+  <img src="http://kondrak.info/images/blog/rotg_error.png" alt="" /><br /><em>Notice how a popup is rendered incorrectly behind the lenses due to a mid-RTT render to window.</em>
+</p>
+
+<p style="text-align: justify;">
+  For this reason it&#8217;s important to correctly track which FBO belongs to the window and avoid reverting to it *before* you render the entire scene &#8211; <code>glGetIntegerv()</code> is your friend and it can save you a lot of grief, especially with more complex drawing sections. While this is not a VR problem per-se and may happen to you in regular application development, it&#8217;s definitely easier to run into in this particular case.
+</p>
+
+<p><strong>3. Remember to disable OpenGL states after you&#8217;re done using them</strong></p>
+
+<p style="text-align: justify;">
+  Again, this is not a strictly VR-related issue but one that can manifest itself right away. With VR rendering you have to remember that you essentially draw the entire scene twice &#8211; once per eye. This means that OpenGL state after the first render persists during the second one which may produce some rather baffling results. It took me quite a while to understand why left eye rendered correctly, right eye had messed up textures and the mirror turned out completely black &#8211; turns out the cause was not calling <code>glDisable()</code> for culling, blending and depth test. A simple fix but very annoying one to track down 🙂
+</p>
+
+<p><strong>4. Don&#8217;t forget to disable V-Sync</strong></p>
+
+<p style="text-align: justify;">
+  As of today, PowerVR SDK seems to create all render contexts with V-Sync enabled &#8211; while this may sound suprisingly easy to detect it did, in fact, caused me some trouble. What&#8217;s worse &#8211; Oculus Rift didn&#8217;t seem to bother and showed a constant 75fps in the stats which only added to the confusion (why oh why does this one single triangle rendering stutter all the time?). Calling <code>eglSwapInterval(display, 0)</code> will solve that problem for you.
+</p>
+
+<p><strong>Conclusion</strong></p>
+
+<p style="text-align: justify;">
+  In perpsective, the issues I ran into were a minor annoyance but clearly showed how forgetting simple things can cause a whole bunch of issues you would normally never see when performing a single render. The whole experience was also a nice indication that the current state of Oculus SDK performs well even with limited OpenGL &#8211; even if it&#8217;s a bit gimmicky when developing for a PC.
+</p>
+	
+			
+
+			
+
+			
+				<div class="paging">
+					<span class="paging-label">More Reading</span>
+					
+					<div class="paging-newer">
+						<span class="dark-red">Newer</span><span class="decorative-marker">//</span>
+						<a class="paging-link" href="/posts/2015-07-14-the-many-faces-of-perspective-projection-matrix/">The many faces of perspective projection matrix</a>
+		            </div>
+		            
+
+					
+                    
+					<div class="paging-older">
+						<span class="dark-red">Older</span><span class="decorative-marker">//</span>
+			            <a class="paging-link" href="/posts/2015-05-19-sparse-matrices-and-projection-calculations/">Sparse matrices and projection calculations</a>
+		            </div>
+                    
+		            
+	            </div>
+            
+          </section>
+          
+          	
+          
+        
+      <div class="footer">
+	<hr class="thin" />
+	<div class="pure-menu pure-menu-horizontal pure-menu-open">
+		<ul class="footer-menu">
+		
+		</ul>
+	</div>
+
+	<p>&copy; 2020. All rights reserved.</p>
+</div>
+    </div>
+  </div>
+	
+
+	
+
+  
+</body>
+</html>

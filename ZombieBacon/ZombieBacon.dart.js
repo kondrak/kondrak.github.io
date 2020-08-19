@@ -6749,7 +6749,7 @@ u=new Float32Array(2)
 u[0]=2*z*x/w
 u[1]=-2*y/v
 if(u[0]>=2.5&&u[1]>=-0.15){$.zw=!0
-return}if($.ZX){if($.dC&&u[1]<-1.8)C.ol.EP(window,"http://kondrak.info","Mad Zombie Bacon Attack!")
+return}if($.ZX){if($.dC&&u[1]<-1.8)C.ol.EP(window,"https://kondrak.github.io","Mad Zombie Bacon Attack!")
 return}y=!$.Tz
 if(y&&!$.DB){for(t=0;y=this.vX,t<y.length;++t){y=y[t]
 A.Zg.prototype.jA.call(y)

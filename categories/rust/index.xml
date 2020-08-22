@@ -18,7 +18,7 @@
       
       <guid>https://kondrak.github.io/posts/2016-03-19-my-experiences-going-rust-from-c/</guid>
       <description>&lt;p style=&#34;text-align: justify;&#34;&gt;
-  I&amp;#8217;ve been experimenting with &lt;a href=&#34;https://www.rust-lang.org/&#34;&gt;Rust&lt;/a&gt; for over 6 months now. Most of that time I spent playing around with a &lt;a href=&#34;https://github.com/kondrak/rust64&#34;&gt;C64 emulator&lt;/a&gt; I wrote as a first project and initially I thought about creating a series on that topic. However, since there&amp;#8217;s so much reading material on the Internet about it already, I figured maybe it would be a good idea to write an intro for C/C++ programmers on Rust. But then I found &lt;a href=&#34;http://science.raphael.poss.name/rust-for-functional-programmers.html&#34;&gt;this article&lt;/a&gt;, so I decided to take a completely different route.
+  I&amp;#8217;ve been experimenting with &lt;a href=&#34;https://www.rust-lang.org/&#34;&gt;Rust&lt;/a&gt; for over 6 months now. Most of that time I spent playing around with a &lt;a href=&#34;https://github.com/kondrak/rust64&#34;&gt;C64 emulator&lt;/a&gt; I wrote as a first project and initially I thought about creating a series on that topic. However, since there&amp;#8217;s so much reading material on the Internet about it already, I figured maybe it would be a good idea to write an intro for C/C++ programmers on Rust. But then I found &lt;a href=&#34;https://science.raphael.poss.name/rust-for-functional-programmers.html&#34;&gt;this article&lt;/a&gt;, so I decided to take a completely different route.
 &lt;/p&gt;</description>
     </item>
     

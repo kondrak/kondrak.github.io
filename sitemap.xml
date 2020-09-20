@@ -4,7 +4,36 @@
   
   <url>
     <loc>https://kondrak.github.io/categories/</loc>
-    <lastmod>2016-12-11T18:41:28+00:00</lastmod>
+    <lastmod>2020-09-20T11:47:58+02:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://kondrak.github.io/categories/gamedev/</loc>
+    <lastmod>2020-09-20T11:47:58+02:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://kondrak.github.io/</loc>
+    <lastmod>2020-09-20T11:47:58+02:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://kondrak.github.io/posts/2020-09-20-porting-quake2-to-vulkan/</loc>
+    <lastmod>2020-09-20T11:47:58+02:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://kondrak.github.io/posts/</loc>
+    <lastmod>2020-09-20T11:47:58+02:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://kondrak.github.io/categories/programming/</loc>
+    <lastmod>2020-09-20T11:47:58+02:00</lastmod>
     <priority>0</priority>
   </url>
   
@@ -14,25 +43,7 @@
   </url>
   
   <url>
-    <loc>https://kondrak.github.io/categories/gamedev/</loc>
-    <lastmod>2016-12-11T18:41:28+00:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://kondrak.github.io/</loc>
-    <lastmod>2016-12-11T18:41:28+00:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
     <loc>https://kondrak.github.io/categories/other/</loc>
-    <lastmod>2016-12-11T18:41:28+00:00</lastmod>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>https://kondrak.github.io/posts/</loc>
     <lastmod>2016-12-11T18:41:28+00:00</lastmod>
     <priority>0</priority>
   </url>
@@ -45,12 +56,6 @@
   <url>
     <loc>https://kondrak.github.io/posts/2016-10-31-introverts-survival-guide-to-attending-industry-events/</loc>
     <lastmod>2016-10-31T21:33:26+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>https://kondrak.github.io/categories/programming/</loc>
-    <lastmod>2016-10-31T21:33:26+00:00</lastmod>
-    <priority>0</priority>
   </url>
   
   <url>

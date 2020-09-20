@@ -6,7 +6,7 @@
     <description>Recent content in Categories on Krzysztof Kondrak&#39;s website</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 11 Dec 2016 18:41:28 +0000</lastBuildDate>
+    <lastBuildDate>Sun, 20 Sep 2020 11:47:58 +0200</lastBuildDate>
     
 	<atom:link href="https://kondrak.github.io/categories/index.xml" rel="self" type="application/rss+xml" />
     
@@ -14,9 +14,18 @@
     <item>
       <title>Gamedev</title>
       <link>https://kondrak.github.io/categories/gamedev/</link>
-      <pubDate>Sun, 11 Dec 2016 18:41:28 +0000</pubDate>
+      <pubDate>Sun, 20 Sep 2020 11:47:58 +0200</pubDate>
       
       <guid>https://kondrak.github.io/categories/gamedev/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Programming</title>
+      <link>https://kondrak.github.io/categories/programming/</link>
+      <pubDate>Sun, 20 Sep 2020 11:47:58 +0200</pubDate>
+      
+      <guid>https://kondrak.github.io/categories/programming/</guid>
       <description></description>
     </item>
     
@@ -26,15 +35,6 @@
       <pubDate>Sun, 11 Dec 2016 18:41:28 +0000</pubDate>
       
       <guid>https://kondrak.github.io/categories/other/</guid>
-      <description></description>
-    </item>
-    
-    <item>
-      <title>Programming</title>
-      <link>https://kondrak.github.io/categories/programming/</link>
-      <pubDate>Mon, 31 Oct 2016 21:33:26 +0000</pubDate>
-      
-      <guid>https://kondrak.github.io/categories/programming/</guid>
       <description></description>
     </item>
     

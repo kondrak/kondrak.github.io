@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en-us">
+<head>
+  <title>
+    Porting Quake 2 to Vulkan - the thought process // Krzysztof Kondrak&#39;s website
+  </title>
+
+  <link href="http://gmpg.org/xfn/11" rel="profile">
+<meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+
+<meta name="description" content="">
+<meta name="keywords" content="">
+<meta name="author" content="kondrak">
+<meta name="generator" content="Hugo 0.55.1" />
+
+  <meta property="og:title" content="Porting Quake 2 to Vulkan - the thought process" />
+<meta property="og:description" content="" />
+<meta property="og:type" content="website" />
+<meta property="og:locale" content="en_US" />
+<meta property="og:url" content="https://kondrak.github.io/posts/2020-09-20-porting-quake2-to-vulkan/" />
+
+
+  
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/pure/0.5.0/base-min.css">
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/pure/0.5.0/pure-min.css">
+  
+  
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/pure/0.5.0/grids-responsive-min.css">
+  
+  
+
+  <link rel="stylesheet" href="https://kondrak.github.io//css/redlounge.css">
+  <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet">
+  <link href='//fonts.googleapis.com/css?family=Raleway:400,200,100,700,300,500,600,800' rel='stylesheet' type='text/css'>
+  <link href='//fonts.googleapis.com/css?family=Libre+Baskerville:400,700,400italic' rel='stylesheet' type='text/css'>
+
+  
+  <link rel="apple-touch-icon-precomposed" sizes="144x144" href="/touch-icon-144-precomposed.png">
+  <link rel="shortcut icon" type="image/x-icon" href="/img/favicon.png">
+
+  
+  <link href="" rel="alternate" type="application/rss+xml" title="Krzysztof Kondrak&#39;s website" />
+
+    
+  
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.7/styles/tomorrow-night-bright.min.css">
+  
+  <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/8.7/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
+
+
+  
+
+  
+
+  
+
+  
+</head>
+
+<body>
+	
+
+	<div id="layout" class="pure-g">
+    <div class="sidebar pure-u-1 pure-u-md-1-4">
+  <div class="header">
+    
+
+	
+
+    <h1 class="brand-title">Krzysztof Kondrak</h1>
+    <h2 class="brand-tagline">game tech programmer</h2>
+
+    <nav class="nav">
+      <ul class="nav-list">
+        <li class="nav-item"><span class="nav-item-separator">//</span><a href="https://kondrak.github.io/">Home</a></li>
+        
+          <li class="nav-item"><span class="nav-item-separator">//</span><a href="/about">About me</a></li>
+        
+          <li class="nav-item"><span class="nav-item-separator">//</span><a href="/projects">Projects</a></li>
+        
+      </ul>
+    </nav>
+
+    
+    <div class="social-buttons">
+      
+        
+          
+          
+             <a href="https://github.com/kondrak"  target="_blank"> <i class='fa fa-github fa-lg'></i></a>
+          
+        
+      
+        
+          
+          
+             <a href="http://www.linkedin.com/in/kondrak"  target="_blank"> <i class='fa fa-linkedin fa-lg'></i></a>
+          
+        
+      
+        
+          
+          
+             <a href="https://www.shadertoy.com/user/k_kondrak"  target="_blank"> <i class='fa fa-cube fa-lg'></i></a>
+          
+        
+      
+        
+          
+          
+             <a href="http://www.twitter.com/k_kondrak"  target="_blank"> <i class='fa fa-twitter fa-lg'></i></a>
+          
+        
+      
+        
+          
+          
+             <a href="https://www.youtube.com/channel/UC6gj_jbYQG1oVdqQv4EV0pw"  target="_blank"> <i class='fa fa-youtube-play fa-lg'></i></a>
+          
+        
+      
+        
+          
+          
+             <a href="/links" > <i class='fa fa-link fa-lg'></i></a>
+          
+        
+      
+      
+    </div>
+    
+
+  </div>
+</div>
+
+	
+	
+
+    <div class="content pure-u-1 pure-u-md-3-4">
+		<a name="top"></a>
+		
+
+		
+			
+	    
+  		<section class="post">
+            <h1 class="post-title">
+              <a href="/posts/2020-09-20-porting-quake2-to-vulkan/">Porting Quake 2 to Vulkan - the thought process</a>
+            </h1>
+            <h3 class="post-subtitle">
+            	
+            </h3>
+            
+            	<span class="post-date">
+                	<span class="post-date-day"><sup>20</sup></span><span class="post-date-separator">/</span><span class="post-date-month">Sep</span> <span class="post-date-year">2020</span>
+            	</span>
+            	
+            
+            	
+            		<span class="post-author-single">By <a class="post-author"  target="">kondrak</a></span>
+            		
+
+
+
+
+            	
+            
+
+			
+			
+				<div class="post-categories">
+				
+					<a class="post-category post-category-programming" href="https://kondrak.github.io//categories/programming">Programming</a>
+				
+					<a class="post-category post-category-gamedev" href="https://kondrak.github.io//categories/gamedev">Gamedev</a>
+				
+				</div>
+			
+
+			
+
+			
+
+            <p style="text-align: justify;">
+Almost 2 years after I made the initial commit, I came to realize that it might be a good idea to finally perform a brain-dump of sorts and share the thought process behind development of vkQuake2 - at least for the sake of knowledge sharing and being able to get back to it in the future if I get another idea for a project like this. I often regretted not writing down how things were progressing - now I finally decided to redeem myself!
+</p>
+
+<p><strong>The inspiration</strong></p>
+
+<p style="text-align: justify;">
+At one point in time I got interested in the Vulkan API and wanted to do something useful in it. Up until then, I fiddled mainly with tiny projects of no bigger value and which didn't really pose any significant technical challenge. I believe the best way to learn new tech is to jump into deep water straight away and try to implement something (not overly) ambitious, so I started thinking about a project bigger than simply rendering a couple of cubes on the screen. One idea was to improve the game engine we develop at <a href="https://huuugegames.com/" target="blank">Huuuge Games</a> - it was bound for a renderer update anyway and with emergence of <a href="https://github.com/KhronosGroup/MoltenVK" target="blank">MoltenVK</a> it felt like a natural step to get Vulkan running both on Android and iOS simultaneously. 
+Before going for a full engine rewrite, though, I figured it might be best to try something else to get a better idea on how to use Vulkan in a product that's well established and functioning - this is when I remembered <a href="https://github.com/Novum/vkQuake" target="blank">vkQuake</a>, a project developed by Axel Gneiting of iD Software.
+</p>
+
+<p>
+<blockquote class="twitter-tweet"><p lang="en" dir="ltr">My Vulkan Quake 1 Port running &quot;In the Shadows&quot; mod. Some stuff still missing. Code is here <a href="https://t.co/FDJtk2QNOz">https://t.co/FDJtk2QNOz</a> <a href="https://t.co/SIcWroQOwr">pic.twitter.com/SIcWroQOwr</a></p>&mdash; Axel Gneiting (@axelgneiting) <a href="https://twitter.com/axelgneiting/status/755988244408381443?ref_src=twsrc%5Etfw">July 21, 2016</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script> 
+</p>
+
+<p><strong>The idea</strong></p>
+
+<p style="text-align: justify;">
+Every now and then I get this odd feeling that I probably missed the golden times of game development which I consider late 80s and early to mid 90s of the 20th century. In perspective, it would've felt great to be part of the development team of all the great titles that defined various game genres - first person shooters being one of them. Having looked at vkQuake I figured I could pull something similar off - <a href="https://github.com/suijingfeng/vkQuake3" target="blank">Quake 3 was already handled</a> by a different developer, leaving Quake 2 as the natural option to go with.
+</p>
+<p style="text-align: justify;">
+To make life more interesting and the challenge spicier, I decided to reuse the <a href="https://github.com/id-Software/Quake-2" target="blank">original code</a> released by iD Software and not modify any of the existing modern source ports - those usually add upgrades and elements which change the original experience significantly. What I felt like doing was to release something as faithful to the original as possible, so for the initial vkQuake2 idea I made several assumptions:
+</p>
+<ul>
+<li>use the original window and input code from Quake 2 - no SDL-like libraries</li>
+<li>keep all gameplay bugs unless they crash the system entirely</li>
+<li>keep the the original, vanilla game look - visual upgrades are allowed but only if they can be turned off</li>
+<li>primary goal is to make the Vulkan output look exactly the same as the one produced by OpenGL</li>
+<li>use the excellent <a href="https://github.com/GPUOpen-LibrariesAndSDKs/VulkanMemoryAllocator" target="blank">Vulkan Memory Allocator</a> for memory handling, since that in itself is a complex topic and what I want to focus on is to get Quake 2 to render using Vulkan as quickly as possible</li>
+</ul>
+<p style="text-align: justify;">
+With that in mind, in mid-September 2018 I created the vkQuake2 repository and started cracking on the challenge!
+</p>
+
+<p><strong>The design</strong></p>
+
+<p style="text-align: justify;">
+I wanted to start off with a clean project which produced no compiler warnings and simply worked out of the box in any configuration. Since I was working with a 20+ year old code, there were no guarantees that certain sections would not crash immediately or cause any other problems - one of them was the original software renderer. A lot of instabilities caused by the heavily optimized assembly code were likely caused by the modern compiler doing some extra work which broke the original flow. Since fixing things like that was beyond the scope of this project, I decided to entirely replace the software renderer with the <a href="https://github.com/qbism/Quake2-colored-refsoft" target="blank">KolorSoft implementation</a> - the visuals were exactly the same with an added bonus of colored lighting. Granted, I broke the rule of staying faithful to the original but on the other hand, my main goal was to replicate the original OpenGL look by using Vulkan anyway! Several days and a couple of fixed compile warnings later I had on my hands fully working Quake 2 which was now ready for the actual project work. It was time to start thinking about the architecture.
+</p>
+
+<p style="text-align: justify;">
+In terms of structure, Quake 2 renderers are organized as dynamic libraries - switching between them is essentially unloading the current DLL (in case of Windows) and loading the one which uses the desired API. It's a brilliantly simple solution which makes the functionality implementation completely independent from the application. It also scales very well, since new renderers only need to implement required interface functions and the entire code is self-contained in a separate library project. Plugging it all in is reduced to simply providing necessary function pointers during initialization (for more detailed article on how Quake 2 is constructed, I highly recommend reading <a href="https://fabiensanglard.net/quake2/" target="blank">an article on the topic</a> by Fabien Sanglard).
+
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-plaintext" data-lang="plaintext">   Quake 2
+     |
+     |--- ref_gl.dll (OpenGL)
+     |--- ref_soft.dll (Software)
+   (...)
+     |--- (any arbitrary renderer)
+   (...)
+     |--- ref_vk.dll (Vulkan - this is what we&#39;re going to create)</code></pre></div>
+
+Plain and simple! The necessary interface functions were also easy to find, since the game code comes with a dummy "null" system which provides entry points for all functions requiring implementation in specific libraries. This is not only limited to video handling but also takes care of input, CD playback and any other system-specific component. 
+</p>
+
+<p><strong>The beginnings</strong></p>
+
+<p style="text-align: justify;">
+My next goal was to create an empty <b>ref_vk</b> project. To get the boring part out of the way, I made sure the toggle was already available in the Video menu and also created the basic initialization code which I took from my earlier experiments with Vulkan. With this, I was able to verify that the thing actually worked by switching to the dummy (for now) Vulkan renderer, staring at the blank screen for a while and then blindly going back to OpenGL via a console command just to see what the text output was.
+</p>
+
+<p>
+<blockquote class="twitter-tweet"><p lang="en" dir="ltr">Current status: <a href="https://t.co/HItWMDCPRl">pic.twitter.com/HItWMDCPRl</a></p>&mdash; Krzysztof Kondrak (@k_kondrak) <a href="https://twitter.com/k_kondrak/status/1049379696457261059?ref_src=twsrc%5Etfw">October 8, 2018</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+</p>
+
+<p>I next started working on debug features that would let me use the game&rsquo;s console as a source of information while I was still not seeing any actual output on the screen. If you worked with Vulkan, you probably realized at some point that omitting mundane error checks very often leads to early frustration - it&rsquo;s only half bad if the problem is caught by validation layers but if it goes by unnoticed, it could later on lead to some interesting misbehavior, like synchronization issues or random black screen. Having experienced that first hand in my early projects, I decided to discipline myself and check for correct return values when applicable - for this I created the <b>VK_VERIFY</b> macro:</p>
+
+<div class="highlight"><pre style="background-color:#f0f3f3;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-cxx" data-lang="cxx"><span style="color:#09f;font-style:italic">// verify if VkResult is VK_SUCCESS
+</span><span style="color:#09f;font-style:italic"></span><span style="color:#099">#ifdef _DEBUG
+</span><span style="color:#099">#define VK_VERIFY(x) { \
+</span><span style="color:#099"></span>        VkResult res <span style="color:#555">=</span> (x); \
+        <span style="color:#069;font-weight:bold">if</span>(res <span style="color:#555">!=</span> VK_SUCCESS) { \
+            ri.Con_Printf(PRINT_ALL, <span style="color:#c30">&#34;VkResult verification failed: %s in %s:%d</span><span style="color:#c30;font-weight:bold">\n</span><span style="color:#c30">&#34;</span>, QVk_GetError(res), __FILE__, __LINE__); \
+            assert(res <span style="color:#555">==</span> VK_SUCCESS <span style="color:#555">&amp;&amp;</span> <span style="color:#c30">&#34;VkResult verification failed!&#34;</span>); \
+        } \
+}
+<span style="color:#099">#else
+</span><span style="color:#099">#    define VK_VERIFY(x) (void)(x)
+</span><span style="color:#099">#endif
+</span></code></pre></div>
+
+<p>This, however, was only a partial solution since I still wanted to see the error/info messages somehow. For this I decided to use the Windows-specific <b>AllocConsole()</b> and just output the in-game console content into it. Initially it was available only in debug builds but eventually I added a toggle for release builds as well - this turned out to be very helpful when trying to pinpoint some bugs on remote machines which I didn&rsquo;t have access to.
+</p>
+<p style="text-align: justify;">
+With Vulkan initializing successfuly and necessary debugging solutions in place, I was finally ready to get into putting things on screen.
+</p></p>
+
+<p style="display: block; text-align: center;">
+  <img src="/images/blog/vkquake2-console.png" alt="" /><br />
+  <em>AllocConsole() at work with game console contents being outputted into it directly.</em>
+</p>
+
+<p><strong>The implementation</strong></p>
+
+<p style="text-align: justify;">
+How does one start creating a new renderer in a codebase he or she is not familiar with and the LOC count is significantly large? I decided to approach this problem in a somewhat bruteforce, yet effective, way - all rendering code was moved 1:1 from OpenGL implementation into the <b>ref_vk</b> project and one by one I started commenting out the code from all functions that had any rendering calls inside. Asserts proved invaluable here, since they saved me the time of manually following function calls and gave me the needed stacktrace with basically no additional effort on my side. This method very quickly found the sections that rendered text, background, images, models and sprites. In the span of 2 days I had everything identified, so I could finally start working on the actual implementation. In a matter of hours, I managed to put together code that would draw a gray rectangle in place of texture mapped graphics. First milestone achieved, even though the result didn't look appealing at all!
+</p>
+
+<p style="display: block; text-align: center;">
+  <img src="/images/blog/vkquake2-1.png" alt="" /><br />
+<em>First ever screenshot of vkQuake2 - the gray rectangle represents the dropped down console background.</em>
+</p>
+
+<p style="text-align: justify;">
+From that point on all missing features just kept being implemented as I replaced consecutively hit asserts with proper rendering code. What specifically caught my attention was the fact that the overall architecture of the renderer in Quake 2 required no drastic flow modifications on my part in order for Vulkan to work. That is not to say that the current implementation in vkQuake2 is the most efficient one and to make it work even faster some further modifications would have to be made (see <a href="https://www.youtube.com/watch?v=6NWfznwFnMs" target="blank">Adam Sawicki's lecture on porting to Vulkan</a> for a great reference), however for the purpose of this project it would be just busy work that would not produce any noticable performance improvement. I spent the next 3 months adding features to make the initial renderer whole: texture mapping, multisampling, mesh rendering, scrap textures, skyboxes and more. By the end of the year I had a working game ready. On December 21st, the first version of vkQuake2 was finally released to the public.
+</p>
+<p>
+<blockquote class="twitter-tweet"><p lang="en" dir="ltr">Quake 2 was released 21 years ago this month. To celebrate this, I made my recent hobby project public: vkQuake2 - a fully functional vanilla Quake 2 experience with <a href="https://twitter.com/VulkanAPI?ref_src=twsrc%5Etfw">@VulkanAPI</a> support.<a href="https://t.co/Uve18fGoDT">https://t.co/Uve18fGoDT</a> <a href="https://t.co/70zSVz6IHy">pic.twitter.com/70zSVz6IHy</a></p>&mdash; Krzysztof Kondrak (@k_kondrak) <a href="https://twitter.com/k_kondrak/status/1075886811120103425?ref_src=twsrc%5Etfw">December 20, 2018</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script> 
+</p>
+
+<p><strong>The reception</strong></p>
+
+<p style="text-align: justify;">
+The following morning I woke up to 100+ notifications on Twitter - the project got attention and for the next couple of days articles about it started popping up on the Internet. With a wider user base, I was receiving first bug reports - some of them requiring blind patching basing on the official specifications, since problems occured only on some configurations (hello AMD!). I quickly came to appreciate the output from validation layers which helped me deal with intricacies of specific GPU drivers on different systems. It took me nearly another month handle community reported problems but the end result was satisfying - I got a product that was working across all tested systems!
+</p>
+<p style="text-align: justify;">
+The increased attention also gave me a motivation boost to implement additional features (still being true to my initial assumptions) along with considering full support for Linux and MacOS. That last step required adding proper 64-bit target (first releases of vkQuake2 were 32-bit only) since that was the only variant of Vulkan SDK available on those systems. Admittedly, this was a mundane job at first, focusing on fixing pointer arithmetics and somewhat cryptic compiler errors or warnings. Out of the two systems, Linux was the obvious first choice since it already had some (outdated but still) support for building and running the game.
+</p>
+Suffice to say, Linux code didn't age as well as the code for Windows. Software renderer was removed completely since it was no longer possible to build it due to removed dependencies and OpenGL was janky at best. Sound was nonexistent due to some weird OSS incompabilities, so what I got at first was a silent Vulkan-based version of Quake 2. I managed to fix that problem fairly easily by <a href="https://github.com/kondrak/vkQuake2/blob/master/linux/snd_alsa.c" target="blank">porting the ALSA driver</a> from a Linux Quake 2 port by Icculus. I decided not to pursue getting software and OpenGL to working state since I considered it unnecessary in the long run. In due time, I also discovered how different drivers from different vendors (Linux vs Windows) behave on the same system - performance varied, sometimes even drastically and one system had tendency to manifest specific errors (for example an outdated swapchain and the like) which never occured on the other system.
+</p>
+
+<p>
+<blockquote class="twitter-tweet"><p lang="en" dir="ltr">On a single Intel laptop, I&#39;m seeing frame times being over twice as long on Windows than they are on Linux in my Vulkan application: 2.3ms vs 1ms! Can driver quality be that vastly different between the two? 🤔</p>&mdash; Krzysztof Kondrak (@k_kondrak) <a href="https://twitter.com/k_kondrak/status/1109838243686699010?ref_src=twsrc%5Etfw">March 24, 2019</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script> 
+</p>
+
+<p style="text-align: justify;">
+Getting vkQuake2 to work on Linux did in fact open my eyes to system discrepencies and allowed me to fix some specific synchronization errors which I would not be able to detect on Windows.
+</p>
+
+<p>
+<blockquote class="twitter-tweet"><p lang="en" dir="ltr">Guess what happened today! <a href="https://twitter.com/hashtag/vkQuake2?src=hash&amp;ref_src=twsrc%5Etfw">#vkQuake2</a> <a href="https://twitter.com/hashtag/Vulkan?src=hash&amp;ref_src=twsrc%5Etfw">#Vulkan</a> <a href="https://twitter.com/hashtag/Linux?src=hash&amp;ref_src=twsrc%5Etfw">#Linux</a> <a href="https://t.co/F1TBeaeIfZ">pic.twitter.com/F1TBeaeIfZ</a></p>&mdash; Krzysztof Kondrak (@k_kondrak) <a href="https://twitter.com/k_kondrak/status/1085679538951077888?ref_src=twsrc%5Etfw">January 16, 2019</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script> 
+</p>
+
+<p style="text-align: justify;">
+Adding MacOS support was an interesting experience in itself. The good part was that some of the Linux code could be reused with only some very system-specific calls needing replacement. Another aspect was that I had to learn how to properly setup, create and refresh a Metal window - something I hadn't done before and which would usually be solved by SDL or a similar library. An interesting experience, though not something I would normally do in my day work. Still, I think it's worth to go through it at least once to get a good understanding of how the underlying tech works. Once the window creation was ready, I launched the game and was immediately welcomed by something unexpected:
+</p>
+
+<p>
+<blockquote class="twitter-tweet"><p lang="en" dir="ltr">I figured it&#39;s time to add MacOS support for vkQuake2. Programmatically creating windows here is an interesting experience, though not something I&#39;d want to do on a daily basis. Getting it to work with MoltenVK wasn&#39;t as challenging as I thought it would be - but then I saw this: <a href="https://t.co/XY3j9e5cX8">pic.twitter.com/XY3j9e5cX8</a></p>&mdash; Krzysztof Kondrak (@k_kondrak) <a href="https://twitter.com/k_kondrak/status/1090731243086454784?ref_src=twsrc%5Etfw">January 30, 2019</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+</p>
+
+<p style="text-align: justify;">
+As I quickly discovered, Metal has no support for triangle fans, so I had to replace all their occurences with triangle lists. Having the graphics part out of the way (or so I thought), there was still the matter of sound support - ALSA was out of the question and I didn't really feel like going through entire CoreAudio documentation to make it work. Help came from an unexpected place - rather than looking for a compatible Quake 2 port, I found a fully working and interface-compatible driver in... <a href="https://github.com/kondrak/vkQuake2/blob/master/macos/snd_macos.m" target="blank">Quake 3 Arena</a> source code, which I integrated with just minor tweaks. It was all fun and games and at that point I felt like my work was done. That is, until I enabled validation layers for the first time and noticed that all I got was a black screen.
+</p>
+
+<p style="text-align: justify;">
+Having initially pinpointed the source of the problem to validation layers being on or off, I started suspecting that in fact there could be a problem in the layers themselves, which I eventually <a href="https://github.com/KhronosGroup/Vulkan-ValidationLayers/issues/693" target="blank">reported on GitHub</a>. The LunarG team started suspecting potential issues and ran an investigation - something which in the end turned out to be a simple synchronization problem which manifested exclusively on MacOS. Another case in point that validation layers - while being an excellent help - are still not perfect and subtle errors like that can go unnoticed for a very long time. With a simple fix applied, the MacOS version was ready to go.
+</p>
+
+<p>
+<blockquote class="twitter-tweet"><p lang="en" dir="ltr">vkQuake2 - now with MacOS support thanks to <a href="https://twitter.com/hashtag/MoltenVK?src=hash&amp;ref_src=twsrc%5Etfw">#MoltenVK</a>! Works with full audio and network, can be built either from XCode or command line. Also - still not using SDL/glfw for extra challenge!<a href="https://t.co/Uve18fGoDT">https://t.co/Uve18fGoDT</a> <a href="https://t.co/FgSN50V6ET">pic.twitter.com/FgSN50V6ET</a></p>&mdash; Krzysztof Kondrak (@k_kondrak) <a href="https://twitter.com/k_kondrak/status/1094192063292297217?ref_src=twsrc%5Etfw">February 9, 2019</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+</p>
+
+<p style="text-align: justify;">
+So what happened next? I considered the project feature complete and started thinking about some final improvements to make the experience 100% complete. One thing I was especially missing was the underwater view warp seen in the software renderer which for some reason (I suspect performance at the time) was left unimplemented in OpenGL. This was slightly more involved, since it required adding additional render passes and making sure that synchronization is setup correctly.
+</p>
+
+<p>
+<blockquote class="twitter-tweet"><p lang="en" dir="ltr">Adding some postprocessing effects to vkQuake2 using multiple render passes and it seems I may have some slight synchronization problems. Oh no. <a href="https://t.co/06XvwtAY85">pic.twitter.com/06XvwtAY85</a></p>&mdash; Krzysztof Kondrak (@k_kondrak) <a href="https://twitter.com/k_kondrak/status/1161952244713082881?ref_src=twsrc%5Etfw">August 15, 2019</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script> 
+</p>
+
+<p style="text-align: justify;">
+With help of RenderDoc and simple code analysis, I managed to fix that problem fairly quickly and by porting my <a href="https://www.shadertoy.com/view/XdBBDG" target="blank">ShaderToy effect</a> I got the result I wanted:
+</p>
+
+<p>
+<blockquote class="twitter-tweet" data-conversation="none"><p lang="en" dir="ltr">Just published vkQuake2 1.4.0 where I finally implemented what I felt was missing to make the port whole - a proper underwater vision warp effect, similar to the original software renderer. I can finally call this project feature complete! <a href="https://t.co/7sgzRCzaM4">pic.twitter.com/7sgzRCzaM4</a></p>&mdash; Krzysztof Kondrak (@k_kondrak) <a href="https://twitter.com/k_kondrak/status/1163899796412719104?ref_src=twsrc%5Etfw">August 20, 2019</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script> 
+</p>
+
+<p style="text-align: justify;">
+While I'm mentioning RenderDoc - if you develop a fairly complex Vulkan application, by all means utilize the debug markers. I can't imagne getting around resource analysis without knowing what is what exactly. Highly recommended!
+</p>
+
+<p>
+<blockquote class="twitter-tweet"><p lang="nl" dir="ltr">VK_EXT_DEBUG_MARKER_EXTENSION is a very cool Vulkan extension! <a href="https://t.co/y0OGTwJ4wh">pic.twitter.com/y0OGTwJ4wh</a></p>&mdash; Krzysztof Kondrak (@k_kondrak) <a href="https://twitter.com/k_kondrak/status/1166104207721713664?ref_src=twsrc%5Etfw">August 26, 2019</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+</p>
+
+<p style="text-align: justify;">
+With that last feature done, vkQuake2 now entered what I call the phase of infinite polish and "just one more fix" - a stage that is difficult to finish unless you realize that the final work will never be perfect. This is not a bad thing, as it always leaves some room for improvements and also makes for a nice motivator to get back to the project later in the future. This was true in my case, since over the span of following months I occasionally got back to either fix some minor bugs or add slightly bigger things, like the exclusive fullscreen mode support. There is also the matter of interaction with the community, without which finding some of the problems would never be possible. It's a priceless experience which I would not want to give up!
+</p>
+	
+			
+
+			
+
+			
+				<div class="paging">
+					<span class="paging-label">More Reading</span>
+					
+
+					
+                    
+					<div class="paging-older">
+						<span class="dark-red">Older</span><span class="decorative-marker">//</span>
+			            <a class="paging-link" href="/posts/2016-12-11-coincidence-luck-and-getting-my-first-job-in-gamedev/">Coincidence, luck and getting my first job in gamedev</a>
+		            </div>
+                    
+		            
+	            </div>
+            
+          </section>
+          
+          	
+          
+        
+      <div class="footer">
+	<hr class="thin" />
+	<div class="pure-menu pure-menu-horizontal pure-menu-open">
+		<ul class="footer-menu">
+		
+		</ul>
+	</div>
+
+	<p>&copy; 2020. All rights reserved.</p>
+</div>
+    </div>
+  </div>
+	
+
+	
+
+  
+</body>
+</html>
